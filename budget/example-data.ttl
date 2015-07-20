@@ -1,0 +1,33 @@
+@prefix qb:             <http://purl.org/linked-data/cube#> .
+@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix xsd:			<http://www.w3.org/2001/XMLSchema#> .
+@prefix nuts:           <http://ec.europa.eu/eurostat/ramon/ontologies/geographic.rdf#> .
+
+@prefix obeu-r:         <http://openbudgets.eu/resource/dsd/> .
+@prefix obeu:           <http://openbudgets.eu/vocabulary/dsd/> .
+
+<http://openbudgets.eu/resource/example/budget/1/dataSet> a qb:DataSet ;
+	qb:dataStructureDefinition obeu-r:Budget1 ;
+	.
+
+<http://openbudgets.eu/resource/example/budget/1/observation/1> a qb:Observation ;
+	qb:dataSet <http://openbudgets.eu/resource/example/budget/1/dataSet> ;
+	obeu:budgetaryUnit <http://www.vse.cz> ;
+	obeu:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2015-05-01T00:00:00/P2Y6M> ;
+	obeu:programmeClassification <http://some.classification> ;
+	obeu:currency <http://dbpedia.org/resource/Czech_koruna> ; #This is more Linked Data way, there is a dbprop:isoCode property containig "CZK"
+	#sdmx-attribute:currency "CZK" ; #This is the SDMX way
+	obeu:amount "2000.00"^^xsd:decimal
+	.
+	
+<http://openbudgets.eu/resource/example/budget/1/observation/2> a qb:Observation ;
+	qb:dataSet <http://openbudgets.eu/resource/example/budget/1/dataSet> ;
+	obeu:budgetaryUnit <http://www.vse.cz> ;
+	obeu:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2013-01-01T00:00:00/P2Y4M> ;
+	obeu:programmeClassification <http://some.classification> ;
+	obeu:currency <http://dbpedia.org/resource/Czech_koruna> ; #This is more Linked Data way, there is a dbprop:isoCode property containig "CZK"
+	#sdmx-attribute:currency "CZK" ; #This is the SDMX way
+	obeu:amount "4000.00"^^xsd:decimal
+	.
