@@ -1,0 +1,60 @@
+# ----- Speculative namespaces -----
+@prefix :           <http://vocab.openbudgets.eu/eu-budget#> .
+@prefix obeu:       <http://vocab.openbudgets.eu/core#> .
+@prefix obeucode:   <http://codelists.openbudgets.eu/> .
+
+# ----- Reused namespaces -----
+@prefix qb:         <http://purl.org/linked-data/cube#> .
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+
+:eu-budget a qb:DataStructureDefinition ;
+  rdfs:label "Data structure definition for the budget of the European Union"@en ;
+  qb:component [
+    qb:dimension :budgetNomenclature
+  ], [
+    qb:dimension :catpol
+  ], [
+    qb:dimension :fiscalYear ; # EU budget contains planned expenditures (appropriations) for the budget year (n), budget (appropriations) for the previous year (n - 1, marked as year=”nm1”), and actual expenditures (outturn) for the year before that (n-2, marked as year=”nm2”). Each fiscal year would be expressed as different qb:DataSet. "n" and "nm1" would use the budget DSD, while "nm2" would use a spending DSD.
+    qb:componentAttachment qb:DataSet
+  ], [
+    qb:dimension obeu:type # Revenue or expenditure. The released EU budget in XML contains only expenditures.
+  ], [
+    qb:attribute obeu:currency ; # The currency of EU budget is always "EUR".
+    qb:componentRequired "true"^^xsd:boolean ;
+    qb:componentAttachment qb:DataSet
+  ], [
+    qb:attribute :reserve # TODO: Attribute or measure?
+                          # The reserve has to be expressed in the same currency as the budget line's amount.
+                          # The reserve is more complicated, because it can have an alias (identifier?).
+  ], [
+    qb:measure obeu:amount
+  ] .
+
+:budgetNomenclature a qb:DimensionProperty ; # TODO: Is it correct to label this as "budget nomenclature"?
+                                             # Is this Activity Based Budgeting nomenclature?
+  rdfs:label "EU budget nomenclature"@en ;
+  rdfs:comment "Concepts in the EU budget nomenclature are hierarchically organized into sections, chapters, articles, and items. Each concept may have a supplementary editorial and legal notes."@en ;
+  # TODO: If editorial and legal notes are changing over time, it would be better to have them as attributes on DSD rather than changing the EU budget nomenclature code list. Nevertheless, the EU budget nomenclature may also change over time. Does it change regularly?
+  rdfs:subPropertyOf obeu:programmeClassification ;
+  qb:codeList obeucode:eu-budget-lines ;
+  rdfs:isDefinedBy <http://vocab.openbudgets.eu/eu-budget> .
+
+:catpol a qb:DimensionProperty ;
+  rdfs:label "MFF/CATPOL heading"@en ;
+  rdfs:comment "Multiannual Financial Framework Political Category classification of a budget line."@en ;
+  rdfs:subPropertyOf obeu:functionalClassification ;
+  qb:codeList obeucode:catpol ;
+  rdfs:isDefinedBy <http://vocab.openbudgets.eu/eu-budget> .
+
+:fiscalYear a qb:DimensionProperty ;
+  rdfs:label "Fiscal year"@en ;
+  rdfs:subPropertyOf obeu:fiscalPeriod ;
+  rdfs:isDefinedBy <http://vocab.openbudgets.eu/eu-budget> .
+
+:reserve a qb:AttributeProperty ;
+  rdfs:label "Reserve"@en ;
+  rdfs:range xsd:decimal ;
+  rdfs:isDefinedBy <http://vocab.openbudgets.eu/eu-budget> .
