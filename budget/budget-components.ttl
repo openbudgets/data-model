@@ -29,24 +29,17 @@ obeu-dimension:fiscalPeriod a rdf:Property, qb:DimensionProperty ;
     rdfs:range time:Interval ;
     qb:concept sdmx-concept:refPeriod .
 
-obeu-attribute:currency a rdf:Property, qb:AttributeProperty ;
-    rdfs:label "currency"@en ;
-	rdfs:comment "The currency of the financial amount"@en ;
-    rdfs:subPropertyOf sdmx-attribute:currency ;
-    rdfs:range dbpedia-owl:Currency ;
-    qb:concept sdmx-concept:currency .
-
 obeu-dimension:classification a rdf:Property, qb:DimensionProperty ;
 	rdfs:label "classification"@en .
 	
 obeu-dimension:functionalClassification a rdf:Property, qb:DimensionProperty ;
 	rdfs:label "functional classification"@en ;
-	rdfs:comment "Categorizes expenditure according to the purposes and objectives for which they are intended."@en ;
+	rdfs:comment "Categorizes expenditures according to the purposes and objectives for which they are intended."@en ;
 	rdfs:subPropertyOf obeu-dimension:classification .
 
 obeu-dimension:programmeClassification a rdf:Property, qb:DimensionProperty ;
 	rdfs:label "programme classification"@en ;
-	rdfs:comment "Grouping of expenditure by common objective for budgeting purposes."@en ;
+	rdfs:comment "Grouping of expenditures by common objective for budgeting purposes."@en ;
 	rdfs:subPropertyOf obeu-dimension:classification .
 
 obeu-dimension:economicClassification a rdf:Property, qb:DimensionProperty ;
@@ -66,4 +59,9 @@ obeu-measure:amount a rdf:Property, qb:MeasureProperty ;
 	rdfs:range xsd:decimal ;
 	qb:concept sdmx-concept:obsValue .
   
- 
+ obeu-attribute:currency a rdf:Property, qb:AttributeProperty ;
+    rdfs:label "currency"@en ;
+	rdfs:comment "The currency of the financial amount"@en ;
+    rdfs:subPropertyOf sdmx-attribute:currency ;
+    rdfs:range obeu:Currency ;
+    qb:concept sdmx-concept:currency .
