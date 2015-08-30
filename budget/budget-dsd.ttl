@@ -20,6 +20,7 @@ obeu-dsd:Budget1 a qb:DataStructureDefinition ;
   ], [
 	rdfs:label "Currency"@en ;
 	qb:attribute obeu-attribute:currency ;
+	qb:componentAttachment qb:DataSet
   ], [
 	rdfs:label "The budgeted amount"@en ;
 	qb:measure obeu-measure:amount
