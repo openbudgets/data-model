@@ -10,9 +10,9 @@
 @prefix interval:		<http://reference.data.gov.uk/def/intervals/> .
 @prefix time:			<http://www.w3.org/2006/time#> .
 @prefix nuts:           <http://ec.europa.eu/eurostat/ramon/ontologies/geographic.rdf#> .
-@prefix org:			<http://www.w3.org/ns/org#>
+@prefix org:			<http://www.w3.org/ns/org#> .
 
-@prefix obeu: 			<http://data.openbudgets.eu/ontology/>.
+@prefix obeu: 			<http://data.openbudgets.eu/ontology/> .
 @prefix obeu-dsd: 		<http://data.openbudgets.eu/resource/dsd/> .
 @prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/>.
 @prefix obeu-measure: 	<http://data.openbudgets.eu/ontology/dsd/measure/>.
