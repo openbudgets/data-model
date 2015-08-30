@@ -18,6 +18,7 @@
 @prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/>.
 @prefix obeu-measure: 	<http://data.openbudgets.eu/ontology/dsd/measure/>.
 @prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/>.
+@prefix obeu-codelist:	<http://data.openbudgets.eu/resource/codelist/>.
 
 obeu-dimension:budgetaryUnit a rdf:Property, qb:DimensionProperty ;
 	rdfs:label "budgetary unit"@en ;
@@ -52,6 +53,16 @@ obeu-dimension:administrativeClassification a rdf:Property, qb:DimensionProperty
 	rdfs:label "administrative classification"@en ;
 	rdfs:comment "Identifies the entity responsible for managing the public funds concerned."@en ;
 	rdfs:subPropertyOf obeu-dimension:classification .
+
+obeu-dimension:operationCharacter a qb:DimensionProperty, qb:CodedProperty ;
+	rdfs:label "operation character"@en ;
+	rdfs:comment "Distinguishes among expenditure, revenue and financing."@en ;
+	rdfs:range obeu-codelist:OperationCharacter .
+	
+obeu-dimension:budgetPhase a qb:DimensionProperty, qb:CodedProperty ;
+	rdfs:label "budget phase"@en ;
+	rdfs:comment "Distinguishes among phases of the budget."@en ;
+	rdfs:range obeu-codelist:BudgetPhase .
 
 obeu-measure:amount a rdf:Property, qb:MeasureProperty ;
 	rdfs:label "amount"@en ;
