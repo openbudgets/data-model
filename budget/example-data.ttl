@@ -5,29 +5,32 @@
 @prefix xsd:			<http://www.w3.org/2001/XMLSchema#> .
 @prefix nuts:           <http://ec.europa.eu/eurostat/ramon/ontologies/geographic.rdf#> .
 
-@prefix obeu-r:         <http://openbudgets.eu/resource/dsd/> .
-@prefix obeu:           <http://openbudgets.eu/vocabulary/dsd/> .
+@prefix obeu: 			<http://data.openbudgets.eu/ontology/> .
+@prefix obeu-dsd: 		<http://data.openbudgets.eu/resource/dsd/> .
+@prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/>.
+@prefix obeu-measure: 	<http://data.openbudgets.eu/ontology/dsd/measure/>.
+@prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/>.
 
-<http://openbudgets.eu/resource/example/budget/1/dataSet> a qb:DataSet ;
-	qb:dataStructureDefinition obeu-r:Budget1 ;
+<http://data.openbudgets.eu/resource/example/budget/1/dataSet> a qb:DataSet ;
+	qb:dataStructureDefinition obeu-dsd:Budget1 ;
 	.
 
-<http://openbudgets.eu/resource/example/budget/1/observation/1> a qb:Observation ;
-	qb:dataSet <http://openbudgets.eu/resource/example/budget/1/dataSet> ;
-	obeu:budgetaryUnit <http://www.vse.cz> ;
-	obeu:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2015-05-01T00:00:00/P2Y6M> ;
-	obeu:programmeClassification <http://some.classification> ;
-	obeu:currency <http://dbpedia.org/resource/Czech_koruna> ; #This is more Linked Data way, there is a dbprop:isoCode property containig "CZK"
+<http://data.openbudgets.eu/resource/example/budget/1/observation/1> a qb:Observation ;
+	qb:dataSet <http://data.openbudgets.eu/resource/example/budget/1/dataSet> ;
+	obeu-dimension:budgetaryUnit <http://www.vse.cz> ;
+	obeu-dimension:fiscalPeriod <http://reference.data.gov.uk/id/gregorian-interval/2015-05-01T00:00:00/P2Y6M> ;
+	obeu-dimension:programmeClassification <http://some.classification> ;
+	obeu-attribute:currency <http://data.openbudgets.eu/resource/currency/CZK> ; #This is more Linked Data way, there will be a owl:sameAs to dbpedia and there is a dbprop:isoCode property containig "CZK"
 	#sdmx-attribute:currency "CZK" ; #This is the SDMX way
-	obeu:amount "2000.00"^^xsd:decimal
+	obeu-measure:amount "2000.00"^^xsd:decimal
 	.
 	
-<http://openbudgets.eu/resource/example/budget/1/observation/2> a qb:Observation ;
-	qb:dataSet <http://openbudgets.eu/resource/example/budget/1/dataSet> ;
-	obeu:budgetaryUnit <http://www.vse.cz> ;
-	obeu:refPeriod <http://reference.data.gov.uk/id/gregorian-interval/2013-01-01T00:00:00/P2Y4M> ;
-	obeu:programmeClassification <http://some.classification> ;
-	obeu:currency <http://dbpedia.org/resource/Czech_koruna> ; #This is more Linked Data way, there is a dbprop:isoCode property containig "CZK"
+<http://data.openbudgets.eu/resource/example/budget/1/observation/2> a qb:Observation ;
+	qb:dataSet <http://data.openbudgets.eu/resource/example/budget/1/dataSet> ;
+	obeu-dimension:budgetaryUnit <http://www.vse.cz> ;
+	obeu-dimension:fiscalPeriod <http://reference.data.gov.uk/id/gregorian-interval/2013-01-01T00:00:00/P2Y4M> ;
+	obeu-dimension:programmeClassification <http://some.classification> ;
+	obeu-attribute:currency <http://data.openbudgets.eu/resource/currency/CZK> ; #This is more Linked Data way, there will be a owl:sameAs to dbpedia and there is a dbprop:isoCode property containig "CZK"
 	#sdmx-attribute:currency "CZK" ; #This is the SDMX way
-	obeu:amount "4000.00"^^xsd:decimal
+	obeu-measure:amount "4000.00"^^xsd:decimal
 	.
