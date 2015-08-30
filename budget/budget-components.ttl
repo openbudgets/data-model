@@ -5,34 +5,63 @@
 @prefix sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
 @prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
 @prefix sdmx-concept:	<http://purl.org/linked-data/sdmx/2009/concept#> .
-@prefix sdmx-measure:    <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix sdmx-measure:   <http://purl.org/linked-data/sdmx/2009/measure#> .
 @prefix dbpedia-owl:	<http://dbpedia.org/ontology/> .
 @prefix interval:		<http://reference.data.gov.uk/def/intervals/> .
+@prefix time:			<http://www.w3.org/2006/time#> .
 @prefix nuts:           <http://ec.europa.eu/eurostat/ramon/ontologies/geographic.rdf#> .
+@prefix org:			<http://www.w3.org/ns/org#>
 
-@prefix obeu-r:         <http://openbudgets.eu/resource/dsd/> .
-@prefix obeu:           <http://openbudgets.eu/vocabulary/dsd/> .
+@prefix obeu: 			<http://data.openbudgets.eu/ontology/>.
+@prefix obeu-dsd: 		<http://data.openbudgets.eu/resource/dsd/> .
+@prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/>.
+@prefix obeu-measure: 	<http://data.openbudgets.eu/ontology/dsd/measure/>.
+@prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/>.
 
-obeu:budgetaryUnit a rdf:Property, qb:DimensionPropery ;
-	rdfs:label "budgetary unit"@en .
+obeu-dimension:budgetaryUnit a rdf:Property, qb:DimensionProperty ;
+	rdfs:label "budgetary unit"@en ;
+	rdfs:range org:Organization .
 	
-obeu:refPeriod a rdf:Property, qb:DimensionProperty ;
-    rdfs:label "reference period"@en ;
+obeu-dimension:fiscalPeriod a rdf:Property, qb:DimensionProperty ;
+    rdfs:label "fiscal period"@en ;
+	rdfs:comment "The period of time reflected in financial statements."@en ;
     rdfs:subPropertyOf sdmx-dimension:refPeriod ;
-    rdfs:range interval:Interval ;
+    rdfs:range time:Interval ;
     qb:concept sdmx-concept:refPeriod .
 
-obeu:currency a rdf:Property, qb:AttributeProperty ;
+obeu-attribute:currency a rdf:Property, qb:AttributeProperty ;
     rdfs:label "currency"@en ;
+	rdfs:comment "The currency of the financial amount"@en ;
     rdfs:subPropertyOf sdmx-attribute:currency ;
     rdfs:range dbpedia-owl:Currency ;
     qb:concept sdmx-concept:currency .
 
-obeu:programmeClassification a rdf:Property, qb:DimensionProperty ;
-	rdfs:label "programme classification"@en .
+obeu-dimension:classification a rdf:Property, qb:DimensionProperty ;
+	rdfs:label "classification"@en .
+	
+obeu-dimension:functionalClassification a rdf:Property, qb:DimensionProperty ;
+	rdfs:label "functional classification"@en ;
+	rdfs:comment "Categorizes expenditure according to the purposes and objectives for which they are intended."@en ;
+	rdfs:subPropertyOf obeu-dimension:classification .
 
-obeu:amount a rdf:Property, qb:MeasureProperty ;
+obeu-dimension:programmeClassification a rdf:Property, qb:DimensionProperty ;
+	rdfs:label "programme classification"@en ;
+	rdfs:comment "Grouping of expenditure by common objective for budgeting purposes."@en ;
+	rdfs:subPropertyOf obeu-dimension:classification .
+
+obeu-dimension:economicClassification a rdf:Property, qb:DimensionProperty ;
+	rdfs:label "economic classification"@en ;
+	rdfs:comment "Identifies the type of expenditure incurred."@en ;
+	rdfs:subPropertyOf obeu-dimension:classification .
+
+obeu-dimension:administrativeClassification a rdf:Property, qb:DimensionProperty ;
+	rdfs:label "administrative classification"@en ;
+	rdfs:comment "Identifies the entity responsible for managing the public funds concerned."@en ;
+	rdfs:subPropertyOf obeu-dimension:classification .
+
+obeu-measure:amount a rdf:Property, qb:MeasureProperty ;
 	rdfs:label "amount"@en ;
+	rdfs:comment "The amount budgeted."@en ;
 	rdfs:subPropertyOf sdmx-measure:obsValue ;
 	rdfs:range xsd:decimal ;
 	qb:concept sdmx-concept:obsValue .
