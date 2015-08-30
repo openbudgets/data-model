@@ -57,12 +57,14 @@ obeu-dimension:administrativeClassification a rdf:Property, qb:DimensionProperty
 obeu-dimension:operationCharacter a qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:label "operation character"@en ;
 	rdfs:comment "Distinguishes among expenditure, revenue and financing."@en ;
-	rdfs:range obeu-codelist:OperationCharacter .
+	rdfs:range obeu:OperationCharacter ;
+	qb:codeList obeu-codelist:operationCharacter .
 	
 obeu-dimension:budgetPhase a qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:label "budget phase"@en ;
 	rdfs:comment "Distinguishes among phases of the budget."@en ;
-	rdfs:range obeu-codelist:BudgetPhase .
+	rdfs:range obeu:BudgetPhase ;
+	qb:codeList obeu-codelist:budgetPhase .
 
 obeu-measure:amount a rdf:Property, qb:MeasureProperty ;
 	rdfs:label "amount"@en ;
