@@ -1,0 +1,44 @@
+@prefix skos:			<http://www.w3.org/2004/02/skos/core#> .
+
+@prefix obeu: 			<http://data.openbudgets.eu/ontology/> .
+@prefix obeu-codelist:	<http://data.openbudgets.eu/resource/codelist/>.
+
+@prefix obeu-operation: <http://data.openbudgets.eu/resource/codelist/operation-character/> .
+@prefix obeu-budgetphase: <http://data.openbudgets.eu/resource/codelist/budget-phase/> .
+
+# OperationCharacter
+obeu-codelist:operationCharacter a skos:ConceptScheme ;
+	skos:prefLabel "Code list that distinguishes among characters of budget operation."@en .
+	
+obeu-operation:Expenditure a skos:Concept, obeu:OperationCharacter ;
+	skos:prefLabel "Expenditure"@en;
+	skos:inScheme obeu-codelist:operationCharacter .
+	
+obeu-operation:Revenue a skos:Concept, obeu:OperationCharacter ;
+	skos:prefLabel "Revenue"@en;
+	skos:inScheme obeu-codelist:operationCharacter .
+	
+obeu-operation:Financing a skos:Concept, obeu:OperationCharacter ;
+	skos:prefLabel "Financing"@en;
+	skos:note "Transactions in financial assets and liabilities."@en ;
+	skos:inScheme obeu-codelist:operationCharacter .
+	
+# BudgetPhase
+obeu-codelist:budgetPhase a skos:ConceptScheme ;
+	skos:prefLabel "Code list that distinguishes among phases of the budget."@en .
+
+obeu-budgetphase:Draft a skos:Concept, obeu:BudgetPhase ;
+	skos:prefLabel "Draft"@en;
+	skos:inScheme obeu-codelist:budgetPhase .
+	
+obeu-budgetphase:Revised a skos:Concept, obeu:BudgetPhase ;
+	skos:prefLabel "Revised"@en;
+	skos:inScheme obeu-codelist:budgetPhase .
+
+obeu-budgetphase:Final a skos:Concept, obeu:BudgetPhase ;
+	skos:prefLabel "Final"@en;
+	skos:inScheme obeu-codelist:budgetPhase .
+
+obeu-budgetphase:Executed a skos:Concept, obeu:BudgetPhase ;
+	skos:prefLabel "Executed"@en;
+	skos:inScheme obeu-codelist:budgetPhase .
