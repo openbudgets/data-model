@@ -11,6 +11,7 @@
 @prefix time:			<http://www.w3.org/2006/time#> .
 @prefix nuts:           <http://ec.europa.eu/eurostat/ramon/ontologies/geographic.rdf#> .
 @prefix org:			<http://www.w3.org/ns/org#> .
+@prefix schema:			<http://schema.org/> .
 
 @prefix obeu: 			<http://data.openbudgets.eu/ontology/> .
 @prefix obeu-dsd: 		<http://data.openbudgets.eu/resource/dsd/> .
@@ -59,9 +60,20 @@ obeu-measure:amount a rdf:Property, qb:MeasureProperty ;
 	rdfs:range xsd:decimal ;
 	qb:concept sdmx-concept:obsValue .
   
- obeu-attribute:currency a rdf:Property, qb:AttributeProperty ;
-    rdfs:label "currency"@en ;
+obeu-attribute:currency a rdf:Property, qb:AttributeProperty ;
+	rdfs:label "currency"@en ;
 	rdfs:comment "The currency of the financial amount"@en ;
-    rdfs:subPropertyOf sdmx-attribute:currency ;
-    rdfs:range obeu:Currency ;
-    qb:concept sdmx-concept:currency .
+	rdfs:subPropertyOf sdmx-attribute:currency ;
+	rdfs:range obeu:Currency ;
+	qb:concept sdmx-concept:currency .
+
+obeu-attribute:location a rdf:Property, qb:AttributeProperty ;
+	rdfs:label "location"@en ;
+	rdfs:comment "The physical location of expenditure"@en ;
+	rdfs:range schema:Place .
+	
+obeu-attribute:fundingFrom a rdf:Property, qb:AttributeProperty ;
+	rdfs:label "source of funding"@en ;
+	rdfs:comment "The source of funding of an expenditure (typically a revenue budget line)"@en ;
+	rdfs:domain qb:Observation ;
+	rdfs:range qb:Observation .
