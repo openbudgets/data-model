@@ -37,8 +37,8 @@ obeu-budgetphase:Revised a skos:Concept, obeu:BudgetPhase ;
 	skos:prefLabel "Revised"@en;
 	skos:inScheme obeu-codelist:budgetPhase .
 
-obeu-budgetphase:Final a skos:Concept, obeu:BudgetPhase ;
-	skos:prefLabel "Final"@en;
+obeu-budgetphase:Approved a skos:Concept, obeu:BudgetPhase ;
+	skos:prefLabel "Approved"@en;
 	skos:inScheme obeu-codelist:budgetPhase .
 
 obeu-budgetphase:Executed a skos:Concept, obeu:BudgetPhase ;
