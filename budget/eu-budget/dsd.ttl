@@ -1,0 +1,52 @@
+# ----- DSD-specific namespaces -----
+
+@prefix eu-attribute:     <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/attribute/> .
+@prefix eu-dimension:     <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/dimension/> .
+@prefix eu-measure:       <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/measure/> .
+@prefix eu-codelist:      <http://example.openbudgets.eu/resource/eu-budget-2014/codelist/> .
+
+# ----- OpenBudgets.eu namespaces -----
+
+@prefix obeu-attribute:   <http://data.openbudgets.eu/ontology/dsd/attribute/> .
+@prefix obeu-dimension:   <http://data.openbudgets.eu/ontology/dsd/dimension/> .
+@prefix obeu-measure:     <http://data.openbudgets.eu/ontology/dsd/measure/> .
+@prefix obeu-budgetphase: <http://data.openbudgets.eu/resource/codelist/budget-phase/> .
+@prefix obeu-operation:   <http://data.openbudgets.eu/resource/codelist/operation-character/> .
+
+# ----- Generic namespaces ------
+
+@prefix qb:               <http://purl.org/linked-data/cube#> .
+@prefix rdf:              <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:             <http://www.w3.org/2004/02/skos/core#> .
+@prefix time:             <http://www.w3.org/2006/time#> .
+@prefix xsd:              <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.openbudgets.eu/ontology/dsd/eu-budget-2014> a qb:DataStructureDefinition ;
+  rdfs:label "Data structure definition for the budget of the European Union of the year 2014"@en ;
+  qb:component [ qb:dimension obeu-dimension:budgetaryUnit ;
+                 qb:componentAttachment qb:DataSet ],
+               [ qb:dimension obeu-dimension:budgetPhase ],
+               [ qb:dimension obeu-dimension:operationCharacter ;
+                 qb:componentAttachment qb:DataSet ],
+               [ qb:dimension obeu-dimension:fiscalYear ],
+               [ qb:dimension eu-dimension:budgetNomenclature ],
+               [ qb:dimension eu-dimension:catpol ],
+               [ qb:attribute obeu-attribute:currency ;
+                 qb:componentRequired "true"^^xsd:boolean ;
+                 qb:componentAttachment qb:DataSet ],
+               [ qb:measure obeu-measure:amount ] .
+
+eu-dimension:budgetNomenclature a rdf:Property, qb:CodedProperty, qb:DimensionProperty ;
+  rdfs:label "Activity-Based Budgeting nomenclature 2014"@en ;
+  rdfs:comment "Concepts in the EU’s Activity-Based Budgeting nomenclature are hierarchically organized into sections, chapters, articles, items, and sub-items. Each concept may have a supplementary editorial and legal notes."@en ;
+  rdfs:subPropertyOf obeu-dimension:classification ;
+  qb:codeList eu-codelist:budget-nomenclature-2014 ;
+  rdfs:isDefinedBy <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014> . 
+
+eu-dimension:catpol a rdf:Property, qb:CodedProperty, qb:DimensionProperty ;
+  rdfs:label "MFF/CATPOL heading"@en ;
+  rdfs:comment "Multiannual Financial Framework Political Category classification of a budget line."@en ;
+  rdfs:subPropertyOf obeu-dimension:classification ;
+  qb:codeList eu-codelist:catpol ;
+  rdfs:isDefinedBy <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014> . 
