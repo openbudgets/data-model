@@ -12,15 +12,17 @@ obeu-codelist:operationCharacter a skos:ConceptScheme ;
 	
 obeu-operation:Expenditure a skos:Concept, obeu:OperationCharacter ;
 	skos:prefLabel "Expenditure"@en;
+	skos:definition "Decrease in net worth resulting from a transaction and the net investment in nonfinancial assets"@en ;
 	skos:inScheme obeu-codelist:operationCharacter .
 	
 obeu-operation:Revenue a skos:Concept, obeu:OperationCharacter ;
 	skos:prefLabel "Revenue"@en;
+	skos:definition "An increase in net worth resulting from a transaction"@en ;
 	skos:inScheme obeu-codelist:operationCharacter .
 	
 obeu-operation:Financing a skos:Concept, obeu:OperationCharacter ;
 	skos:prefLabel "Financing"@en;
-	skos:note "Transactions in financial assets and liabilities."@en ;
+	skos:definition "Transactions in financial assets and liabilities."@en ;
 	skos:inScheme obeu-codelist:operationCharacter .
 	
 # BudgetPhase
