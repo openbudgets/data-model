@@ -23,6 +23,7 @@
 
 obeu-dimension:budgetaryUnit a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:label "budgetary unit"@en ;
+	rdfs:comment "An economic entity that is capable, in its own right, of owning assets, incurring liabilities, and engaging in economic activities and in transactions with other entities."@en ;
 	rdfs:range org:Organization .
 	
 obeu-dimension:fiscalPeriod a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
@@ -38,7 +39,7 @@ obeu-dimension:classification a rdf:Property, qb:DimensionProperty, qb:CodedProp
 	
 obeu-dimension:functionalClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:label "functional classification"@en ;
-	rdfs:comment "Categorizes expenditures according to the purposes and objectives for which they are intended."@en ;
+	rdfs:comment "Classifies expenditures by sector and by the purpose of the expenditure. It illustrates the behaviour of government (municipalities)."@en ;
 	rdfs:subPropertyOf obeu-dimension:classification .
 
 obeu-dimension:programmeClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
@@ -48,7 +49,7 @@ obeu-dimension:programmeClassification a rdf:Property, qb:DimensionProperty, qb:
 
 obeu-dimension:economicClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:label "economic classification"@en ;
-	rdfs:comment "Identifies the type of expenditure incurred."@en ;
+	rdfs:comment "Identifies the type of expenditure incurred or source of revenues."@en ;
 	rdfs:subPropertyOf obeu-dimension:classification .
 
 obeu-dimension:administrativeClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
@@ -64,7 +65,7 @@ obeu-dimension:operationCharacter a rdf:Property, qb:DimensionProperty, qb:Coded
 	
 obeu-dimension:budgetPhase a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:label "budget phase"@en ;
-	rdfs:comment "Distinguishes among phases of the budget."@en ;
+	rdfs:comment "Major event or stage in the budget cycle."@en ;
 	rdfs:range obeu:BudgetPhase ;
 	qb:codeList obeu-codelist:budgetPhase .
 
