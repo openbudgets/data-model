@@ -33,6 +33,13 @@ obeu-dimension:fiscalPeriod a rdf:Property, qb:DimensionProperty, qb:CodedProper
     rdfs:range time:Interval ;
     qb:concept sdmx-concept:refPeriod .
 
+obeu-dimension:fiscalYear a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+    rdfs:label "fiscal year"@en ;
+	rdfs:comment "The year reflected in financial statements."@en ;
+    rdfs:subPropertyOf obeu-dimension:fiscalPeriod ;
+    rdfs:range interval:Year ;
+    qb:concept sdmx-concept:refPeriod .
+
 obeu-dimension:classification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:subPropertyOf dcterms:subject ;
 	rdfs:label "classification"@en .
