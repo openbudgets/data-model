@@ -12,6 +12,7 @@
 @prefix nuts:           <http://ec.europa.eu/eurostat/ramon/ontologies/geographic.rdf#> .
 @prefix org:			<http://www.w3.org/ns/org#> .
 @prefix schema:			<http://schema.org/> .
+@prefix dcterms:		<http://purl.org/dc/terms/> .
 
 @prefix obeu: 			<http://data.openbudgets.eu/ontology/> .
 @prefix obeu-dsd: 		<http://data.openbudgets.eu/resource/dsd/> .
@@ -32,6 +33,7 @@ obeu-dimension:fiscalPeriod a rdf:Property, qb:DimensionProperty ;
     qb:concept sdmx-concept:refPeriod .
 
 obeu-dimension:classification a rdf:Property, qb:DimensionProperty ;
+	rdfs:subPropertyOf dcterms:subject ;
 	rdfs:label "classification"@en .
 	
 obeu-dimension:functionalClassification a rdf:Property, qb:DimensionProperty ;
