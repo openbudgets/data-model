@@ -84,9 +84,3 @@ obeu-attribute:location a rdf:Property, qb:AttributeProperty ;
 	rdfs:label "location"@en ;
 	rdfs:comment "The physical location of expenditure"@en ;
 	rdfs:range schema:Place .
-	
-obeu-attribute:fundingFrom a rdf:Property, qb:AttributeProperty ;
-	rdfs:label "source of funding"@en ;
-	rdfs:comment "The source of funding of an expenditure (typically a revenue budget line)"@en ;
-	rdfs:domain qb:Observation ;
-	rdfs:range qb:Observation .
