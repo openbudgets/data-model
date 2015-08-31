@@ -1,5 +1,5 @@
 @prefix skos:			<http://www.w3.org/2004/02/skos/core#> .
-
+@prefix rdfs:			<http://www.w3.org/2000/01/rdf-schema#> .
 @prefix obeu: 			<http://data.openbudgets.eu/ontology/> .
 @prefix obeu-codelist:	<http://data.openbudgets.eu/resource/codelist/>.
 
@@ -7,6 +7,9 @@
 @prefix obeu-budgetphase: <http://data.openbudgets.eu/resource/codelist/budget-phase/> .
 
 # OperationCharacter
+obeu:OperationCharacter a rdfs:Class;
+	rdfs:label "Budget operation character"@en .
+	
 obeu-codelist:operationCharacter a skos:ConceptScheme ;
 	skos:prefLabel "Code list that distinguishes among characters of budget operation."@en .
 	
@@ -26,6 +29,9 @@ obeu-operation:Financing a skos:Concept, obeu:OperationCharacter ;
 	skos:inScheme obeu-codelist:operationCharacter .
 	
 # BudgetPhase
+obeu:BudgetPhase a rdfs:Class;
+	rdfs:label "Budget phase"@en .
+
 obeu-codelist:budgetPhase a skos:ConceptScheme ;
 	skos:prefLabel "Code list that distinguishes among phases of the budget."@en .
 
