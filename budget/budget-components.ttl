@@ -21,37 +21,37 @@
 @prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/>.
 @prefix obeu-codelist:	<http://data.openbudgets.eu/resource/codelist/>.
 
-obeu-dimension:budgetaryUnit a rdf:Property, qb:DimensionProperty ;
+obeu-dimension:budgetaryUnit a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:label "budgetary unit"@en ;
 	rdfs:range org:Organization .
 	
-obeu-dimension:fiscalPeriod a rdf:Property, qb:DimensionProperty ;
+obeu-dimension:fiscalPeriod a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
     rdfs:label "fiscal period"@en ;
 	rdfs:comment "The period of time reflected in financial statements."@en ;
     rdfs:subPropertyOf sdmx-dimension:refPeriod ;
     rdfs:range time:Interval ;
     qb:concept sdmx-concept:refPeriod .
 
-obeu-dimension:classification a rdf:Property, qb:DimensionProperty ;
+obeu-dimension:classification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:subPropertyOf dcterms:subject ;
 	rdfs:label "classification"@en .
 	
-obeu-dimension:functionalClassification a rdf:Property, qb:DimensionProperty ;
+obeu-dimension:functionalClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:label "functional classification"@en ;
 	rdfs:comment "Categorizes expenditures according to the purposes and objectives for which they are intended."@en ;
 	rdfs:subPropertyOf obeu-dimension:classification .
 
-obeu-dimension:programmeClassification a rdf:Property, qb:DimensionProperty ;
+obeu-dimension:programmeClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:label "programme classification"@en ;
 	rdfs:comment "Grouping of expenditures by common objective for budgeting purposes."@en ;
 	rdfs:subPropertyOf obeu-dimension:classification .
 
-obeu-dimension:economicClassification a rdf:Property, qb:DimensionProperty ;
+obeu-dimension:economicClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:label "economic classification"@en ;
 	rdfs:comment "Identifies the type of expenditure incurred."@en ;
 	rdfs:subPropertyOf obeu-dimension:classification .
 
-obeu-dimension:administrativeClassification a rdf:Property, qb:DimensionProperty ;
+obeu-dimension:administrativeClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:label "administrative classification"@en ;
 	rdfs:comment "Identifies the entity responsible for managing the public funds concerned."@en ;
 	rdfs:subPropertyOf obeu-dimension:classification .
@@ -75,7 +75,7 @@ obeu-measure:amount a rdf:Property, qb:MeasureProperty ;
 	rdfs:range xsd:decimal ;
 	qb:concept sdmx-concept:obsValue .
   
-obeu-attribute:currency a rdf:Property, qb:AttributeProperty ;
+obeu-attribute:currency a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
 	rdfs:label "currency"@en ;
 	rdfs:comment "The currency of the financial amount"@en ;
 	rdfs:subPropertyOf sdmx-attribute:currency ;
