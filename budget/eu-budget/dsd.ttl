@@ -4,34 +4,43 @@
 @prefix eu-dimension:     <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/dimension/> .
 @prefix eu-measure:       <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/measure/> .
 @prefix eu-codelist:      <http://example.openbudgets.eu/resource/eu-budget-2014/codelist/> .
+@prefix eu-operation:     <http://example.openbudgets.eu/resource/eu-budget-2014/codelist/operation-character/> .
 
 # ----- OpenBudgets.eu namespaces -----
 
+@prefix obeu:             <http://data.openbudgets.eu/ontology/> .
 @prefix obeu-attribute:   <http://data.openbudgets.eu/ontology/dsd/attribute/> .
 @prefix obeu-dimension:   <http://data.openbudgets.eu/ontology/dsd/dimension/> .
 @prefix obeu-measure:     <http://data.openbudgets.eu/ontology/dsd/measure/> .
+@prefix obeu-operation:   <http://data.openbudgets.eu/resource/codelist/operation-character/> .
 
 # ----- Generic namespaces ------
 
 @prefix qb:               <http://purl.org/linked-data/cube#> .
 @prefix rdf:              <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:             <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd:              <http://www.w3.org/2001/XMLSchema#> .
+
+# ----- DSD -----
 
 <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014> a qb:DataStructureDefinition ;
   rdfs:label "Data structure definition for the budget of the European Union of the year 2014"@en ;
   qb:component [ qb:dimension obeu-dimension:budgetaryUnit ;
                  qb:componentAttachment qb:DataSet ],
                [ qb:dimension obeu-dimension:budgetPhase ],
-               [ qb:dimension obeu-dimension:operationCharacter ;
-                 qb:componentAttachment qb:DataSet ],
+               [ qb:dimension eu-dimension:operationCharacter ],
                [ qb:dimension obeu-dimension:fiscalYear ],
                [ qb:dimension eu-dimension:budgetNomenclature ],
                [ qb:dimension eu-dimension:catpol ],
                [ qb:attribute obeu-attribute:currency ;
                  qb:componentRequired "true"^^xsd:boolean ;
                  qb:componentAttachment qb:DataSet ],
+               [ qb:attribute eu-attribute:reserve ;
+                 qb:componentRequired "false"^^xsd:boolean ],
                [ qb:measure obeu-measure:amount ] .
+
+# ----- Component properties -----
 
 eu-dimension:budgetNomenclature a rdf:Property, qb:CodedProperty, qb:DimensionProperty ;
   rdfs:label "Activity-Based Budgeting nomenclature 2014"@en ;
@@ -46,3 +55,35 @@ eu-dimension:catpol a rdf:Property, qb:CodedProperty, qb:DimensionProperty ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   qb:codeList eu-codelist:catpol ;
   rdfs:isDefinedBy <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014> . 
+
+eu-dimension:operationCharacter a rdf:Property, qb:CodedProperty, qb:DimensionProperty ;
+  rdfs:label "Operation character"@en ;
+  rdfs:comment "EU budget's specific operation characters"@en ;
+  rdfs:subPropertyOf obeu-dimension:operationCharacter ;
+  qb:codeList eu-codelist:operation-character ;
+  rdfs:range obeu:OperationCharacter ;
+  rdfs:isDefinedBy <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014> .
+
+eu-attribute:reserve a rdf:Property, qb:AttributeProperty ;
+  rdfs:label "Reserve"@en ;
+  rdfs:comment "Reserves set aside for the budget line. Currency of the reserve is the same as of the budget line's amount"@en ; 
+  rdfs:range xsd:decimal ;
+  rdfs:isDefinedBy <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014> .
+
+# ----- Code lists -----
+
+eu-codelist:operation-character a skos:ConceptScheme ;
+  rdfs:label "An extended code list of operation characters for the EU budget"@en ;
+  skos:hasTopConcept obeu-operation:Expenditure, obeu-operation:Revenue, obeu-operation:Financing .
+
+eu-operation:Commitment a skos:Concept, obeu:OperationCharacter ;
+  skos:prefLabel "Commitment"@en ;
+  skos:definition ""@en ;
+  skos:broader obeu-operation:Expenditure ;
+  skos:inScheme eu-codelist:operation-character .
+
+eu-operation:Payment a skos:Concept, obeu:OperationCharacter ;
+  skos:prefLabel "Payment"@en ;
+  skos:definition ""@en ;
+  skos:broader obeu-operation:Expenditure ;
+  skos:inScheme eu-codelist:operation-character .
