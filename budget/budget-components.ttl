@@ -89,8 +89,3 @@ obeu-attribute:currency a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
 	rdfs:subPropertyOf sdmx-attribute:currency ;
 	rdfs:range obeu:Currency ;
 	qb:concept sdmx-concept:currency .
-
-obeu-attribute:location a rdf:Property, qb:AttributeProperty ;
-	rdfs:label "location"@en ;
-	rdfs:comment "The physical location of expenditure"@en ;
-	rdfs:range schema:Place .
