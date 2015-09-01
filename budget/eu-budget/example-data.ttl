@@ -17,12 +17,12 @@
 <http://data.openbudgets.eu/resource/dataset/eu-budget-2014> a qb:DataSet ;
   qb:structure <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014> ; 
   obeu-dimension:budgetaryUnit <http://dbpedia.org/resource/European_Union> ;
-  obeu-dimension:operationCharacter obeu-operation:Expenditure ;
   obeu-attribute:currency obeu-currency:EUR . 
 
 <http://data.openbudgets.eu/resource/dataset/eu-budget-2014/observation/314323345%40dd2a8986-adea-456d-b71b-b3c9bb23dabe-N1577A> a qb:Observation ;
   qb:dataSet <http://data.openbudgets.eu/resource/dataset/eu-budget-2014> ;
   obeu-dimension:budgetPhase obeu-budgetphase:Approved ;
+  eu-dimension:operationCharacter obeu-operation:Expenditure ;
   obeu-dimension:fiscalYear <http://reference.data.gov.uk/id/year/2014> ;
   eu-dimension:budgetNomenclature <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX01010102> ;
   eu-dimension:catpol <http://data.openbudgets.eu/resource/codelist/catpol/5.2.3X> ;
