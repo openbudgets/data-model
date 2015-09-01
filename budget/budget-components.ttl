@@ -1,25 +1,22 @@
-@prefix rdf:			<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms:		    <http://purl.org/dc/terms/> .
+@prefix interval:		    <http://reference.data.gov.uk/def/intervals/> .
+@prefix obeu: 			    <http://data.openbudgets.eu/ontology/> .
+@prefix org:			      <http://www.w3.org/ns/org#> .
 @prefix qb:             <http://purl.org/linked-data/cube#> .
-@prefix xsd:			<http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:			      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix sdmx-concept:	  <http://purl.org/linked-data/sdmx/2009/concept#> .
 @prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
-@prefix sdmx-concept:	<http://purl.org/linked-data/sdmx/2009/concept#> .
 @prefix sdmx-measure:   <http://purl.org/linked-data/sdmx/2009/measure#> .
-@prefix dbpedia-owl:	<http://dbpedia.org/ontology/> .
-@prefix interval:		<http://reference.data.gov.uk/def/intervals/> .
-@prefix time:			<http://www.w3.org/2006/time#> .
-@prefix nuts:           <http://ec.europa.eu/eurostat/ramon/ontologies/geographic.rdf#> .
-@prefix org:			<http://www.w3.org/ns/org#> .
-@prefix schema:			<http://schema.org/> .
-@prefix dcterms:		<http://purl.org/dc/terms/> .
+@prefix time:			      <http://www.w3.org/2006/time#> .
+@prefix xsd:			      <http://www.w3.org/2001/XMLSchema#> .
 
-@prefix obeu: 			<http://data.openbudgets.eu/ontology/> .
-@prefix obeu-dsd: 		<http://data.openbudgets.eu/resource/dsd/> .
-@prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/>.
-@prefix obeu-measure: 	<http://data.openbudgets.eu/ontology/dsd/measure/>.
 @prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/>.
 @prefix obeu-codelist:	<http://data.openbudgets.eu/resource/codelist/>.
+@prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/>.
+@prefix obeu-dsd: 		  <http://data.openbudgets.eu/resource/dsd/> .
+@prefix obeu-measure: 	<http://data.openbudgets.eu/ontology/dsd/measure/>.
 
 obeu-dimension:budgetaryUnit a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:label "budgetary unit"@en ;
