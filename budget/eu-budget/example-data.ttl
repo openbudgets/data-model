@@ -19,7 +19,7 @@
   obeu-dimension:budgetaryUnit <http://dbpedia.org/resource/European_Union> ;
   obeu-attribute:currency obeu-currency:EUR . 
 
-<http://data.openbudgets.eu/resource/dataset/eu-budget-2014/observation/314323345%40dd2a8986-adea-456d-b71b-b3c9bb23dabe-N1577A> a qb:Observation ;
+<http://data.openbudgets.eu/resource/dataset/eu-budget-2014/observation/1> a qb:Observation ;
   qb:dataSet <http://data.openbudgets.eu/resource/dataset/eu-budget-2014> ;
   obeu-dimension:budgetPhase obeu-budgetphase:Approved ;
   eu-dimension:operationCharacter obeu-operation:Expenditure ;
@@ -27,3 +27,21 @@
   eu-dimension:budgetNomenclature <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX01010102> ;
   eu-dimension:catpol <http://data.openbudgets.eu/resource/codelist/catpol/5.2.3X> ;
   obeu-measure:amount 14398000.0 .
+
+<http://data.openbudgets.eu/resource/dataset/eu-budget-2014/observation/2> a qb:Observation ;
+  qb:dataSet <http://data.openbudgets.eu/resource/dataset/eu-budget-2014> ;
+  obeu-dimension:budgetPhase obeu-budgetphase:Approved ;
+  eu-dimension:operationCharacter obeu-operation:Expenditure ;
+  obeu-dimension:fiscalYear <http://reference.data.gov.uk/id/year/2013> ;
+  eu-dimension:budgetNomenclature <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX01010102> ;
+  eu-dimension:catpol <http://data.openbudgets.eu/resource/codelist/catpol/5.2.3X> ;
+  obeu-measure:amount 14873000.0 .
+
+<http://data.openbudgets.eu/resource/dataset/eu-budget-2014/observation/3> a qb:Observation ;
+  qb:dataSet <http://data.openbudgets.eu/resource/dataset/eu-budget-2014> ;
+  obeu-dimension:budgetPhase obeu-budgetphase:Executed ;
+  eu-dimension:operationCharacter obeu-operation:Expenditure ;
+  obeu-dimension:fiscalYear <http://reference.data.gov.uk/id/year/2012> ;
+  eu-dimension:budgetNomenclature <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX01010102> ;
+  eu-dimension:catpol <http://data.openbudgets.eu/resource/codelist/catpol/5.2.3X> ;
+  obeu-measure:amount 13301985.81 .
