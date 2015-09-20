@@ -1,52 +1,64 @@
-@prefix skos:			<http://www.w3.org/2004/02/skos/core#> .
-@prefix rdfs:			<http://www.w3.org/2000/01/rdf-schema#> .
-@prefix obeu: 			<http://data.openbudgets.eu/ontology/> .
-@prefix obeu-codelist:	<http://data.openbudgets.eu/resource/codelist/>.
+@prefix obeu:             <http://data.openbudgets.eu/ontology/> .
+@prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:             <http://www.w3.org/2004/02/skos/core#> .
 
-@prefix obeu-operation: <http://data.openbudgets.eu/resource/codelist/operation-character/> .
+@prefix obeu-codelist:    <http://data.openbudgets.eu/resource/codelist/>.
+@prefix obeu-operation:   <http://data.openbudgets.eu/resource/codelist/operation-character/> .
 @prefix obeu-budgetphase: <http://data.openbudgets.eu/resource/codelist/budget-phase/> .
 
 # OperationCharacter
 obeu:OperationCharacter a rdfs:Class;
-	rdfs:label "Budget operation character"@en .
-	
+  rdfs:label "Budget operation character"@en ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
+  
 obeu-codelist:operationCharacter a skos:ConceptScheme ;
-	skos:prefLabel "Code list that distinguishes among characters of budget operation."@en .
-	
+  rdfs:label "Code list that distinguishes among characters of budget operation."@en ;
+  skos:hasTopConcept obeu-operation:Expenditure, obeu-operation:Revenue, obeu-operation:Financing .
+  
 obeu-operation:Expenditure a skos:Concept, obeu:OperationCharacter ;
-	skos:prefLabel "Expenditure"@en;
-	skos:definition "Decrease in net worth resulting from a transaction and the net investment in nonfinancial assets"@en ;
-	skos:inScheme obeu-codelist:operationCharacter .
-	
+  skos:prefLabel "Expenditure"@en ;
+  skos:definition "Decrease in net worth resulting from a transaction and the net investment in nonfinancial assets"@en ;
+  skos:topConceptOf obeu-codelist:operationCharacter ;
+  skos:inScheme obeu-codelist:operationCharacter .
+  
 obeu-operation:Revenue a skos:Concept, obeu:OperationCharacter ;
-	skos:prefLabel "Revenue"@en;
-	skos:definition "An increase in net worth resulting from a transaction"@en ;
-	skos:inScheme obeu-codelist:operationCharacter .
-	
+  skos:prefLabel "Revenue"@en ;
+  skos:definition "An increase in net worth resulting from a transaction"@en ;
+  skos:topConceptOf obeu-codelist:operationCharacter ;
+  skos:inScheme obeu-codelist:operationCharacter .
+  
 obeu-operation:Financing a skos:Concept, obeu:OperationCharacter ;
-	skos:prefLabel "Financing"@en;
-	skos:definition "Transactions in financial assets and liabilities."@en ;
-	skos:inScheme obeu-codelist:operationCharacter .
-	
+  skos:prefLabel "Financing"@en ;
+  skos:definition "Transactions in financial assets and liabilities."@en ;
+  skos:topConceptOf obeu-codelist:operationCharacter ;
+  skos:inScheme obeu-codelist:operationCharacter .
+  
 # BudgetPhase
-obeu:BudgetPhase a rdfs:Class;
-	rdfs:label "Budget phase"@en .
+obeu:BudgetPhase a rdfs:Class ;
+  rdfs:label "Budget phase"@en ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-codelist:budgetPhase a skos:ConceptScheme ;
-	skos:prefLabel "Code list that distinguishes among phases of the budget."@en .
+  rdfs:label "Code list that distinguishes among phases of the budget."@en ;
+  skos:hasTopConcept obeu-budgetphase:Draft, obeu-budgetphase:Revised, obeu-budgetphase:Approved,
+    obeu-budgetphase:Executed .
 
 obeu-budgetphase:Draft a skos:Concept, obeu:BudgetPhase ;
-	skos:prefLabel "Draft"@en;
-	skos:inScheme obeu-codelist:budgetPhase .
-	
+  skos:prefLabel "Draft"@en ;
+  skos:topConceptOf obeu-codelist:budgetPhase ;
+  skos:inScheme obeu-codelist:budgetPhase .
+  
 obeu-budgetphase:Revised a skos:Concept, obeu:BudgetPhase ;
-	skos:prefLabel "Revised"@en;
-	skos:inScheme obeu-codelist:budgetPhase .
+  skos:prefLabel "Revised"@en ;
+  skos:topConceptOf obeu-codelist:budgetPhase ;
+  skos:inScheme obeu-codelist:budgetPhase .
 
 obeu-budgetphase:Approved a skos:Concept, obeu:BudgetPhase ;
-	skos:prefLabel "Approved"@en;
-	skos:inScheme obeu-codelist:budgetPhase .
+  skos:prefLabel "Approved"@en ;
+  skos:topConceptOf obeu-codelist:budgetPhase ;
+  skos:inScheme obeu-codelist:budgetPhase .
 
 obeu-budgetphase:Executed a skos:Concept, obeu:BudgetPhase ;
-	skos:prefLabel "Executed"@en;
-	skos:inScheme obeu-codelist:budgetPhase .
+  skos:prefLabel "Executed"@en ;
+  skos:topConceptOf obeu-codelist:budgetPhase ;
+  skos:inScheme obeu-codelist:budgetPhase .
