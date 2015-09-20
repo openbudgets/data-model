@@ -1,29 +1,27 @@
 @prefix qb:             <http://purl.org/linked-data/cube#> .
 @prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix obeu-dsd: 		<http://data.openbudgets.eu/resource/dsd/> .
-@prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/>.
-@prefix obeu-measure: 	<http://data.openbudgets.eu/ontology/dsd/measure/>.
-@prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/>.
+@prefix obeu-dsd:       <http://data.openbudgets.eu/resource/dsd/> .
+@prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/> .
+@prefix obeu-measure:   <http://data.openbudgets.eu/ontology/dsd/measure/> .
+@prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/> .
 
 obeu-dsd:Budget1 a qb:DataStructureDefinition ;
   rdfs:label "Sample budget Data Structure Definition"@en ;
-  rdfs:comment "Made for D1.2 of OpenBudgets.eu"@en ;
+  rdfs:comment "Made for the deliverable D1.2 of OpenBudgets.eu"@en ;
   qb:component [
-	rdfs:label "Budgetary unit"@en ;
-	qb:dimension obeu-dimension:budgetaryUnit
+    rdfs:label "Budgetary unit"@en ;
+    qb:dimension obeu-dimension:budgetaryUnit
   ], [
-	rdfs:label "Fiscal period"@en ;
-	qb:dimension obeu-dimension:fiscalPeriod
+    rdfs:label "Fiscal period"@en ;
+    qb:dimension obeu-dimension:fiscalPeriod
   ], [
-	rdfs:label "Programme classification"@en ;
+    rdfs:label "Programme classification"@en ;
     qb:dimension obeu-dimension:programmeClassification
   ], [
-	rdfs:label "Currency"@en ;
-	qb:attribute obeu-attribute:currency ;
-	qb:componentAttachment qb:DataSet
+    rdfs:label "Currency"@en ;
+    qb:attribute obeu-attribute:currency ;
+    qb:componentAttachment qb:DataSet
   ], [
-	rdfs:label "The budgeted amount"@en ;
-	qb:measure obeu-measure:amount
-  ].
-  
- 
+    rdfs:label "The budgeted amount"@en ;
+    qb:measure obeu-measure:amount
+  ] .
