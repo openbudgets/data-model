@@ -1,28 +1,28 @@
-@prefix dcterms:		    <http://purl.org/dc/terms/> .
-@prefix interval:		    <http://reference.data.gov.uk/def/intervals/> .
-@prefix obeu: 			    <http://data.openbudgets.eu/ontology/> .
-@prefix org:			      <http://www.w3.org/ns/org#> .
+@prefix dcterms:        <http://purl.org/dc/terms/> .
+@prefix interval:       <http://reference.data.gov.uk/def/intervals/> .
+@prefix obeu:           <http://data.openbudgets.eu/ontology/> .
+@prefix org:            <http://www.w3.org/ns/org#> .
 @prefix qb:             <http://purl.org/linked-data/cube#> .
-@prefix rdf:			      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
-@prefix sdmx-concept:	  <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmx-concept:   <http://purl.org/linked-data/sdmx/2009/concept#> .
 @prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
 @prefix sdmx-measure:   <http://purl.org/linked-data/sdmx/2009/measure#> .
-@prefix time:			      <http://www.w3.org/2006/time#> .
-@prefix xsd:			      <http://www.w3.org/2001/XMLSchema#> .
+@prefix time:           <http://www.w3.org/2006/time#> .
+@prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
 
 @prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/>.
-@prefix obeu-codelist:	<http://data.openbudgets.eu/resource/codelist/>.
+@prefix obeu-codelist:  <http://data.openbudgets.eu/resource/codelist/>.
 @prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/>.
-@prefix obeu-dsd: 		  <http://data.openbudgets.eu/resource/dsd/> .
-@prefix obeu-measure: 	<http://data.openbudgets.eu/ontology/dsd/measure/>.
+@prefix obeu-dsd:       <http://data.openbudgets.eu/resource/dsd/> .
+@prefix obeu-measure:   <http://data.openbudgets.eu/ontology/dsd/measure/>.
 
 obeu-dimension:budgetaryUnit a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
-	rdfs:label "budgetary unit"@en ;
-	rdfs:comment "An economic entity that is capable, in its own right, of owning assets, incurring liabilities, and engaging in economic activities and in transactions with other entities."@en ;
-	rdfs:range org:Organization .
-	
+  rdfs:label "budgetary unit"@en ;
+  rdfs:comment "An economic entity that is capable, in its own right, of owning assets, incurring liabilities, and engaging in economic activities and in transactions with other entities."@en ;
+  rdfs:range org:Organization .
+  
 obeu-dimension:fiscalPeriod a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "fiscal period"@en ;
   rdfs:comment "The period of time reflected in financial statements."@en ;
@@ -32,57 +32,57 @@ obeu-dimension:fiscalPeriod a rdf:Property, qb:DimensionProperty, qb:CodedProper
 
 obeu-dimension:fiscalYear a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "fiscal year"@en ;
-	rdfs:comment "The year reflected in financial statements."@en ;
+  rdfs:comment "The year reflected in financial statements."@en ;
   rdfs:subPropertyOf obeu-dimension:fiscalPeriod ;
   rdfs:range interval:Year ;
   qb:concept sdmx-concept:refPeriod .
 
 obeu-dimension:classification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
-	rdfs:subPropertyOf dcterms:subject ;
-	rdfs:label "classification"@en .
-	
+  rdfs:subPropertyOf dcterms:subject ;
+  rdfs:label "classification"@en .
+  
 obeu-dimension:functionalClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
-	rdfs:label "functional classification"@en ;
-	rdfs:comment "Classifies budget lines by sector and by their purpose. It illustrates the behaviour of government (municipalities)."@en ;
-	rdfs:subPropertyOf obeu-dimension:classification .
+  rdfs:label "functional classification"@en ;
+  rdfs:comment "Classifies budget lines by sector and by their purpose. It illustrates the behaviour of government (municipalities)."@en ;
+  rdfs:subPropertyOf obeu-dimension:classification .
 
 obeu-dimension:programmeClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
-	rdfs:label "programme classification"@en ;
-	rdfs:comment "Groups budget lines by common objective for budgeting purposes."@en ;
-	rdfs:subPropertyOf obeu-dimension:classification .
+  rdfs:label "programme classification"@en ;
+  rdfs:comment "Groups budget lines by common objective for budgeting purposes."@en ;
+  rdfs:subPropertyOf obeu-dimension:classification .
 
 obeu-dimension:economicClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
-	rdfs:label "economic classification"@en ;
-	rdfs:comment "Identifies the type of expenditure incurred or source of revenues."@en ;
-	rdfs:subPropertyOf obeu-dimension:classification .
+  rdfs:label "economic classification"@en ;
+  rdfs:comment "Identifies the type of expenditure incurred or source of revenues."@en ;
+  rdfs:subPropertyOf obeu-dimension:classification .
 
 obeu-dimension:administrativeClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
-	rdfs:label "administrative classification"@en ;
-	rdfs:comment "Identifies the entity responsible for managing the public funds concerned."@en ;
-	rdfs:subPropertyOf obeu-dimension:classification .
+  rdfs:label "administrative classification"@en ;
+  rdfs:comment "Identifies the entity responsible for managing the public funds concerned."@en ;
+  rdfs:subPropertyOf obeu-dimension:classification .
 
 obeu-dimension:operationCharacter a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
-	rdfs:label "operation character"@en ;
-	rdfs:comment "Distinguishes the operation character of a budget line (expenditure, revenue and financing)."@en ;
-	rdfs:range obeu:OperationCharacter ;
-	qb:codeList obeu-codelist:operationCharacter .
-	
+  rdfs:label "operation character"@en ;
+  rdfs:comment "Distinguishes the operation character of a budget line (expenditure, revenue and financing)."@en ;
+  rdfs:range obeu:OperationCharacter ;
+  qb:codeList obeu-codelist:operationCharacter .
+  
 obeu-dimension:budgetPhase a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
-	rdfs:label "budget phase"@en ;
-	rdfs:comment "Major event or stage in the budget cycle."@en ;
-	rdfs:range obeu:BudgetPhase ;
-	qb:codeList obeu-codelist:budgetPhase .
+  rdfs:label "budget phase"@en ;
+  rdfs:comment "Major event or stage in the budget cycle."@en ;
+  rdfs:range obeu:BudgetPhase ;
+  qb:codeList obeu-codelist:budgetPhase .
 
 obeu-measure:amount a rdf:Property, qb:MeasureProperty ;
-	rdfs:label "amount"@en ;
-	rdfs:comment "The amount budgeted."@en ;
-	rdfs:subPropertyOf sdmx-measure:obsValue ;
-	rdfs:range xsd:decimal ;
-	qb:concept sdmx-concept:obsValue .
+  rdfs:label "amount"@en ;
+  rdfs:comment "The amount budgeted."@en ;
+  rdfs:subPropertyOf sdmx-measure:obsValue ;
+  rdfs:range xsd:decimal ;
+  qb:concept sdmx-concept:obsValue .
   
 obeu-attribute:currency a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
-	rdfs:label "currency"@en ;
-	rdfs:comment "The currency of the financial amount"@en ;
-	rdfs:subPropertyOf sdmx-attribute:currency ;
-	rdfs:range obeu:Currency ;
-	qb:concept sdmx-concept:currency .
+  rdfs:label "currency"@en ;
+  rdfs:comment "The currency of the financial amount"@en ;
+  rdfs:subPropertyOf sdmx-attribute:currency ;
+  rdfs:range obeu:Currency ;
+  qb:concept sdmx-concept:currency .
