@@ -24,18 +24,18 @@ obeu-dimension:budgetaryUnit a rdf:Property, qb:DimensionProperty, qb:CodedPrope
 	rdfs:range org:Organization .
 	
 obeu-dimension:fiscalPeriod a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
-    rdfs:label "fiscal period"@en ;
-	rdfs:comment "The period of time reflected in financial statements."@en ;
-    rdfs:subPropertyOf sdmx-dimension:refPeriod ;
-    rdfs:range time:Interval ;
-    qb:concept sdmx-concept:refPeriod .
+  rdfs:label "fiscal period"@en ;
+  rdfs:comment "The period of time reflected in financial statements."@en ;
+  rdfs:subPropertyOf sdmx-dimension:refPeriod ;
+  rdfs:range time:Interval ;
+  qb:concept sdmx-concept:refPeriod .
 
 obeu-dimension:fiscalYear a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
-    rdfs:label "fiscal year"@en ;
+  rdfs:label "fiscal year"@en ;
 	rdfs:comment "The year reflected in financial statements."@en ;
-    rdfs:subPropertyOf obeu-dimension:fiscalPeriod ;
-    rdfs:range interval:Year ;
-    qb:concept sdmx-concept:refPeriod .
+  rdfs:subPropertyOf obeu-dimension:fiscalPeriod ;
+  rdfs:range interval:Year ;
+  qb:concept sdmx-concept:refPeriod .
 
 obeu-dimension:classification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
 	rdfs:subPropertyOf dcterms:subject ;
