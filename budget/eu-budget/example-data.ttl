@@ -2,6 +2,7 @@
 @prefix eu-dimension:     <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/dimension/> .
 @prefix eu-measure:       <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/measure/> .
 @prefix eu-codelist:      <http://example.openbudgets.eu/resource/eu-budget-2014/codelist/> .
+@prefix interval:         <http://reference.data.gov.uk/def/intervals/> .
 @prefix obeu-attribute:   <http://data.openbudgets.eu/ontology/dsd/attribute/> .
 @prefix obeu-dimension:   <http://data.openbudgets.eu/ontology/dsd/dimension/> .
 @prefix obeu-measure:     <http://data.openbudgets.eu/ontology/dsd/measure/> .
@@ -12,6 +13,7 @@
 @prefix rdf:              <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos:             <http://www.w3.org/2004/02/skos/core#> .
+@prefix time:             <http://www.w3.org/2006/time#> .
 @prefix xsd:              <http://www.w3.org/2001/XMLSchema#> .
 
 <http://data.openbudgets.eu/resource/dataset/eu-budget-2014> a qb:DataSet ;
@@ -24,7 +26,7 @@
   obeu-dimension:budgetPhase obeu-budgetphase:Approved ;
   eu-dimension:operationCharacter obeu-operation:Expenditure ;
   obeu-dimension:fiscalYear <http://reference.data.gov.uk/id/year/2014> ;
-  eu-dimension:budgetNomenclature <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX01010102> ;
+  eu-dimension:budgetNomenclature <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX-01-01-01-02> ;
   eu-dimension:catpol <http://data.openbudgets.eu/resource/codelist/catpol/5.2.3X> ;
   obeu-measure:amount 14398000.0 .
 
@@ -33,7 +35,7 @@
   obeu-dimension:budgetPhase obeu-budgetphase:Approved ;
   eu-dimension:operationCharacter obeu-operation:Expenditure ;
   obeu-dimension:fiscalYear <http://reference.data.gov.uk/id/year/2013> ;
-  eu-dimension:budgetNomenclature <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX01010102> ;
+  eu-dimension:budgetNomenclature <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX-01-01-01-02> ;
   eu-dimension:catpol <http://data.openbudgets.eu/resource/codelist/catpol/5.2.3X> ;
   obeu-measure:amount 14873000.0 .
 
@@ -42,6 +44,44 @@
   obeu-dimension:budgetPhase obeu-budgetphase:Executed ;
   eu-dimension:operationCharacter obeu-operation:Expenditure ;
   obeu-dimension:fiscalYear <http://reference.data.gov.uk/id/year/2012> ;
-  eu-dimension:budgetNomenclature <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX01010102> ;
+  eu-dimension:budgetNomenclature <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX-01-01-01-02> ;
   eu-dimension:catpol <http://data.openbudgets.eu/resource/codelist/catpol/5.2.3X> ;
   obeu-measure:amount 13301985.81 .
+
+# ----- Used code lists -----
+
+<http://data.openbudgets.eu/resource/codelist/catpol/5.2.3X> a skos:Concept ;
+  skos:prefLabel "Commission administrative expenditure"@en ;
+  skos:notation "5.2.3X" ;
+  skos:broader <http://data.openbudgets.eu/resource/codelist/catpol/5.2.3> ;
+  skos:inScheme eu-codelist:catpol .
+
+<http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX-01-01-01-02> a skos:Concept ;
+  skos:prefLabel "Expenses and allowances related to recruitment, transfers and termination of service"@en ;
+  skos:notation "XX 01 01 01 02" ; 
+  skos:broader <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX-01-01-01> ;
+  skos:inScheme eu-codelist:budget-nomenclature-2014 .
+
+<http://reference.data.gov.uk/id/year/2014> a interval:Year ;
+  skos:prefLabel "British Year:2014"@en ;
+  interval:ordinalYear 2014 ;
+  interval:previousInterval <http://reference.data.gov.uk/id/year/2013> ;
+  interval:nextInterval <http://reference.data.gov.uk/id/year/2015> ;
+  time:hasBeginning <http://reference.data.gov.uk/id/gregorian-instant/2014-01-01T00:00:00> ;
+  time:hasEnd <http://reference.data.gov.uk/id/gregorian-instant/2015-01-01T00:00:00> .
+
+<http://reference.data.gov.uk/id/year/2013> a interval:Year ; 
+  skos:prefLabel "British Year:2013"@en ;
+  interval:ordinalYear 2013 ;
+  interval:previousInterval <http://reference.data.gov.uk/id/year/2012> ;
+  interval:nextInterval <http://reference.data.gov.uk/id/year/2014> ;
+  time:hasBeginning <http://reference.data.gov.uk/id/gregorian-instant/2013-01-01T00:00:00> ;
+  time:hasEnd <http://reference.data.gov.uk/id/gregorian-instant/2014-01-01T00:00:00> .
+
+<http://reference.data.gov.uk/id/year/2012> a interval:Year ;
+  skos:prefLabel "British Year:2012"@en ;
+  interval:ordinalYear 2012 ;
+  interval:previousInterval <http://reference.data.gov.uk/id/year/2011> ;
+  interval:nextInterval <http://reference.data.gov.uk/id/year/2013> ;
+  time:hasBeginning <http://reference.data.gov.uk/id/gregorian-instant/2012-01-01T00:00:00> ;
+  time:hasEnd <http://reference.data.gov.uk/id/gregorian-instant/2013-01-01T00:00:00> .
