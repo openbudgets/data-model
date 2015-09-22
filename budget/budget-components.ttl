@@ -12,11 +12,11 @@
 @prefix time:           <http://www.w3.org/2006/time#> .
 @prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
 
-@prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/>.
-@prefix obeu-codelist:  <http://data.openbudgets.eu/resource/codelist/>.
-@prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/>.
+@prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/> .
+@prefix obeu-codelist:  <http://data.openbudgets.eu/resource/codelist/> .
+@prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/> .
 @prefix obeu-dsd:       <http://data.openbudgets.eu/resource/dsd/> .
-@prefix obeu-measure:   <http://data.openbudgets.eu/ontology/dsd/measure/>.
+@prefix obeu-measure:   <http://data.openbudgets.eu/ontology/dsd/measure/> .
 
 obeu-dimension:budgetaryUnit a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "budgetary unit"@en ;
