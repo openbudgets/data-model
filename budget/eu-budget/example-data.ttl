@@ -1,17 +1,22 @@
+@prefix dbp:              <http://dbpedia.org/property/> .
 @prefix eu-attribute:     <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/attribute/> .
 @prefix eu-dimension:     <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/dimension/> .
 @prefix eu-measure:       <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/measure/> .
 @prefix eu-codelist:      <http://example.openbudgets.eu/resource/eu-budget-2014/codelist/> .
 @prefix interval:         <http://reference.data.gov.uk/def/intervals/> .
+@prefix obeu:             <http://data.openbudgets.eu/ontology/> .
 @prefix obeu-attribute:   <http://data.openbudgets.eu/ontology/dsd/attribute/> .
+@prefix obeu-codelist:    <http://data.openbudgets.eu/resource/codelist/> .
 @prefix obeu-dimension:   <http://data.openbudgets.eu/ontology/dsd/dimension/> .
 @prefix obeu-measure:     <http://data.openbudgets.eu/ontology/dsd/measure/> .
 @prefix obeu-budgetphase: <http://data.openbudgets.eu/resource/codelist/budget-phase/> .
 @prefix obeu-currency:    <http://data.openbudgets.eu/resource/codelist/currency/> .
 @prefix obeu-operation:   <http://data.openbudgets.eu/resource/codelist/operation-character/> .
+@prefix owl:              <http://www.w3.org/2002/07/owl#> .
 @prefix qb:               <http://purl.org/linked-data/cube#> .
 @prefix rdf:              <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema:           <http://schema.org/> . 
 @prefix skos:             <http://www.w3.org/2004/02/skos/core#> .
 @prefix time:             <http://www.w3.org/2006/time#> .
 @prefix xsd:              <http://www.w3.org/2001/XMLSchema#> .
@@ -61,6 +66,34 @@
   skos:notation "XX 01 01 01 02" ; 
   skos:broader <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX-01-01-01> ;
   skos:inScheme eu-codelist:budget-nomenclature-2014 .
+
+obeu-currency:EUR a skos:Concept ;
+  skos:prefLabel "Euro"@en ;
+  skos:notation "EUR" ;
+  dbp:isoCode "EUR" ;
+  owl:sameAs <http://dbpedia.org/resource/EUR> ;
+  skos:topConceptOf obeu-codelist:currency ;
+  skos:inScheme obeu-codelist:currency .
+
+obeu-operation:Expenditure a skos:Concept, obeu:OperationCharacter ;
+  skos:prefLabel "Expenditure"@en ;
+  skos:definition "Decrease in net worth resulting from a transaction and the net investment in nonfinancial assets"@en ;
+  skos:topConceptOf obeu-codelist:operationCharacter ;
+  skos:inScheme obeu-codelist:operationCharacter .
+
+obeu-budgetphase:Executed a skos:Concept, obeu:BudgetPhase ;
+  skos:prefLabel "Executed"@en ;
+  skos:topConceptOf obeu-codelist:budgetPhase ;
+  skos:inScheme obeu-codelist:budgetPhase .
+
+obeu-budgetphase:Approved a skos:Concept, obeu:BudgetPhase ;
+  skos:prefLabel "Approved"@en ;
+  skos:topConceptOf obeu-codelist:budgetPhase ;
+  skos:inScheme obeu-codelist:budgetPhase .
+
+<http://dbpedia.org/resource/European_Union> a schema:Organization ;
+  rdfs:label "European Union"@en ;
+  rdfs:comment "The European Union (EU) is a politico-economic union of 28 member states that are located primarily in Europe. The EU operates through a system of supranational institutions and intergovernmental negotiated decisions by the member states. The institutions are: the European Commission, the Council of the European Union, the European Council, the Court of Justice of the European Union, the European Central Bank, the Court of Auditors, and the European Parliament."@en .
 
 <http://reference.data.gov.uk/id/year/2014> a interval:Year ;
   skos:prefLabel "British Year:2014"@en ;
