@@ -82,7 +82,12 @@ obeu-measure:amount a rdf:Property, qb:MeasureProperty ;
   
 obeu-attribute:currency a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
   rdfs:label "currency"@en ;
-  rdfs:comment "The currency of the financial amount"@en ;
+  rdfs:comment "The currency of the financial amount."@en ;
   rdfs:subPropertyOf sdmx-attribute:currency ;
   rdfs:range obeu:Currency ;
   qb:concept sdmx-concept:currency .
+
+obeu-attribute:taxIncluded a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
+  rdfs:label "tax included"@en ;
+  rdfs:comment "Indicates whether the reported amount includes taxes."@en ;
+  rdfs:range xsd:boolean .
