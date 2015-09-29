@@ -13,7 +13,7 @@ obeu:OperationCharacter a rdfs:Class ;
   
 obeu-codelist:operationCharacter a skos:ConceptScheme ;
   rdfs:label "Code list that distinguishes among characters of budget operation."@en ;
-  skos:hasTopConcept obeu-operation:Expenditure, obeu-operation:Revenue, obeu-operation:Financing .
+  skos:hasTopConcept obeu-operation:Expenditure, obeu-operation:Revenue . 
   
 obeu-operation:Expenditure a skos:Concept, obeu:OperationCharacter ;
   skos:prefLabel "Expenditure"@en ;
@@ -24,12 +24,6 @@ obeu-operation:Expenditure a skos:Concept, obeu:OperationCharacter ;
 obeu-operation:Revenue a skos:Concept, obeu:OperationCharacter ;
   skos:prefLabel "Revenue"@en ;
   skos:definition "An increase in net worth resulting from a transaction"@en ;
-  skos:topConceptOf obeu-codelist:operationCharacter ;
-  skos:inScheme obeu-codelist:operationCharacter .
-  
-obeu-operation:Financing a skos:Concept, obeu:OperationCharacter ;
-  skos:prefLabel "Financing"@en ;
-  skos:definition "Transactions in financial assets and liabilities."@en ;
   skos:topConceptOf obeu-codelist:operationCharacter ;
   skos:inScheme obeu-codelist:operationCharacter .
   
