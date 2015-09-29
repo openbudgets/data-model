@@ -87,7 +87,7 @@ obeu-attribute:currency a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
   rdfs:range obeu:Currency ;
   qb:concept sdmx-concept:currency .
 
-obeu-attribute:taxIncluded a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
-  rdfs:label "tax included"@en ;
+obeu-attribute:taxesIncluded a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
+  rdfs:label "taxes included"@en ;
   rdfs:comment "Indicates whether the reported amount includes taxes."@en ;
   rdfs:range xsd:boolean .
