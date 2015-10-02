@@ -1,22 +1,45 @@
+@prefix foaf:           <http://xmlns.com/foaf/0.1/> .
 @prefix org:            <http://www.w3.org/ns/org#> .
+@prefix owl:            <http://www.w3.org/2002/07/owl#> .
 @prefix qb:             <http://purl.org/linked-data/cube#> .
 @prefix rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema:         <http://schema.org/> .
 @prefix sdmx-concept:   <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
 
 @prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/> .
 @prefix obeu-codelist:  <http://data.openbudgets.eu/resource/codelist/> .
 @prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/> .
 @prefix obeu-measure:   <http://data.openbudgets.eu/ontology/dsd/measure/> .
 
-obeu-dimension:payer a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+obeu-dimension:payer a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
   rdfs:label "payer"@en ;
+  rdfs:comment "The entity which made the payment."@en ;
   rdfs:range org:Organization .
 
-obeu-dimension:payee a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+obeu-dimension:payee a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
   rdfs:label "payee"@en ;
+  rdfs:comment "The entity to which the payment was made."@en ;
   rdfs:range org:Organization .
 
 obeu-dimension:date a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "date"@en ;
+  rdfs:comment "Date when expense was paid or revenue received."@en ;
+  rdfs:range xsd:dateTime ;
   qb:concept sdmx-concept:refPeriod .
+
+obeu-dimension:budgetLine a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
+  rdfs:label "budget line"@en ;
+  rdfs:comment "Budget line from which the payment draws its funds"@en ;
+  rdfs:range qb:Observation .
+
+obeu-dimension:project a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
+  rdfs:label "project"@en ;
+  rdfs:comment "Project associated with the payment"@en ;
+  rdfs:range foaf:Project .
+
+obeu-attribute:location a rdf:Property, qb:AttributeProperty, owl:ObjectProperty ;
+  rdfs:label "location"@en ;
+  rdfs:comment "Physical location affected by the payment"@en ;
+  rdfs:range schema:Place .
