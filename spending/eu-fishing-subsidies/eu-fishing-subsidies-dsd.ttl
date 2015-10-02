@@ -1,0 +1,24 @@
+# ----- OpenBudgets.eu namespaces -----
+
+@prefix obeu-attribute:   <http://data.openbudgets.eu/ontology/dsd/attribute/> .
+@prefix obeu-dimension:   <http://data.openbudgets.eu/ontology/dsd/dimension/> .
+@prefix obeu-measure:     <http://data.openbudgets.eu/ontology/dsd/measure/> .
+
+# ----- Generic namespaces ------
+
+@prefix qb:               <http://purl.org/linked-data/cube#> .
+@prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:              <http://www.w3.org/2001/XMLSchema#> .
+
+# ----- DSD -----
+
+<http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013> a qb:DataStructureDefinition ;
+  rdfs:label "Data structure definition for the EU fishing subsidies fund 2007-2013 for the Czech Republic"@en ;
+  qb:component [ qb:dimension obeu-dimension:programmeClassification ],
+               [ qb:dimension obeu-dimension:payer ],
+               [ qb:dimension obeu-dimension:payee ],
+               [ qb:dimension obeu-dimension:project ],
+               [ qb:attribute obeu-attribute:currency ;
+                 qb:componentRequired "true"^^xsd:boolean ;
+                 qb:componentAttachment qb:DataSet ] ,
+               [ qb:measure obeu-measure:amount ] .

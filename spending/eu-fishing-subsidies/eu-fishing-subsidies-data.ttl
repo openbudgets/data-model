@@ -1,0 +1,75 @@
+@prefix adms:             <http://www.w3.org/ns/adms#> .
+@prefix dcterms:          <http://purl.org/dc/terms/> .
+@prefix foaf:             <http://xmlns.com/foaf/0.1/> .
+@prefix obeu-attribute:   <http://data.openbudgets.eu/ontology/dsd/attribute/> .
+@prefix obeu-dimension:   <http://data.openbudgets.eu/ontology/dsd/dimension/> .
+@prefix obeu-measure:     <http://data.openbudgets.eu/ontology/dsd/measure/> .
+@prefix org:              <http://www.w3.org/ns/org#> .
+@prefix pay:              <http://reference.data.gov.uk/def/payment#> .
+@prefix qb:               <http://purl.org/linked-data/cube#> .
+@prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rov:              <http://www.w3.org/ns/regorg#> .
+@prefix schema:           <http://schema.org/> .
+@prefix skos:             <http://www.w3.org/2004/02/skos/core#> .
+
+@prefix euff:             <http://data.openbudgets.eu/resource/codelist/eu-fishing-subsidies-2007-2013/> .
+
+<http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013> a qb:DataSet ;
+  qb:structure <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013> ;
+  obeu-attribute:currency "CZK" ;
+  dcterms:source <http://eagri.cz/public/web/file/282985/Celkovy_seznam_schvalenych_projektu_k_31_12_2013.xls> .
+
+<http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/1> a qb:Observation ;
+  obeu-dimension:programmeClassification euff:2.1a ;
+  obeu-dimension:payer <http://dbpedia.org/resource/Czech_Republic> ;
+  obeu-dimension:payee <http://linked.opendata.cz/resource/organization/CZ25170538> ;
+  obeu-dimension:project <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/project/1> ;
+  obeu-measure:amount 345000.0 ;
+  qb:dataSet <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013> . 
+
+<http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/2> a qb:Observation ;
+  obeu-dimension:programmeClassification euff:2.1a ;
+  obeu-dimension:payer <http://dbpedia.org/resource/European_Union> ;
+  obeu-dimension:payee <http://linked.opendata.cz/resource/organization/CZ25170538> ;
+  obeu-dimension:project <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/project/1> ;
+  obeu-measure:amount 1035000.0 ;
+  qb:dataSet <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013> . 
+
+# ----- Projects -----
+
+<http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/project/1> a foaf:Project ;
+  rdfs:label "Modernizace rybářského provozu"@cs ;
+  adms:identifier <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/identifier/1> .
+
+<http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/identifier/1> a adms:Identifier ;
+  skos:notation "CZ.1.25/2.1.00/08.00014" .
+
+# ----- Code lists -----
+
+<http://data.openbudgets.eu/resource/codelist/eu-fishing-subsidies-CS-2007-2013> a skos:ConceptScheme ;
+  rdfs:label "Operační program rybářství 2007-2013"@cs ;
+  skos:hasTopConcept euff:2 .
+
+euff:2 a skos:Concept ;
+  skos:notation "2" ;
+  skos:prefLabel "Akvakultura, zpracování produktů rybolovu a akvakultury a jejich uvádění na trh"@cs ;
+  skos:narrower euff:2.1 ;
+  skos:topConceptOf <http://data.openbudgets.eu/resource/codelist/eu-fishing-subsidies-2007-2013> .
+
+euff:2.1 a skos:Concept ;
+  skos:notation "2.1" ;
+  skos:prefLabel "Opatření pro produktivní investice do akvakultury"@cs ;
+  skos:broader euff:2 ;
+  skos:narrower euff:2.1a ;
+  skos:inScheme <http://data.openbudgets.eu/resource/codelist/eu-fishing-subsidies-2007-2013> .
+
+euff:2.1a a skos:Concept ;
+  skos:notation "2.1a" ;
+  skos:prefLabel "Zachování tradiční akvakultury a činností navazujících, důležitých pro udržení a rozvoj hospodářské, sociální struktury a životního prostředí"@cs ;
+  skos:broader euff:2.1 ;
+  skos:inScheme <http://data.openbudgets.eu/resource/codelist/eu-fishing-subsidies-2007-2013> .
+
+# ----- Linked entities -----
+
+<http://linked.opendata.cz/resource/organization/CZ25170538> a rov:RegisteredOrganization ;
+  schema:legalName "Rybářství Lnáře, s.r.o." . 
