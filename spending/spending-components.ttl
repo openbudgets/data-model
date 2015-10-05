@@ -26,7 +26,7 @@ obeu-dimension:payee a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl
 obeu-dimension:date a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "date"@en ;
   rdfs:comment "Date when expense was paid or revenue received."@en ;
-  rdfs:range xsd:dateTime ;
+  rdfs:range xsd:date ;
   qb:concept sdmx-concept:refPeriod .
 
 obeu-dimension:budgetLine a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
