@@ -39,7 +39,31 @@ obeu-dimension:project a rdf:Property, qb:DimensionProperty, qb:CodedProperty, o
   rdfs:comment "Project associated with the payment"@en ;
   rdfs:range foaf:Project .
 
+obeu-dimension:currency a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+  rdfs:label "currency"@en ;
+  rdfs:comment "The currency of the financial amount"@en ;
+  rdfs:range obeu:Currency ;
+  qb:concept sdmx-concept:currency .
+
+obeu-dimension:taxesIncluded a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+  rdfs:label "taxes included"@en ;
+  rdfs:comment "Indicates whether the reported amount includes taxes."@en ;
+  rdfs:range xsd:boolean .
+  
 obeu-attribute:location a rdf:Property, qb:AttributeProperty, owl:ObjectProperty ;
   rdfs:label "location"@en ;
   rdfs:comment "Physical location affected by the payment"@en ;
   rdfs:range schema:Place .
+
+obeu-attribute:currency a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
+  rdfs:label "currency"@en ;
+  rdfs:comment "The currency of the financial amount."@en ;
+  rdfs:subPropertyOf sdmx-attribute:currency ;
+  rdfs:range obeu:Currency ;
+  qb:concept sdmx-concept:currency .
+
+obeu-attribute:taxesIncluded a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
+  rdfs:label "taxes included"@en ;
+  rdfs:comment "Indicates whether the reported amount includes taxes."@en ;
+  rdfs:range xsd:boolean .
+  
