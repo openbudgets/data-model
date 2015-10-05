@@ -61,7 +61,7 @@ obeu-dimension:functionalClassification a rdf:Property, qb:DimensionProperty, qb
 
 obeu-dimension:programmeClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "programme classification"@en ;
-  rdfs:comment "Groups budget lines by common objective for budgeting purposes."@en ;
+  rdfs:comment "Groups budget lines by common objective."@en ;
   rdfs:subPropertyOf obeu-dimension:classification .
 
 obeu-dimension:economicClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
