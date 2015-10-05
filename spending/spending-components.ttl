@@ -50,6 +50,30 @@ obeu-dimension:taxesIncluded a rdf:Property, qb:DimensionProperty, qb:CodedPrope
   rdfs:comment "Indicates whether the reported amount includes taxes."@en ;
   rdfs:range xsd:boolean .
   
+obeu-dimension:classification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+  rdfs:subPropertyOf dcterms:subject ;
+  rdfs:label "classification"@en .
+  
+obeu-dimension:functionalClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+  rdfs:label "functional classification"@en ;
+  rdfs:comment "Classifies budget lines by sector and by their purpose. It illustrates the behaviour of government (municipalities)."@en ;
+  rdfs:subPropertyOf obeu-dimension:classification .
+
+obeu-dimension:programmeClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+  rdfs:label "programme classification"@en ;
+  rdfs:comment "Groups budget lines by common objective for budgeting purposes."@en ;
+  rdfs:subPropertyOf obeu-dimension:classification .
+
+obeu-dimension:economicClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+  rdfs:label "economic classification"@en ;
+  rdfs:comment "Identifies the type of expenditure incurred or source of revenues."@en ;
+  rdfs:subPropertyOf obeu-dimension:classification .
+
+obeu-dimension:administrativeClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+  rdfs:label "administrative classification"@en ;
+  rdfs:comment "Identifies the entity responsible for managing the public funds concerned."@en ;
+  rdfs:subPropertyOf obeu-dimension:classification .
+  
 obeu-attribute:location a rdf:Property, qb:AttributeProperty, owl:ObjectProperty ;
   rdfs:label "location"@en ;
   rdfs:comment "Physical location affected by the payment"@en ;
