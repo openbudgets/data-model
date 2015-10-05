@@ -1,3 +1,4 @@
+@prefix dcterms:        <http://purl.org/dc/terms/> .
 @prefix foaf:           <http://xmlns.com/foaf/0.1/> .
 @prefix org:            <http://www.w3.org/ns/org#> .
 @prefix owl:            <http://www.w3.org/2002/07/owl#> .
@@ -5,9 +6,12 @@
 @prefix rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema:         <http://schema.org/> .
+@prefix sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
 @prefix sdmx-concept:   <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmx-measure:   <http://purl.org/linked-data/sdmx/2009/measure#> .
 @prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
 
+@prefix obeu:           <http://data.openbudgets.eu/ontology/> .
 @prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/> .
 @prefix obeu-codelist:  <http://data.openbudgets.eu/resource/codelist/> .
 @prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/> .
@@ -73,7 +77,12 @@ obeu-dimension:administrativeClassification a rdf:Property, qb:DimensionProperty
   rdfs:label "administrative classification"@en ;
   rdfs:comment "Identifies the entity responsible for managing the public funds concerned."@en ;
   rdfs:subPropertyOf obeu-dimension:classification .
-  
+ 
+obeu-dimension:accountingRecord a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+  rdfs:label "accounting record"@en ;
+  rdfs:comment "Link to an accounting record (e.g., invoice, credit note) associated with an expenditure."@en ;
+  rdfs:range foaf:Document .
+
 obeu-attribute:location a rdf:Property, qb:AttributeProperty, owl:ObjectProperty ;
   rdfs:label "location"@en ;
   rdfs:comment "Physical location affected by the payment"@en ;
