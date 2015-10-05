@@ -36,7 +36,7 @@
 
 # ----- Component properties -----
 
-eu-dimension:eu-fishing-subsidies-2007-2013 a rdf:Property, qb:DimensionProperty, qb:CodedDimension ;
+eu-dimension:eu-fishing-subsidies-2007-2013 a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "EU fishing subsidies 2007-2013 programme classification"@en ;
   rdfs:subPropertyOf obeu-dimension:programmeClassification ;
   qb:codeList eu-codelist:eu-fishing-subsidies-2007-2013 ;
