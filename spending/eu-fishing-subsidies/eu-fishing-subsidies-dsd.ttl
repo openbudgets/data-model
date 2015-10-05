@@ -1,3 +1,9 @@
+# ----- DSD-specific namespaces -----
+
+@prefix eu-codelist:      <http://example.openbudgets.eu/resource/eu-fishing-subsidies-2007-2013/codelist/> .
+@prefix eu-dimension:     <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-2007-2013/dimension/> .
+@prefix eu-measure:       <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013/measure/> .
+
 # ----- OpenBudgets.eu namespaces -----
 
 @prefix obeu-attribute:   <http://data.openbudgets.eu/ontology/dsd/attribute/> .
@@ -7,6 +13,7 @@
 # ----- Generic namespaces ------
 
 @prefix qb:               <http://purl.org/linked-data/cube#> .
+@prefix rdf:              <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:              <http://www.w3.org/2001/XMLSchema#> .
 
@@ -14,11 +21,38 @@
 
 <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013> a qb:DataStructureDefinition ;
   rdfs:label "Data structure definition for the EU fishing subsidies fund 2007-2013 for the Czech Republic"@en ;
-  qb:component [ qb:dimension obeu-dimension:programmeClassification ],
-               [ qb:dimension obeu-dimension:payer ],
+  qb:component [ qb:dimension eu-dimension:eu-fishing-subsidies-2007-2013 ],
+               [ qb:dimension obeu-dimension:payer ;
+                 qb:componentAttachment qb:DataSet ],
                [ qb:dimension obeu-dimension:payee ],
                [ qb:dimension obeu-dimension:project ],
+               [ qb:dimension qb:measureType ],
+               [ qb:dimension obeu-dimension:currency ],
                [ qb:attribute obeu-attribute:currency ;
-                 qb:componentRequired "true"^^xsd:boolean ;
-                 qb:componentAttachment qb:DataSet ] ,
-               [ qb:measure obeu-measure:amount ] .
+                 qb:componentRequired "true"^^xsd:boolean ] ,
+               [ qb:measure eu-measure:amountCZ ],
+               [ qb:measure eu-measure:amountEU ],
+               [ qb:measure eu-measure:amountTotal ] .
+
+# ----- Component properties -----
+
+eu-dimension:eu-fishing-subsidies-2007-2013 a rdf:Property, qb:DimensionProperty, qb:CodedDimension ;
+  rdfs:label "EU fishing subsidies 2007-2013 programme classification"@en ;
+  rdfs:subPropertyOf obeu-dimension:programmeClassification ;
+  qb:codeList eu-codelist:eu-fishing-subsidies-2007-2013 ;
+  rdfs:isDefinedBy <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013> .
+
+eu-measure:amountCZ a rdf:Property, qb:MeasureProperty;
+  rdfs:label "Amount subsidized by the Czech Republic"@en ;
+  rdfs:subPropertyOf obeu-measure:amount ;
+  rdfs:isDefinedBy <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013> .
+
+eu-measure:amountEU a rdf:Property, qb:MeasureProperty;
+  rdfs:label "Amount subsidized by the European Union"@en ;
+  rdfs:subPropertyOf obeu-measure:amount ;
+  rdfs:isDefinedBy <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013> .
+
+eu-measure:amountTotal a rdf:Property, qb:MeasureProperty ;
+  rdfs:label "Total amount of subsidy"@en ;
+  rdfs:subPropertyOf obeu-measure:amount ;
+  rdfs:isDefinedBy <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013> .
