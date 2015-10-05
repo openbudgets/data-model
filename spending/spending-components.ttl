@@ -40,10 +40,10 @@ obeu-dimension:project a rdf:Property, qb:DimensionProperty, qb:CodedProperty, o
   rdfs:range foaf:Project .
 
 obeu-dimension:currency a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
-    rdfs:label "currency"@en ;
-    rdfs:comment "The currency of the financial amount"@en ;
-    rdfs:range obeu:Currency ;
-    qb:concept sdmx-concept:currency .
+  rdfs:label "currency"@en ;
+  rdfs:comment "The currency of the financial amount"@en ;
+  rdfs:range obeu:Currency ;
+  qb:concept sdmx-concept:currency .
 
 obeu-dimension:taxesIncluded a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "taxes included"@en ;
