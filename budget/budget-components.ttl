@@ -75,7 +75,7 @@ obeu-dimension:budgetPhase a rdf:Property, qb:DimensionProperty, qb:CodedPropert
 
 obeu-measure:amount a rdf:Property, qb:MeasureProperty ;
   rdfs:label "amount"@en ;
-  rdfs:comment "The amount budgeted."@en ;
+  rdfs:comment "Monetary amount."@en ;
   rdfs:subPropertyOf sdmx-measure:obsValue ;
   rdfs:range xsd:decimal ;
   qb:concept sdmx-concept:obsValue .

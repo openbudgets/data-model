@@ -91,3 +91,9 @@ obeu-attribute:taxesIncluded a rdf:Property, qb:AttributeProperty, qb:CodedPrope
   rdfs:comment "Indicates whether the reported amount includes taxes."@en ;
   rdfs:range xsd:boolean .
   
+obeu-measure:amount a rdf:Property, qb:MeasureProperty ;
+  rdfs:label "amount"@en ;
+  rdfs:comment "Monetary amount."@en ;
+  rdfs:subPropertyOf sdmx-measure:obsValue ;
+  rdfs:range xsd:decimal ;
+  qb:concept sdmx-concept:obsValue .
