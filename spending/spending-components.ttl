@@ -45,6 +45,11 @@ obeu-dimension:currency a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
     rdfs:range obeu:Currency ;
     qb:concept sdmx-concept:currency .
 
+obeu-dimension:taxesIncluded a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+  rdfs:label "taxes included"@en ;
+  rdfs:comment "Indicates whether the reported amount includes taxes."@en ;
+  rdfs:range xsd:boolean .
+  
 obeu-attribute:location a rdf:Property, qb:AttributeProperty, owl:ObjectProperty ;
   rdfs:label "location"@en ;
   rdfs:comment "Physical location affected by the payment"@en ;
