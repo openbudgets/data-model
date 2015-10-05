@@ -13,14 +13,14 @@
 @prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/> .
 @prefix obeu-measure:   <http://data.openbudgets.eu/ontology/dsd/measure/> .
 
-obeu-dimension:payer a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
-  rdfs:label "payer"@en ;
-  rdfs:comment "The entity which made the payment."@en ;
+obeu-dimension:organization a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
+  rdfs:label "organization"@en ;
+  rdfs:comment "The entity which made the payment or collected revenue."@en ;
   rdfs:range org:Organization .
 
-obeu-dimension:payee a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
-  rdfs:label "payee"@en ;
-  rdfs:comment "The entity to which the payment was made."@en ;
+obeu-dimension:supplier a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
+  rdfs:label "supplier"@en ;
+  rdfs:comment "The entity to which the payment was made or from which the revenue was collected."@en ;
   rdfs:range org:Organization .
 
 obeu-dimension:date a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
