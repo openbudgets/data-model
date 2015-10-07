@@ -22,7 +22,9 @@
 
 <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013> a qb:DataStructureDefinition ;
   rdfs:label "Data structure definition for the EU fishing subsidies fund 2007-2013 for the Czech Republic"@en ;
-  qb:component [ qb:dimension eu-dimension:eu-fishing-subsidies-2007-2013 ],
+  qb:component [ qb:dimension obeu-dimension:operationCharacter ;
+                 qb:componentAttachment qb:DataSet ],
+               [ qb:dimension eu-dimension:eu-fishing-subsidies-2007-2013 ],
                [ qb:dimension obeu-dimension:organization ;
                  qb:componentAttachment qb:DataSet ],
                [ qb:dimension obeu-dimension:partner ],

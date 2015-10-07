@@ -11,6 +11,7 @@
 @prefix obeu-currency:    <http://data.openbudgets.eu/resource/codelist/currency/> .
 @prefix obeu-dimension:   <http://data.openbudgets.eu/ontology/dsd/dimension/> .
 @prefix obeu-measure:     <http://data.openbudgets.eu/ontology/dsd/measure/> .
+@prefix obeu-operation:   <http://data.openbudgets.eu/resource/codelist/operation-character/> .
 @prefix org:              <http://www.w3.org/ns/org#> .
 @prefix owl:              <http://www.w3.org/2002/07/owl#> .
 @prefix pay:              <http://reference.data.gov.uk/def/payment#> .
@@ -22,6 +23,7 @@
 
 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013> a qb:DataSet ;
   qb:structure <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013> ;
+  obeu-dimension:operationCharacter obeu-operation:Expenditure ;
   obeu-dimension:organization <http://dbpedia.org/resource/Ministry_of_Agriculture_(Czech_Republic)> ;
   dcterms:source <http://eagri.cz/public/web/file/282985/Celkovy_seznam_schvalenych_projektu_k_31_12_2013.xls> ;
   qb:slice <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/slice/1> .
