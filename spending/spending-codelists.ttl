@@ -26,33 +26,3 @@ obeu-operation:Revenue a skos:Concept, obeu:OperationCharacter ;
   skos:definition "An increase in net worth resulting from a transaction"@en ;
   skos:topConceptOf obeu-codelist:operationCharacter ;
   skos:inScheme obeu-codelist:operationCharacter .
-  
-# BudgetPhase
-obeu:BudgetPhase a rdfs:Class ;
-  rdfs:label "Budget phase"@en ;
-  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
-
-obeu-codelist:budgetPhase a skos:ConceptScheme ;
-  rdfs:label "Code list that distinguishes among phases of the budget."@en ;
-  skos:hasTopConcept obeu-budgetphase:Draft, obeu-budgetphase:Revised, obeu-budgetphase:Approved,
-    obeu-budgetphase:Executed .
-
-obeu-budgetphase:Draft a skos:Concept, obeu:BudgetPhase ;
-  skos:prefLabel "Draft"@en ;
-  skos:topConceptOf obeu-codelist:budgetPhase ;
-  skos:inScheme obeu-codelist:budgetPhase .
-  
-obeu-budgetphase:Revised a skos:Concept, obeu:BudgetPhase ;
-  skos:prefLabel "Revised"@en ;
-  skos:topConceptOf obeu-codelist:budgetPhase ;
-  skos:inScheme obeu-codelist:budgetPhase .
-
-obeu-budgetphase:Approved a skos:Concept, obeu:BudgetPhase ;
-  skos:prefLabel "Approved"@en ;
-  skos:topConceptOf obeu-codelist:budgetPhase ;
-  skos:inScheme obeu-codelist:budgetPhase .
-
-obeu-budgetphase:Executed a skos:Concept, obeu:BudgetPhase ;
-  skos:prefLabel "Executed"@en ;
-  skos:topConceptOf obeu-codelist:budgetPhase ;
-  skos:inScheme obeu-codelist:budgetPhase .

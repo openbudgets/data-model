@@ -84,6 +84,12 @@ obeu-dimension:accountingRecord a rdf:Property, qb:DimensionProperty, qb:CodedPr
   rdfs:comment "Link to an accounting record (e.g., invoice, credit note) associated with an expenditure."@en ;
   rdfs:range foaf:Document .
 
+obeu-dimension:operationCharacter a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+  rdfs:label "operation character"@en ;
+  rdfs:comment "Distinguishes among expenditure and revenue."@en ;
+  rdfs:range obeu:OperationCharacter ;
+  qb:codeList obeu-codelist:operationCharacter .
+
 obeu-attribute:location a rdf:Property, qb:AttributeProperty, owl:ObjectProperty ;
   rdfs:label "location"@en ;
   rdfs:comment "Physical location affected by the payment"@en ;
