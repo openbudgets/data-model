@@ -74,7 +74,7 @@ eu-attribute:reserve a rdf:Property, qb:AttributeProperty ;
 
 eu-codelist:operation-character a skos:ConceptScheme ;
   rdfs:label "An extended code list of operation characters for the EU budget"@en ;
-  skos:hasTopConcept obeu-operation:Expenditure, obeu-operation:Revenue, obeu-operation:Financing .
+  skos:hasTopConcept obeu-operation:Expenditure, obeu-operation:Revenue .
 
 eu-operation:Commitment a skos:Concept, obeu:OperationCharacter ;
   skos:prefLabel "Commitment"@en ;
