@@ -10,6 +10,7 @@
 @prefix sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
 @prefix sdmx-concept:   <http://purl.org/linked-data/sdmx/2009/concept#> .
 @prefix sdmx-measure:   <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix time:           <http://www.w3.org/2006/time#> .
 @prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
 
 @prefix obeu:           <http://data.openbudgets.eu/ontology/> .
@@ -31,7 +32,8 @@ obeu-dimension:partner a rdf:Property, qb:DimensionProperty, qb:CodedProperty, o
 obeu-dimension:date a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "date"@en ;
   rdfs:comment "Date when expense was paid or revenue received."@en ;
-  rdfs:range xsd:date ;
+  rdfs:range time:Interval ;
+  rdfs:subPropertyOf obeu-dimension:fiscalPeriod ;
   qb:concept sdmx-concept:refPeriod .
 
 obeu-dimension:budgetLine a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
