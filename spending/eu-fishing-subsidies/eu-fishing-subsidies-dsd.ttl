@@ -2,7 +2,8 @@
 
 @prefix eu-codelist:      <http://example.openbudgets.eu/resource/eu-fishing-subsidies-2007-2013/codelist/> .
 @prefix eu-dimension:     <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-2007-2013/dimension/> .
-@prefix eu-measure:       <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013/measure/> .
+@prefix eu-measure:       <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-2007-2013/measure/> .
+@prefix eu-slice:         <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-2007-2013/slice/> .
 
 # ----- OpenBudgets.eu namespaces -----
 
@@ -32,7 +33,8 @@
                  qb:componentRequired "true"^^xsd:boolean ] ,
                [ qb:measure eu-measure:amountCZ ],
                [ qb:measure eu-measure:amountEU ],
-               [ qb:measure eu-measure:amountTotal ] .
+               [ qb:measure eu-measure:amountTotal ] ;
+  qb:sliceKey eu-slice:by-currency-and-measure-type .
 
 # ----- Component properties -----
 
@@ -56,3 +58,10 @@ eu-measure:amountTotal a rdf:Property, qb:MeasureProperty ;
   rdfs:label "Total amount of subsidy"@en ;
   rdfs:subPropertyOf obeu-measure:amount ;
   rdfs:isDefinedBy <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013> .
+
+# ----- Slice keys -----
+
+eu-slice:by-currency-and-measure-type a qb:SliceKey ;
+  rdfs:label "Slice by currency and measure type"@en ;
+  rdfs:comment "Slices grouping expenditure lines by payee, project, and classification in the European Fisheries Fund 2007-2013"@en ;
+  qb:componentProperty obeu-dimension:payee, obeu-dimension:project, eu-dimension:eu-fishing-subsidies-2007-2013 . 

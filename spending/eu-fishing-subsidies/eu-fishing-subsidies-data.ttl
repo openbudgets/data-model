@@ -3,6 +3,7 @@
 @prefix dcterms:          <http://purl.org/dc/terms/> .
 @prefix eu-codelist:      <http://example.openbudgets.eu/resource/eu-fishing-subsidies-2007-2013/codelist/> .
 @prefix eu-measure:       <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-2007-2013/measure/> .
+@prefix eu-slice:         <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-2007-2013/slice/> .
 @prefix euff:             <http://data.openbudgets.eu/resource/codelist/eu-fishing-subsidies-2007-2013/> .
 @prefix foaf:             <http://xmlns.com/foaf/0.1/> .
 @prefix obeu-attribute:   <http://data.openbudgets.eu/ontology/dsd/attribute/> .
@@ -22,12 +23,22 @@
 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013> a qb:DataSet ;
   qb:structure <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013> ;
   obeu-dimension:payer <http://dbpedia.org/resource/Ministry_of_Agriculture_(Czech_Republic)> ;
-  dcterms:source <http://eagri.cz/public/web/file/282985/Celkovy_seznam_schvalenych_projektu_k_31_12_2013.xls> .
+  dcterms:source <http://eagri.cz/public/web/file/282985/Celkovy_seznam_schvalenych_projektu_k_31_12_2013.xls> ;
+  qb:slice <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/slice/1> .
 
-<http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/1> a qb:Observation ;
+<http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/slice/1> a qb:Slice ;
+  qb:sliceStructure eu-slice:by-currency-and-measure-type ;
   obeu-dimension:programmeClassification euff:2.1a ;
   obeu-dimension:payee <http://linked.opendata.cz/resource/organization/CZ25170538> ;
   obeu-dimension:project <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/project/1> ;
+  qb:observation <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/1>,
+                 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/2>,
+                 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/3>,
+                 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/4>,
+                 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/5>,
+                 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/6> .
+
+<http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/1> a qb:Observation ;
   obeu-dimension:currency obeu-currency:CZK ;
   obeu-attribute:currency obeu-currency:CZK ;
   qb:measureType eu-measure:amountCZ ;
@@ -35,9 +46,6 @@
   qb:dataSet <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013> . 
 
 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/2> a qb:Observation ;
-  obeu-dimension:programmeClassification euff:2.1a ;
-  obeu-dimension:payee <http://linked.opendata.cz/resource/organization/CZ25170538> ;
-  obeu-dimension:project <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/project/1> ;
   obeu-dimension:currency obeu-currency:CZK ;
   obeu-attribute:currency obeu-currency:CZK ;
   qb:measureType eu-measure:amountEU ;
@@ -45,9 +53,6 @@
   qb:dataSet <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013> . 
 
 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/3> a qb:Observation ;
-  obeu-dimension:programmeClassification euff:2.1a ;
-  obeu-dimension:payee <http://linked.opendata.cz/resource/organization/CZ25170538> ;
-  obeu-dimension:project <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/project/1> ;
   obeu-dimension:currency obeu-currency:CZK ;
   obeu-attribute:currency obeu-currency:CZK ;
   qb:measureType eu-measure:amountTotal ;
@@ -55,9 +60,6 @@
   qb:dataSet <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013> . 
 
 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/4> a qb:Observation ;
-  obeu-dimension:programmeClassification euff:2.1a ;
-  obeu-dimension:payee <http://linked.opendata.cz/resource/organization/CZ25170538> ;
-  obeu-dimension:project <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/project/1> ;
   obeu-dimension:currency obeu-currency:EUR ;
   obeu-attribute:currency obeu-currency:EUR ;
   qb:measureType eu-measure:amountCZ ;
@@ -65,9 +67,6 @@
   qb:dataSet <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013> . 
 
 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/5> a qb:Observation ;
-  obeu-dimension:programmeClassification euff:2.1a ;
-  obeu-dimension:payee <http://linked.opendata.cz/resource/organization/CZ25170538> ;
-  obeu-dimension:project <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/project/1> ;
   obeu-dimension:currency obeu-currency:EUR ;
   obeu-attribute:currency obeu-currency:EUR ;
   qb:measureType eu-measure:amountEU ;
@@ -75,9 +74,6 @@
   qb:dataSet <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013> .
 
 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/6> a qb:Observation ;
-  obeu-dimension:programmeClassification euff:2.1a ;
-  obeu-dimension:payee <http://linked.opendata.cz/resource/organization/CZ25170538> ;
-  obeu-dimension:project <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/project/1> ;
   obeu-dimension:currency obeu-currency:EUR ;
   obeu-attribute:currency obeu-currency:EUR ;
   qb:measureType eu-measure:amountTotal ;
