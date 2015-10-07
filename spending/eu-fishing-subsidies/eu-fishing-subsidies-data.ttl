@@ -22,14 +22,14 @@
 
 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013> a qb:DataSet ;
   qb:structure <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013> ;
-  obeu-dimension:payer <http://dbpedia.org/resource/Ministry_of_Agriculture_(Czech_Republic)> ;
+  obeu-dimension:organization <http://dbpedia.org/resource/Ministry_of_Agriculture_(Czech_Republic)> ;
   dcterms:source <http://eagri.cz/public/web/file/282985/Celkovy_seznam_schvalenych_projektu_k_31_12_2013.xls> ;
   qb:slice <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/slice/1> .
 
 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/slice/1> a qb:Slice ;
   qb:sliceStructure eu-slice:by-currency-and-measure-type ;
   obeu-dimension:programmeClassification euff:2.1a ;
-  obeu-dimension:payee <http://linked.opendata.cz/resource/organization/CZ25170538> ;
+  obeu-dimension:partner <http://linked.opendata.cz/resource/organization/CZ25170538> ;
   obeu-dimension:project <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/project/1> ;
   qb:observation <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/1>,
                  <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/observation/2>,

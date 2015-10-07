@@ -23,9 +23,9 @@
 <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013> a qb:DataStructureDefinition ;
   rdfs:label "Data structure definition for the EU fishing subsidies fund 2007-2013 for the Czech Republic"@en ;
   qb:component [ qb:dimension eu-dimension:eu-fishing-subsidies-2007-2013 ],
-               [ qb:dimension obeu-dimension:payer ;
+               [ qb:dimension obeu-dimension:organization ;
                  qb:componentAttachment qb:DataSet ],
-               [ qb:dimension obeu-dimension:payee ],
+               [ qb:dimension obeu-dimension:partner ],
                [ qb:dimension obeu-dimension:project ],
                [ qb:dimension qb:measureType ],
                [ qb:dimension obeu-dimension:currency ],
@@ -63,5 +63,5 @@ eu-measure:amountTotal a rdf:Property, qb:MeasureProperty ;
 
 eu-slice:by-currency-and-measure-type a qb:SliceKey ;
   rdfs:label "Slice by currency and measure type"@en ;
-  rdfs:comment "Slices grouping expenditure lines by payee, project, and classification in the European Fisheries Fund 2007-2013"@en ;
-  qb:componentProperty obeu-dimension:payee, obeu-dimension:project, eu-dimension:eu-fishing-subsidies-2007-2013 . 
+  rdfs:comment "Slices grouping expenditure lines by partner, project, and classification in the European Fisheries Fund 2007-2013"@en ;
+  qb:componentProperty obeu-dimension:partner, obeu-dimension:project, eu-dimension:eu-fishing-subsidies-2007-2013 . 

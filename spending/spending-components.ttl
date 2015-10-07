@@ -23,8 +23,8 @@ obeu-dimension:organization a rdf:Property, qb:DimensionProperty, qb:CodedProper
   rdfs:comment "The entity which made the payment or collected revenue."@en ;
   rdfs:range org:Organization .
 
-obeu-dimension:supplier a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
-  rdfs:label "supplier"@en ;
+obeu-dimension:partner a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
+  rdfs:label "partner"@en ;
   rdfs:comment "The entity to which the payment was made or from which the revenue was collected."@en ;
   rdfs:range org:Organization .
 
