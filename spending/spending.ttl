@@ -7,6 +7,6 @@
 
 obeu:contract a rdf:Property, owl:FunctionalProperty, owl:ObjectProperty ;
   rdfs:label "contract"@en ;
-  rdfs:comment "Public contract for which the payment is made"@en ;
+  rdfs:comment "Public contract for which the payment is made."@en ;
   rdfs:domain qb:Observation ;
   rdfs:range pc:Contract .
