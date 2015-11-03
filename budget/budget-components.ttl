@@ -43,7 +43,7 @@ obeu-dimension:classification a rdf:Property, qb:DimensionProperty, qb:CodedProp
   
 obeu-dimension:functionalClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "functional classification"@en ;
-  rdfs:comment "Classifies budget lines by sector and by their purpose. It illustrates the behaviour of government (municipalities)."@en ;
+  rdfs:comment "Classifies expenditures by general government sector and by the purpose of the expenditure."@en ;
   rdfs:subPropertyOf obeu-dimension:classification .
 
 obeu-dimension:programmeClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
@@ -63,7 +63,7 @@ obeu-dimension:administrativeClassification a rdf:Property, qb:DimensionProperty
 
 obeu-dimension:operationCharacter a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "operation character"@en ;
-  rdfs:comment "Distinguishes the operation character of a budget line (expenditure, revenue and financing)."@en ;
+  rdfs:comment "Distinguishes among expenditure and revenue."@en ;
   rdfs:range obeu:OperationCharacter ;
   qb:codeList obeu-codelist:operationCharacter .
   
