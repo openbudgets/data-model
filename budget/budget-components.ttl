@@ -38,8 +38,9 @@ obeu-dimension:fiscalYear a rdf:Property, qb:DimensionProperty, qb:CodedProperty
   qb:concept sdmx-concept:refPeriod .
 
 obeu-dimension:classification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
-  rdfs:subPropertyOf dcterms:subject ;
-  rdfs:label "classification"@en .
+  rdfs:label "classification"@en ;
+  rdfs:comment "Category to which observation belongs."@en ;
+  rdfs:subPropertyOf dcterms:subject .
   
 obeu-dimension:functionalClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "functional classification"@en ;
