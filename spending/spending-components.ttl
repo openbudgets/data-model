@@ -90,7 +90,7 @@ obeu-dimension:operationCharacter a rdf:Property, qb:DimensionProperty, qb:Coded
   rdfs:label "operation character"@en ;
   rdfs:comment "Distinguishes among expenditure and revenue."@en ;
   rdfs:range obeu:OperationCharacter ;
-  qb:codeList obeu-codelist:operationCharacter .
+  qb:codeList obeu-codelist:operation-character .
 
 obeu-attribute:location a rdf:Property, qb:AttributeProperty, owl:ObjectProperty ;
   rdfs:label "location"@en ;

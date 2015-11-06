@@ -78,18 +78,18 @@ obeu-currency:EUR a skos:Concept ;
 obeu-operation:Expenditure a skos:Concept, obeu:OperationCharacter ;
   skos:prefLabel "Expenditure"@en ;
   skos:definition "Decrease in net worth resulting from a transaction and the net investment in nonfinancial assets"@en ;
-  skos:topConceptOf obeu-codelist:operationCharacter ;
-  skos:inScheme obeu-codelist:operationCharacter .
+  skos:topConceptOf obeu-codelist:operation-character ;
+  skos:inScheme obeu-codelist:operation-character .
 
 obeu-budgetphase:Executed a skos:Concept, obeu:BudgetPhase ;
   skos:prefLabel "Executed"@en ;
-  skos:topConceptOf obeu-codelist:budgetPhase ;
-  skos:inScheme obeu-codelist:budgetPhase .
+  skos:topConceptOf obeu-codelist:budget-phase ;
+  skos:inScheme obeu-codelist:budget-phase .
 
 obeu-budgetphase:Approved a skos:Concept, obeu:BudgetPhase ;
   skos:prefLabel "Approved"@en ;
-  skos:topConceptOf obeu-codelist:budgetPhase ;
-  skos:inScheme obeu-codelist:budgetPhase .
+  skos:topConceptOf obeu-codelist:budget-phase ;
+  skos:inScheme obeu-codelist:budget-phase .
 
 <http://dbpedia.org/resource/European_Union> a schema:Organization ;
   rdfs:label "European Union"@en ;
