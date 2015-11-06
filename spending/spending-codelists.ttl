@@ -13,15 +13,15 @@ obeu:OperationCharacter a rdfs:Class ;
   
 obeu-codelist:operation-character a skos:ConceptScheme ;
   rdfs:label "Code list that distinguishes among characters of fiscal operation."@en ;
-  skos:hasTopConcept obeu-operation:Expenditure, obeu-operation:Revenue . 
+  skos:hasTopConcept obeu-operation:expenditure, obeu-operation:revenue . 
   
-obeu-operation:Expenditure a skos:Concept, obeu:OperationCharacter ;
+obeu-operation:expenditure a skos:Concept, obeu:OperationCharacter ;
   skos:prefLabel "Expenditure"@en ;
   skos:definition "Decrease in net worth resulting from a transaction and the net investment in nonfinancial assets"@en ;
   skos:topConceptOf obeu-codelist:operation-character ;
   skos:inScheme obeu-codelist:operation-character .
   
-obeu-operation:Revenue a skos:Concept, obeu:OperationCharacter ;
+obeu-operation:revenue a skos:Concept, obeu:OperationCharacter ;
   skos:prefLabel "Revenue"@en ;
   skos:definition "An increase in net worth resulting from a transaction"@en ;
   skos:topConceptOf obeu-codelist:operation-character ;

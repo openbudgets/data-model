@@ -74,16 +74,16 @@ eu-attribute:reserve a rdf:Property, qb:AttributeProperty ;
 
 eu-codelist:operation-character a skos:ConceptScheme ;
   rdfs:label "An extended code list of operation characters for the EU budget"@en ;
-  skos:hasTopConcept obeu-operation:Expenditure, obeu-operation:Revenue .
+  skos:hasTopConcept obeu-operation:expenditure, obeu-operation:revenue .
 
-eu-operation:Commitment a skos:Concept, obeu:OperationCharacter ;
+eu-operation:commitment a skos:Concept, obeu:OperationCharacter ;
   skos:prefLabel "Commitment"@en ;
   skos:definition "Total cost of the legal commitments during the current fiscal year."@en ;
-  skos:broader obeu-operation:Expenditure ;
+  skos:broader obeu-operation:expenditure ;
   skos:inScheme eu-codelist:operation-character .
 
-eu-operation:Payment a skos:Concept, obeu:OperationCharacter ;
+eu-operation:payment a skos:Concept, obeu:OperationCharacter ;
   skos:prefLabel "Payment"@en ;
   skos:definition "Payments made to honour the legal commitments entered into in the current fiscal year and/or earlier fiscal years."@en ;
-  skos:broader obeu-operation:Expenditure ;
+  skos:broader obeu-operation:expenditure ;
   skos:inScheme eu-codelist:operation-character .

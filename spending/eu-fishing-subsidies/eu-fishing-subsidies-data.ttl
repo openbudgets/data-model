@@ -23,7 +23,7 @@
 
 <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013> a qb:DataSet ;
   qb:structure <http://example.openbudgets.eu/ontology/dsd/eu-fishing-subsidies-CS-2007-2013> ;
-  obeu-dimension:operationCharacter obeu-operation:Expenditure ;
+  obeu-dimension:operationCharacter obeu-operation:expenditure ;
   obeu-dimension:organization <http://dbpedia.org/resource/Ministry_of_Agriculture_(Czech_Republic)> ;
   dcterms:source <http://eagri.cz/public/web/file/282985/Celkovy_seznam_schvalenych_projektu_k_31_12_2013.xls> ;
   qb:slice <http://data.openbudgets.eu/resource/dataset/eu-fishing-subsidies-CS-2007-2013/slice/1> .

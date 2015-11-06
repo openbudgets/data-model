@@ -28,8 +28,8 @@
 
 <http://data.openbudgets.eu/resource/dataset/eu-budget-2014/observation/1> a qb:Observation ;
   qb:dataSet <http://data.openbudgets.eu/resource/dataset/eu-budget-2014> ;
-  obeu-dimension:budgetPhase obeu-budgetphase:Approved ;
-  eu-dimension:operationCharacter obeu-operation:Expenditure ;
+  obeu-dimension:budgetPhase obeu-budgetphase:approved ;
+  eu-dimension:operationCharacter obeu-operation:expenditure ;
   obeu-dimension:fiscalYear <http://reference.data.gov.uk/id/year/2014> ;
   eu-dimension:budgetNomenclature <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX-01-01-01-02> ;
   eu-dimension:catpol <http://data.openbudgets.eu/resource/codelist/catpol/5.2.3X> ;
@@ -37,8 +37,8 @@
 
 <http://data.openbudgets.eu/resource/dataset/eu-budget-2014/observation/2> a qb:Observation ;
   qb:dataSet <http://data.openbudgets.eu/resource/dataset/eu-budget-2014> ;
-  obeu-dimension:budgetPhase obeu-budgetphase:Approved ;
-  eu-dimension:operationCharacter obeu-operation:Expenditure ;
+  obeu-dimension:budgetPhase obeu-budgetphase:approved ;
+  eu-dimension:operationCharacter obeu-operation:expenditure ;
   obeu-dimension:fiscalYear <http://reference.data.gov.uk/id/year/2013> ;
   eu-dimension:budgetNomenclature <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX-01-01-01-02> ;
   eu-dimension:catpol <http://data.openbudgets.eu/resource/codelist/catpol/5.2.3X> ;
@@ -46,8 +46,8 @@
 
 <http://data.openbudgets.eu/resource/dataset/eu-budget-2014/observation/3> a qb:Observation ;
   qb:dataSet <http://data.openbudgets.eu/resource/dataset/eu-budget-2014> ;
-  obeu-dimension:budgetPhase obeu-budgetphase:Executed ;
-  eu-dimension:operationCharacter obeu-operation:Expenditure ;
+  obeu-dimension:budgetPhase obeu-budgetphase:executed ;
+  eu-dimension:operationCharacter obeu-operation:expenditure ;
   obeu-dimension:fiscalYear <http://reference.data.gov.uk/id/year/2012> ;
   eu-dimension:budgetNomenclature <http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX-01-01-01-02> ;
   eu-dimension:catpol <http://data.openbudgets.eu/resource/codelist/catpol/5.2.3X> ;
@@ -75,18 +75,18 @@ obeu-currency:EUR a skos:Concept ;
   skos:topConceptOf obeu-codelist:currency ;
   skos:inScheme obeu-codelist:currency .
 
-obeu-operation:Expenditure a skos:Concept, obeu:OperationCharacter ;
+obeu-operation:expenditure a skos:Concept, obeu:OperationCharacter ;
   skos:prefLabel "Expenditure"@en ;
   skos:definition "Decrease in net worth resulting from a transaction and the net investment in nonfinancial assets"@en ;
   skos:topConceptOf obeu-codelist:operation-character ;
   skos:inScheme obeu-codelist:operation-character .
 
-obeu-budgetphase:Executed a skos:Concept, obeu:BudgetPhase ;
+obeu-budgetphase:executed a skos:Concept, obeu:BudgetPhase ;
   skos:prefLabel "Executed"@en ;
   skos:topConceptOf obeu-codelist:budget-phase ;
   skos:inScheme obeu-codelist:budget-phase .
 
-obeu-budgetphase:Approved a skos:Concept, obeu:BudgetPhase ;
+obeu-budgetphase:approved a skos:Concept, obeu:BudgetPhase ;
   skos:prefLabel "Approved"@en ;
   skos:topConceptOf obeu-codelist:budget-phase ;
   skos:inScheme obeu-codelist:budget-phase .
