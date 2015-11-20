@@ -1,0 +1,39 @@
+@prefix obeu:           <http://data.openbudgets.eu/ontology/> .
+@prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/> .
+@prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/> .
+@prefix obeu-operation: <http://data.openbudgets.eu/resource/codelist/operation-character/> .
+@prefix owl:            <http://www.w3.org/2002/07/owl#> .
+@prefix pay:            <http://reference.data.gov.uk/def/payment#> .
+@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
+
+######################################
+### Links to the Payments Ontology ###
+######################################
+
+obeu:contract owl:equivalentProperty pay:contract .
+
+obeu-attribute:currency owl:equivalentProperty pay:currency .
+
+obeu-dimension:date owl:equivalentProperty pay:date .
+
+pay:expenditure-category rdfs:subPropertyOf obeu-dimension:classification .
+
+# pay:expenditureCode => obeu-dimension:classification/skos:notation
+
+# pay:grossAmount => [obeu-attribute:taxesIncluded = false]/obeu-measure:amount
+
+pay:invoice rdfs:subPropertyOf obeu-dimension:accountingRecord .
+
+# pay:netAmount => [obeu-attribute:taxesIncluded = true]/obeu-measure:amount
+
+pay:order rdfs:subPropertyOf obeu-dimension:accountingRecord .
+
+pay:payee rdfs:subPropertyOf obeu-dimension:partner .
+
+pay:payer rdfs:subPropertyOf obeu-dimension:organization .
+
+pay:procurementCategory rdfs:subPropertyOf obeu-dimension:classification .
+
+# pay:revenue => obeu-dimension:operationCharacter obeu-operation:revenue
+
+pay:unit rdfs:subPropertyOf obeu-dimension:organization .
