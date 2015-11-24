@@ -1,0 +1,15 @@
+@prefix dbo:            <http://dbpedia.org/ontology/> .
+@prefix ls:             <http://linkedspending.aksw.org/ontology/> .
+@prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/> .
+@prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/> .
+@prefix owl:            <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
+
+ls:refDate owl:equivalentProperty obeu-dimension:date . 
+
+ls:refYear rdfs:subPropertyOf obeu-dimension:fiscalPeriod .
+
+obeu-attribute:currency rdfs:subPropertyOf dbo:currency .
+
+obeu-attribute:location rdfs:subPropertyOf sdmx-attribute:refArea .
