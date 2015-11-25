@@ -6,6 +6,9 @@
 @prefix pay:            <http://reference.data.gov.uk/def/payment#> .
 @prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
 
+@prefix psnet: 			<http://publicspending.net/ontology#>
+@prefix qb:             <http://purl.org/linked-data/cube#> .
+
 ######################################
 ### Links to the Payments Ontology ###
 ######################################
@@ -37,3 +40,20 @@ pay:procurementCategory rdfs:subPropertyOf obeu-dimension:classification .
 # pay:revenue => obeu-dimension:operationCharacter obeu-operation:revenue
 
 pay:unit rdfs:subPropertyOf obeu-dimension:organization .
+
+############################################
+### Links to publicspending.net/ontology ###
+############################################
+
+psnet:Payment rdfs:subClassOf qb:Observation .
+
+obeu-dimension:organization owl:subPropertyOf psnet:payer .
+
+obeu-dimension:partner owl:subPropertyOf psnet:payee .
+
+psnet:cpv rdfs:subPropertyOf obeu-dimension:functionalClassification .
+
+psnet:paymentAmount rdfs:subPropertyOf obeu-dimension:amount .
+
+psnet:paymentCategory rdfs:subPropertyOf obeu-dimension:classification .
+
