@@ -86,3 +86,14 @@ coins-dimension:counterpartyCode rdfs:subPropertyOf obeu-dimension:partner .
 coins-dimension:departmentCode rdfs:subPropertyOf obeu-dimension:classification .
 
 coins-dimension:programmeObjectCode rdfs:subClassOf obeu-dimension:classification .
+
+#####################################################
+### Links to Frapo <http://purl.org/cerif/frapo/> ###
+#####################################################
+@prefix frapo: <http://purl.org/cerif/frapo/> .
+
+obeu-measure:amount rdfs:subPropertyOf frapo:hasMonetaryValue .
+
+frapo:Payment rdfs:subClassOf qb:Observation .
+frapo:BudgetedAmount rdfs:subClassOf qb:Observation .
+
