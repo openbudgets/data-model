@@ -1,12 +1,13 @@
 @prefix obeu:           <http://data.openbudgets.eu/ontology/> .
 @prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/> .
 @prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/> .
+@prefix obeu-measure: <http://data.openbudgets.eu/ontology/dsd/measure/> .
 @prefix obeu-operation: <http://data.openbudgets.eu/resource/codelist/operation-character/> .
 @prefix owl:            <http://www.w3.org/2002/07/owl#> .
 @prefix pay:            <http://reference.data.gov.uk/def/payment#> .
 @prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
 
-@prefix psnet: 			<http://publicspending.net/ontology#>
+@prefix psnet: 			<http://publicspending.net/ontology#> .
 @prefix qb:             <http://purl.org/linked-data/cube#> .
 
 ######################################
@@ -53,7 +54,35 @@ obeu-dimension:partner owl:subPropertyOf psnet:payee .
 
 psnet:cpv rdfs:subPropertyOf obeu-dimension:functionalClassification .
 
-psnet:paymentAmount rdfs:subPropertyOf obeu-dimension:amount .
+psnet:paymentAmount rdfs:subPropertyOf obeu-measure:amount .
 
 psnet:paymentCategory rdfs:subPropertyOf obeu-dimension:classification .
 
+######################################################
+### Links to http://opendata.vse.cz/mfcr/vocab.ttl ###
+######################################################
+@prefix mfcr: <http://linked.opendata.cz/resource/domain/mfcr/monitor/dsd/> .
+
+mfcr:schvalenyRozpocet rdfs:subPropertyOf obeu-measure:amount .
+
+mfcr:fiskalniObdobi rdfs:subPropertyOf obeu-dimension:classification .
+mfcr:kapitola rdfs:subPropertyOf obeu-dimension:classification .
+mfcr:nuts rdfs:subPropertyOf obeu-dimension:classification .
+mfcr:rozpoctovyProgram owl:equivalentProperty obeu-dimension:programmeClassification .
+
+###########################################################################
+### Links to COINS (http://finance.data.gov.uk/def/coins/coins-dsd.ttl) ###
+###########################################################################
+@prefix coins-measure: <http://finance.data.gov.uk/dsd/coins/measure/> .
+@prefix coins-dimension: <http://finance.data.gov.uk/dsd/coins/dimension/> .
+@prefix coins-attribute: <http://finance.data.gov.uk/dsd/coins/attribute/> .
+
+coins-measure:amount rdfs:subPropertyOf obeu-measure:amount .
+
+coins-dimension:accountCode rdfs:subPropertyOf obeu-dimension:classification .
+
+coins-dimension:counterpartyCode rdfs:subPropertyOf obeu-dimension:partner .
+
+coins-dimension:departmentCode rdfs:subPropertyOf obeu-dimension:classification .
+
+coins-dimension:programmeObjectCode rdfs:subClassOf obeu-dimension:classification .
