@@ -38,8 +38,6 @@ pay:payer rdfs:subPropertyOf obeu-dimension:organization .
 
 pay:procurementCategory rdfs:subPropertyOf obeu-dimension:classification .
 
-# pay:revenue => obeu-dimension:operationCharacter obeu-operation:revenue
-
 pay:unit rdfs:subPropertyOf obeu-dimension:organization .
 
 ############################################
