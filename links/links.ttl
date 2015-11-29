@@ -63,7 +63,7 @@ psnet:paymentCategory rdfs:subPropertyOf obeu-dimension:classification .
 
 mfcr:schvalenyRozpocet rdfs:subPropertyOf obeu-measure:amount .
 
-mfcr:fiskalniObdobi rdfs:subPropertyOf obeu-dimension:classification .
+mfcr:fiskalniObdobi owl:equivalentProperty obeu-dimension:fiscalPeriod .
 mfcr:kapitola rdfs:subPropertyOf obeu-dimension:classification .
 mfcr:nuts rdfs:subPropertyOf obeu-dimension:classification .
 mfcr:rozpoctovyProgram owl:equivalentProperty obeu-dimension:programmeClassification .
@@ -90,8 +90,21 @@ coins-dimension:programmeObjectCode rdfs:subClassOf obeu-dimension:classificatio
 #####################################################
 @prefix frapo: <http://purl.org/cerif/frapo/> .
 
-obeu-measure:amount rdfs:subPropertyOf frapo:hasMonetaryValue .
+obeu-measure:amount rdfs:subPropertyOf frapo:hasMonetaryValue . 
 
 frapo:Payment rdfs:subClassOf qb:Observation .
 frapo:BudgetedAmount rdfs:subClassOf qb:Observation .
+
+#######################################################
+### Links to dimensions found on lsd-dimensions.org ###
+#######################################################
+
+obeu-dimension:currency owl:equivalentProperty <http://linked.opendata.cz/resource/ontology/currencies#currency> .
+
+<http://opendatacommunities.org/def/finance/serviceExpenditureCategory> rdfs:subPropertyOf obeu-dimension:functionalClassification .
+# there is a whole budget-related ontology http://opendatacommunities.org/def/finance/ontology, but not available
+
+obeu-dimension:organization owl:equivalentProperty <http://opendatacommunities.org/def/finance/authority> .
+
+obeu-dimension:organization owl:equivalentProperty <http://worldbank.270a.info/property/organization> .
 
