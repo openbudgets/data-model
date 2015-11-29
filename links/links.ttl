@@ -102,9 +102,16 @@ frapo:BudgetedAmount rdfs:subClassOf qb:Observation .
 obeu-dimension:currency owl:equivalentProperty <http://linked.opendata.cz/resource/ontology/currencies#currency> .
 
 <http://opendatacommunities.org/def/finance/serviceExpenditureCategory> rdfs:subPropertyOf obeu-dimension:functionalClassification .
-# there is a whole budget-related ontology http://opendatacommunities.org/def/finance/ontology, but not available
+# ontology http://opendatacommunities.org/def/finance/ontology is a budget-related ontology, but not available
 
 obeu-dimension:organization owl:equivalentProperty <http://opendatacommunities.org/def/finance/authority> .
 
-obeu-dimension:organization owl:equivalentProperty <http://worldbank.270a.info/property/organization> .
+# equivalent properties, but can't link object to data property
+#obeu-dimension:organization owl:equivalentProperty <http://worldbank.270a.info/property/organization> .
+#<http://worldbank.270a.info/property/recipient>
 
+<http://logd.tw.rpi.edu/source/data-rpi-edu/dataset/research-centers/vocab/enhancement/2/funding_type> rdfs:subPropertyOf obeu-dimension:classification .
+
+<http://worldbank.270a.info/property/program-name> owl:equivalentProperty obeu-dimension:programmeClassification .
+
+<http://worldbank.270a.info/property/program-code> owl:equivalentProperty obeu-dimension:programmeClassification .
