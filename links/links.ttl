@@ -51,10 +51,13 @@ obeu-dimension:organization owl:subPropertyOf psnet:payer .
 obeu-dimension:partner owl:subPropertyOf psnet:payee .
 
 psnet:cpv rdfs:subPropertyOf obeu-dimension:functionalClassification .
+#defined as data property but used as object property, values are typed also as http://www.e-nvision.org/ontologies/CPVOntology.owl#CPVCategory
 
 psnet:paymentAmount rdfs:subPropertyOf obeu-measure:amount .
 
-psnet:paymentCategory rdfs:subPropertyOf obeu-dimension:classification .
+#psnet:paymentCategory rdfs:subPropertyOf obeu-dimension:classification/skos:notation .
+#psnet:paymentCategory is defined as data property, but its values are blank nodes without any further description
+#therefore better not to link it at all
 
 ######################################################
 ### Links to http://opendata.vse.cz/mfcr/vocab.ttl ###
@@ -80,15 +83,18 @@ mfcr:rozpoctovyProgram owl:equivalentProperty obeu-dimension:programmeClassifica
 
 coins-measure:amount rdfs:subPropertyOf obeu-measure:amount .
 
-coins-dimension:accountCode rdfs:subPropertyOf obeu-dimension:classification .
+coins-dimension:accountCode rdfs:subPropertyOf obeu-dimension:economicClassification .
+#values are proper skos:Concepts
 
 coins-dimension:counterpartyCode rdfs:subPropertyOf obeu-dimension:partner .
 
 coins-dimension:departmentCode rdfs:subPropertyOf obeu-dimension:organization .
 
 coins-dimension:programmeObjectCode rdfs:subPropertyOf obeu-dimension:programmeClassification .
+#values of coins-dimension:programmeObjectCode are proper skos:Concepts
 
 coins-attribute:cofog rdfs:subPropertyOf obeu-dimension:functionalClassification .
+#values of coins-attribute:cofog are proper skos:Concepts
 
 #####################################################
 ### Links to Frapo <http://purl.org/cerif/frapo/> ###

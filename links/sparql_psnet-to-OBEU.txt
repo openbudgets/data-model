@@ -10,11 +10,11 @@ PREFIX psnet: 			<http://publicspending.net/ontology#>
 PREFIX qb:             <http://purl.org/linked-data/cube#>
 PREFIX org:            <http://www.w3.org/ns/org#>
 PREFIX time:           <http://www.w3.org/2006/time#>
+PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
 
 INSERT {
   ?payment a qb:Observation;
     obeu-measure:amount ?amount;
-    obeu-dimension:classification ?category; 
     obeu-dimension:functionalClassification ?cpv;
     obeu-dimension:organization ?payer;
     obeu-dimension:partner ?payee;
@@ -26,13 +26,14 @@ INSERT {
         time:inXSDDateTime ?date .
       ] .
     ] .
+    ?cpv skos:notation ?cpvCode .
 }
 WHERE {
   ?payment a psnet:Payment;
      psnet:paymentAmount ?amount;
-     psnet:paymentCategory ?category;
      psnet:payer ?payer;
      psnet:payee ?payee;
      psnet:cpv ?cpv;
-     psnet:date ?date .        
+     psnet:date ?date .
+  ?cpv psnet:cpvCode ?cpvCode .        
 }
