@@ -61,7 +61,10 @@ psnet:paymentCategory rdfs:subPropertyOf obeu-dimension:classification .
 ######################################################
 @prefix mfcr: <http://linked.opendata.cz/resource/domain/mfcr/monitor/dsd/> .
 
+mfcr:konecnyRozpocet rdfs:subPropertyOf obeu-measure:amount .
 mfcr:schvalenyRozpocet rdfs:subPropertyOf obeu-measure:amount .
+mfcr:bezneObdobi rdfs:subPropertyOf obeu-measure:amount .
+mfcr:rozpocetPoZmenach rdfs:subPropertyOf obeu-measure:amount .
 
 mfcr:fiskalniObdobi owl:equivalentProperty obeu-dimension:fiscalPeriod .
 mfcr:kapitola rdfs:subPropertyOf obeu-dimension:classification .
@@ -81,9 +84,11 @@ coins-dimension:accountCode rdfs:subPropertyOf obeu-dimension:classification .
 
 coins-dimension:counterpartyCode rdfs:subPropertyOf obeu-dimension:partner .
 
-coins-dimension:departmentCode rdfs:subPropertyOf obeu-dimension:classification .
+coins-dimension:departmentCode rdfs:subPropertyOf obeu-dimension:organization .
 
-coins-dimension:programmeObjectCode rdfs:subClassOf obeu-dimension:classification .
+coins-dimension:programmeObjectCode rdfs:subPropertyOf obeu-dimension:programmeClassification .
+
+coins-attribute:cofog rdfs:subPropertyOf obeu-dimension:functionalClassification .
 
 #####################################################
 ### Links to Frapo <http://purl.org/cerif/frapo/> ###
