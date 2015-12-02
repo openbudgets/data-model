@@ -62,6 +62,7 @@ psnet:paymentAmount rdfs:subPropertyOf obeu-measure:amount .
 ######################################################
 ### Links to http://opendata.vse.cz/mfcr/vocab.ttl ###
 ######################################################
+
 @prefix mfcr: <http://linked.opendata.cz/resource/domain/mfcr/monitor/dsd/> .
 
 mfcr:konecnyRozpocet rdfs:subPropertyOf obeu-measure:amount .
@@ -77,6 +78,7 @@ mfcr:rozpoctovyProgram owl:equivalentProperty obeu-dimension:programmeClassifica
 ###########################################################################
 ### Links to COINS (http://finance.data.gov.uk/def/coins/coins-dsd.ttl) ###
 ###########################################################################
+
 @prefix coins-measure: <http://finance.data.gov.uk/dsd/coins/measure/> .
 @prefix coins-dimension: <http://finance.data.gov.uk/dsd/coins/dimension/> .
 @prefix coins-attribute: <http://finance.data.gov.uk/dsd/coins/attribute/> .
@@ -99,6 +101,7 @@ coins-attribute:cofog rdfs:subPropertyOf obeu-dimension:functionalClassification
 #####################################################
 ### Links to Frapo <http://purl.org/cerif/frapo/> ###
 #####################################################
+
 @prefix frapo: <http://purl.org/cerif/frapo/> .
 
 obeu-measure:amount rdfs:subPropertyOf frapo:hasMonetaryValue . 
@@ -109,6 +112,8 @@ frapo:BudgetedAmount rdfs:subClassOf qb:Observation .
 #######################################################
 ### Links to dimensions found on lsd-dimensions.org ###
 #######################################################
+
+obeu-dimension:fiscalYear owl:equivalentProperty <http://worldbank.270a.info/property/fiscal-year> .
 
 obeu-dimension:currency owl:equivalentProperty <http://linked.opendata.cz/resource/ontology/currencies#currency> .
 
