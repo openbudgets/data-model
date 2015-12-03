@@ -8,6 +8,7 @@
 @prefix pay:            <http://reference.data.gov.uk/def/payment#> .
 @prefix qb:             <http://purl.org/linked-data/cube#> .
 @prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdmx-concept:   <http://purl.org/linked-data/sdmx/2009/concept#> .
 
 ######################################
 ### Links to the Payments Ontology ###
