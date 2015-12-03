@@ -127,7 +127,3 @@ obeu-dimension:organization owl:equivalentProperty <http://opendatacommunities.o
 #<http://worldbank.270a.info/property/recipient>
 
 <http://logd.tw.rpi.edu/source/data-rpi-edu/dataset/research-centers/vocab/enhancement/2/funding_type> rdfs:subPropertyOf obeu-dimension:classification .
-
-<http://worldbank.270a.info/property/program-name> owl:equivalentProperty obeu-dimension:programmeClassification .
-
-<http://worldbank.270a.info/property/program-code> owl:equivalentProperty obeu-dimension:programmeClassification .
