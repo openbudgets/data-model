@@ -61,9 +61,9 @@ psnet:paymentAmount rdfs:subPropertyOf obeu-measure:amount .
 #psnet:paymentCategory is defined as data property, but its values are blank nodes without any further description
 #therefore better not to link it at all
 
-######################################################
-### Links to http://opendata.vse.cz/mfcr/vocab.ttl ###
-######################################################
+#############################################################
+### Links to MFČR (http://opendata.vse.cz/mfcr/vocab.ttl) ###
+#############################################################
 
 @prefix mfcr: <http://linked.opendata.cz/resource/domain/mfcr/monitor/dsd/> .
 
