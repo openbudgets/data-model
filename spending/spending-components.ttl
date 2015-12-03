@@ -95,7 +95,8 @@ obeu-dimension:operationCharacter a rdf:Property, qb:DimensionProperty, qb:Coded
 obeu-attribute:location a rdf:Property, qb:AttributeProperty, owl:ObjectProperty ;
   rdfs:label "location"@en ;
   rdfs:comment "Physical location affected by a payment"@en ;
-  rdfs:range schema:Place .
+  rdfs:range schema:Place ;
+  qb:concept sdmx-concept:refArea .
 
 obeu-attribute:currency a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
   rdfs:label "currency"@en ;
