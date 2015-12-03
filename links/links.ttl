@@ -1,14 +1,12 @@
 @prefix obeu:           <http://data.openbudgets.eu/ontology/> .
 @prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/> .
 @prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/> .
-@prefix obeu-measure: <http://data.openbudgets.eu/ontology/dsd/measure/> .
+@prefix obeu-measure:   <http://data.openbudgets.eu/ontology/dsd/measure/> .
 @prefix obeu-operation: <http://data.openbudgets.eu/resource/codelist/operation-character/> .
 @prefix owl:            <http://www.w3.org/2002/07/owl#> .
 @prefix pay:            <http://reference.data.gov.uk/def/payment#> .
-@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
-
-@prefix psnet: 			<http://publicspending.net/ontology#> .
 @prefix qb:             <http://purl.org/linked-data/cube#> .
+@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
 
 ######################################
 ### Links to the Payments Ontology ###
@@ -44,11 +42,13 @@ pay:unit rdfs:subPropertyOf obeu-dimension:organization .
 ### Links to publicspending.net/ontology ###
 ############################################
 
+@prefix psnet: 			    <http://publicspending.net/ontology#> .
+
 psnet:Payment rdfs:subClassOf qb:Observation .
 
-obeu-dimension:organization owl:subPropertyOf psnet:payer .
+obeu-dimension:organization rdfs:subPropertyOf psnet:payer .
 
-obeu-dimension:partner owl:subPropertyOf psnet:payee .
+obeu-dimension:partner rdfs:subPropertyOf psnet:payee .
 
 psnet:cpv rdfs:subPropertyOf obeu-dimension:functionalClassification .
 #defined as data property but used as object property, values are typed also as http://www.e-nvision.org/ontologies/CPVOntology.owl#CPVCategory
