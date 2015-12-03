@@ -16,7 +16,7 @@ PREFIX coins-dimension: <http://finance.data.gov.uk/dsd/coins/dimension/>
 PREFIX coins-attribute: <http://finance.data.gov.uk/dsd/coins/attribute/>
 
 INSERT {
-  ?coins-record a qb:Observation ;
+  ?coinsRecord a qb:Observation ;
     obeu-measure:amount ?amount ;
     obeu-attribute:currency obeu-currency:GBP ;
     obeu-dimension:economicClassification ?accCode ;
@@ -24,18 +24,18 @@ INSERT {
     obeu-dimension:organization ?depCode ;
     obeu-dimension:partner ?counterCode ;
     obeu-dimension:programmeClassification ?progCode ;
-    # Based on the fact that COINS are supposed to be spending data
-    obeu-dimension:operationCharacter obeu-operation:expenditure .
+    obeu-dimension:operationCharacter ?operationCharacter .
 }
 WHERE {
-  ?coins-record coins-measure:amount ?amountInThousands ; # not clear what negative numbers mean
+  ?coinsRecord coins-measure:amount ?amountInThousands ; 
     coins-dimension:departmentCode ?depCode ;
     coins-dimension:counterpartyCode ?counterCode ;
     coins-dimension:programmeObjectCode ?progCode ;
     coins-attribute:cofog ?cofog ;
     coins-dimension:accountCode ?accCode .
 
-  BIND (?amountInThousands * 1000.0 AS ?amount)
+  BIND (abs(?amountInThousands) * 1000.0 AS ?amount) # negative numbers are considered as revenues
+  BIND (IF(?amountInThousands < 0, obeu-operation:revenue, obeu-operation:expenditure) AS ?operationCharacter)
 };
 
 # Expects existing GBP currency
