@@ -39,7 +39,7 @@ INSERT {
     obeu-dimension:operationCharacter obeu-operation:expenditure .
 }
 WHERE {
-  ?expenditure-line pay:netAmount ?netAmount ;
+  [] pay:netAmount ?netAmount ;
     pay:grossAmount ?grossAmount ;
     pay:netAmount ?netAmount ;
     pay:expenditureCategory ?category ;
