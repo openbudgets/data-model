@@ -80,24 +80,21 @@ mfcr:rozpoctovyProgram rdfs:subPropertyOf obeu-dimension:programmeClassification
 ### Links to COINS (http://finance.data.gov.uk/def/coins/coins-dsd.ttl) ###
 ###########################################################################
 
-@prefix coins-measure: <http://finance.data.gov.uk/dsd/coins/measure/> .
+@prefix coins-measure:   <http://finance.data.gov.uk/dsd/coins/measure/> .
 @prefix coins-dimension: <http://finance.data.gov.uk/dsd/coins/dimension/> .
 @prefix coins-attribute: <http://finance.data.gov.uk/dsd/coins/attribute/> .
 
 coins-measure:amount rdfs:subPropertyOf obeu-measure:amount .
 
 coins-dimension:accountCode rdfs:subPropertyOf obeu-dimension:economicClassification .
-#values are proper skos:Concepts
 
 coins-dimension:counterpartyCode rdfs:subPropertyOf obeu-dimension:partner .
 
 coins-dimension:departmentCode rdfs:subPropertyOf obeu-dimension:organization .
 
 coins-dimension:programmeObjectCode rdfs:subPropertyOf obeu-dimension:programmeClassification .
-#values of coins-dimension:programmeObjectCode are proper skos:Concepts
 
 coins-attribute:cofog rdfs:subPropertyOf obeu-dimension:functionalClassification .
-#values of coins-attribute:cofog are proper skos:Concepts
 
 #####################################################
 ### Links to Frapo <http://purl.org/cerif/frapo/> ###
@@ -116,12 +113,9 @@ frapo:BudgetedAmount rdfs:subClassOf qb:Observation .
 
 obeu-dimension:fiscalYear owl:equivalentProperty <http://worldbank.270a.info/property/fiscal-year> .
 
-obeu-dimension:currency owl:equivalentProperty <http://linked.opendata.cz/resource/ontology/currencies#currency> .
-
 <http://opendatacommunities.org/def/finance/serviceExpenditureCategory> rdfs:subPropertyOf obeu-dimension:functionalClassification .
-# ontology http://opendatacommunities.org/def/finance/ontology is a budget-related ontology, but not available
 
-obeu-dimension:organization owl:equivalentProperty <http://opendatacommunities.org/def/finance/authority> .
+<http://opendatacommunities.org/def/finance/authority> rdfs:subPropertyOf obeu-dimension:organization . 
 
 <http://logd.tw.rpi.edu/source/data-rpi-edu/dataset/research-centers/vocab/enhancement/2/funding_type> rdfs:subPropertyOf obeu-dimension:classification .
 
