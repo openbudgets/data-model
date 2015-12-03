@@ -1,3 +1,4 @@
+@prefix dbo:            <http://dbpedia.org/ontology/> .
 @prefix obeu:           <http://data.openbudgets.eu/ontology/> .
 @prefix obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/> .
 @prefix obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/> .
@@ -131,3 +132,15 @@ obeu-dimension:organization owl:equivalentProperty <http://opendatacommunities.o
 <http://worldbank.270a.info/property/program-name> owl:equivalentProperty obeu-dimension:programmeClassification .
 
 <http://worldbank.270a.info/property/program-code> owl:equivalentProperty obeu-dimension:programmeClassification .
+
+############################################################
+# Links to DBpedia Ontology <http://dbpedia.org/ontology/> #
+############################################################
+
+obeu-attribute:currency rdfs:subPropertyOf dbo:currency .
+
+#################
+# Links to SDMX #
+#################
+
+obeu-attribute:location qb:concept sdmx-concept:refArea .
