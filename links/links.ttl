@@ -74,8 +74,7 @@ mfcr:rozpocetPoZmenach rdfs:subPropertyOf obeu-measure:amount .
 
 mfcr:fiskalniObdobi owl:equivalentProperty obeu-dimension:fiscalPeriod .
 mfcr:kapitola rdfs:subPropertyOf obeu-dimension:administrativeClassification .
-mfcr:nuts rdfs:subPropertyOf obeu-dimension:classification .
-mfcr:rozpoctovyProgram owl:equivalentProperty obeu-dimension:programmeClassification .
+mfcr:rozpoctovyProgram rdfs:subPropertyOf obeu-dimension:programmeClassification .
 
 ###########################################################################
 ### Links to COINS (http://finance.data.gov.uk/def/coins/coins-dsd.ttl) ###
