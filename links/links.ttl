@@ -52,8 +52,8 @@ obeu-dimension:organization rdfs:subPropertyOf psnet:payer .
 
 obeu-dimension:partner rdfs:subPropertyOf psnet:payee .
 
+# Defined as data property but used as object property, values are typed also as <http://www.e-nvision.org/ontologies/CPVOntology.owl#CPVCategory>.
 psnet:cpv rdfs:subPropertyOf obeu-dimension:functionalClassification .
-#defined as data property but used as object property, values are typed also as http://www.e-nvision.org/ontologies/CPVOntology.owl#CPVCategory
 
 psnet:paymentAmount rdfs:subPropertyOf obeu-measure:amount .
 
@@ -73,7 +73,7 @@ mfcr:bezneObdobi rdfs:subPropertyOf obeu-measure:amount .
 mfcr:rozpocetPoZmenach rdfs:subPropertyOf obeu-measure:amount .
 
 mfcr:fiskalniObdobi owl:equivalentProperty obeu-dimension:fiscalPeriod .
-mfcr:kapitola rdfs:subPropertyOf obeu-dimension:classification .
+mfcr:kapitola rdfs:subPropertyOf obeu-dimension:administrativeClassification .
 mfcr:nuts rdfs:subPropertyOf obeu-dimension:classification .
 mfcr:rozpoctovyProgram owl:equivalentProperty obeu-dimension:programmeClassification .
 
