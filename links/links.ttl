@@ -107,15 +107,27 @@ obeu-measure:amount rdfs:subPropertyOf frapo:hasMonetaryValue .
 frapo:Payment rdfs:subClassOf qb:Observation .
 frapo:BudgetedAmount rdfs:subClassOf qb:Observation .
 
+#################################################################################################
+### Links to DCLG Finance Ontology (http://opendatacommunities.org/def/ontology/dclg/finance) ###
+#################################################################################################
+
+@prefix dclg-finance: <http://opendatacommunities.org/def/finance/> .
+
+dclg-finance:RevenueAccountBudgetCategory rdfs:subClassOf obeu:OperationCharacter .
+
+dclg-finance:amount rdfs:subPropertyOf obeu-measure:amount .
+
+dclg-finance:serviceExpenditureCategory rdfs:subPropertyOf obeu-dimension:functionalClassification .
+
+dclg-finance:authority rdfs:subPropertyOf obeu-dimension:organization . 
+
+dclg-finance:revenueAccountBudgetCategory rdfs:subPropertyOf obeu-dimension:operationCharacter .
+
 #######################################################
 ### Links to dimensions found on lsd-dimensions.org ###
 #######################################################
 
 obeu-dimension:fiscalYear owl:equivalentProperty <http://worldbank.270a.info/property/fiscal-year> .
-
-<http://opendatacommunities.org/def/finance/serviceExpenditureCategory> rdfs:subPropertyOf obeu-dimension:functionalClassification .
-
-<http://opendatacommunities.org/def/finance/authority> rdfs:subPropertyOf obeu-dimension:organization . 
 
 <http://logd.tw.rpi.edu/source/data-rpi-edu/dataset/research-centers/vocab/enhancement/2/funding_type> rdfs:subPropertyOf obeu-dimension:classification .
 
