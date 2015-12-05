@@ -1,5 +1,0 @@
-@prefix dbo: <http://dbpedia.org/ontology/>.
-@prefix obeu-attribute:   <http://data.openbudgets.eu/ontology/dsd/attribute/> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-obeu-attribute:currency rdfs:subPropertyOf dbo:currency.
