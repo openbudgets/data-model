@@ -18,15 +18,7 @@ INSERT {
     obeu-dimension:functionalClassification ?cpv ;
     obeu-dimension:organization ?payer ;
     obeu-dimension:partner ?payee ;
-    obeu-dimension:date [
-      a time:Interval ;
-      time:hasBeginning [
-        time:inXSDDateTime ?date
-      ] ;
-      time:hasEnd [
-        time:inXSDDateTime ?date
-      ]
-    ] .
+    obeu-dimension:date ?dateUri .
 
   ?cpv skos:notation ?cpvCode .
 }
@@ -38,5 +30,7 @@ WHERE {
      psnet:cpv ?cpv ;
      psnet:date ?date .
 
-  ?cpv psnet:cpvCode ?cpvCode .
+  ?cpv psnet:cpvCode ?cpvCode .       
+    
+  BIND(URI(CONCAT("http://reference.data.gov.uk/id/gregorian-day/", ?date)) AS ?dateUri) 
 }
