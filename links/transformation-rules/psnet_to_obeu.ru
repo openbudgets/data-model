@@ -10,7 +10,9 @@ PREFIX psnet: 			   <http://publicspending.net/ontology#>
 PREFIX qb:             <http://purl.org/linked-data/cube#>
 PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
-PREFIX time:           <http://www.w3.org/2006/time#>
+PREFIX time:           <http://www.w3.org/2006/time#>        
+
+PREFIX example:        <http://example.openbudgets.eu/vocabulary/>
 
 INSERT {
   ?payment a qb:Observation ;
@@ -18,9 +20,11 @@ INSERT {
     obeu-dimension:functionalClassification ?cpv ;
     obeu-dimension:organization ?payer ;
     obeu-dimension:partner ?payee ;
-    obeu-dimension:date ?dateUri .
+    obeu-dimension:date ?dateUri ;
+    example:paymentCategory ?paymentCategoryUri .
 
   ?cpv skos:notation ?cpvCode .
+  ?paymentCategoryUri skos:notation ?paymentCategory .
 }
 WHERE {
   ?payment a psnet:Payment ;
@@ -28,9 +32,17 @@ WHERE {
      psnet:payer ?payer ;
      psnet:payee ?payee ;
      psnet:cpv ?cpv ;
-     psnet:date ?date .
+     psnet:date ?date ;
+     psnet:paymentCategory ?paymentCategory .
 
   ?cpv psnet:cpvCode ?cpvCode .       
     
   BIND(URI(CONCAT("http://reference.data.gov.uk/id/gregorian-day/", ?date)) AS ?dateUri) 
+  BIND(URI(CONCAT("http://example.openbudgets.eu/paymentCategory/", ?paymentCategory)) AS ?paymentCategoryUri)
+   
+};
+
+#Creation of additional properties
+INSERT DATA {
+  example:paymentCategory rdfs:subPropertyOf obeu-dimension:classification .
 }

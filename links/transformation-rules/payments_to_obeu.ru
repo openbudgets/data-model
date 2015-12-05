@@ -9,7 +9,8 @@ PREFIX owl:            <http://www.w3.org/2002/07/owl#>
 PREFIX pay:            <http://reference.data.gov.uk/def/payment#>
 PREFIX qb:             <http://purl.org/linked-data/cube#>
 PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX time:           <http://www.w3.org/2006/time#>
+PREFIX time:           <http://www.w3.org/2006/time#>            
+PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
 
 PREFIX example:        <http://example.openbudgets.eu/vocabulary/>
 
@@ -19,8 +20,9 @@ INSERT {
     obeu-attribute:taxesIncluded false ;
     obeu-dimension:date ?date ;
     obeu-attribute:currency obeu-currency:GBP ;
-    obeu-dimension:expenditureCategory ?category ;
-    obeu-dimension:procurementCategory ?procurementCategory ;
+    example:expenditureCategory ?category ;
+    example:procurementCategory ?procurementCategory ;  
+    example:expenditureCode ?expenditureCodeUri ;    
     obeu-dimension:administrativeClassification ?unit ;
     obeu-dimension:organization ?payer ;
     obeu-dimension:partner ?payee ;
@@ -31,18 +33,22 @@ INSERT {
     obeu-attribute:taxesIncluded true ;
     obeu-dimension:date ?date ;
     obeu-attribute:currency obeu-currency:GBP ;
-    obeu-dimension:expenditureCategory ?category ;
-    obeu-dimension:procurementCategory ?procurementCategory ;
+    example:expenditureCategory ?category ;
+    example:procurementCategory ?procurementCategory ;
+    example:expenditureCode ?expenditureCodeUri ;
     obeu-dimension:administrativeClassification ?unit ;
     obeu-dimension:organization ?payer ;
     obeu-dimension:partner ?payee ;
     obeu-dimension:operationCharacter obeu-operation:expenditure .
+    
+  ?expenditureCodeUri skos:notation ?expenditureCode .
 }
 WHERE {
   [] pay:netAmount ?netAmount ;
     pay:grossAmount ?grossAmount ;
     pay:netAmount ?netAmount ;
     pay:expenditureCategory ?category ;
+    pay:expenditureCode ?expenditureCode ;
     pay:payment ?payment .
 
   ?payment pay:unit ?unit ;
@@ -52,6 +58,8 @@ WHERE {
     pay:purchase ?purchase .
 
   ?purchase pay:procurementCategory ?procurementCategory .
+  
+  BIND(URI(CONCAT("http://example.openbudgets.eu/expenditureCode/", ?expenditureCode)) AS ?expenditureCodeUri)
 };
 
 # The examples of Payments documentation seem to be contradictory with available DSD
@@ -62,7 +70,8 @@ INSERT DATA {
   example:expenditureCategory rdfs:subPropertyOf obeu-dimension:classification,
     pay:expenditureCategory .
   example:procurementCategory rdfs:subPropertyOf obeu-dimension:functionalClassification,
-    pay:procurementCategory .
+    pay:procurementCategory .  
+  example:expenditureCode rdfs:subPropertyOf obeu-dimension:classification .
 };
 
 # Currency is not specified, expecting GBP since it is gov.uk vocabulary:
