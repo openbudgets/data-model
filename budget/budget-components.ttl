@@ -21,7 +21,8 @@
 obeu-dimension:budgetaryUnit a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "budgetary unit"@en ;
   rdfs:comment "An economic entity that is capable, in its own right, of owning assets, incurring liabilities, and engaging in economic activities and in transactions with other entities."@en ;
-  rdfs:range org:Organization .
+  rdfs:range org:Organization ;
+  qb:concept sdmx-concept:statUnit .
   
 obeu-dimension:fiscalPeriod a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "fiscal period"@en ;

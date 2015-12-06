@@ -21,12 +21,14 @@
 obeu-dimension:organization a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
   rdfs:label "organization"@en ;
   rdfs:comment "The entity which made the payment or collected revenue."@en ;
-  rdfs:range org:Organization .
+  rdfs:range org:Organization ;
+  qb:concept sdmx-concept:statUnit .
 
 obeu-dimension:partner a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
   rdfs:label "partner"@en ;
   rdfs:comment "The entity to which the payment was made or from which the revenue was collected."@en ;
-  rdfs:range org:Organization .
+  rdfs:range org:Organization ;
+  qb:concept sdmx-concept:statUnit .
 
 obeu-dimension:date a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "date"@en ;

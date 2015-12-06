@@ -153,3 +153,12 @@ obeu-attribute:currency rdfs:subPropertyOf dbo:currency .
 #####################
 
 obeu-attribute:location qb:concept sdmx-concept:refArea .
+obeu-attribute:currency qb:concept sdmx-concept:currency .
+obeu-dimension:fiscalPeriod qb:concept sdmx-concept:refPeriod .
+obeu-dimension:fiscalYear qb:concept sdmx-concept:refPeriod .
+obeu-dimension:date qb:concept sdmx-concept:refPeriod .
+obeu-dimension:currency qb:concept sdmx-concept:currency .
+obeu-dimension:budgetaryUnit qb:concept sdmx-concept:statUnit .
+obeu-dimension:organization qb:concept sdmx-concept:statUnit .
+obeu-dimension:partner qb:concept sdmx-concept:statUnit .
+obeu-measure:amount qb:concept sdmx-concept:obsValue .
