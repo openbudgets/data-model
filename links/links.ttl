@@ -156,3 +156,12 @@ obeu-dimension:budgetaryUnit qb:concept sdmx-concept:statUnit .
 obeu-dimension:organization qb:concept sdmx-concept:statUnit .
 obeu-dimension:partner qb:concept sdmx-concept:statUnit .
 obeu-measure:amount qb:concept sdmx-concept:obsValue .
+
+###############################
+### Links to LinkedSpending ###
+###############################
+
+@prefix ls:             <http://linkedspending.aksw.org/ontology/> .
+
+ls:refDate owl:equivalentProperty obeu-dimension:date . 
+ls:refYear qb:concept sdmx-concept:refPeriod .
