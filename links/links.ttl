@@ -51,9 +51,8 @@ psnet:cpv rdfs:subPropertyOf obeu-dimension:functionalClassification .
 
 psnet:paymentAmount rdfs:subPropertyOf obeu-measure:amount .
 
-#psnet:paymentCategory rdfs:subPropertyOf obeu-dimension:classification/skos:notation .
-#psnet:paymentCategory is defined as data property, but its values are blank nodes without any further description
-#therefore better not to link it at all
+# psnet:paymentCategory is defined as data property, but its values are blank nodes without
+# any further description (psnet:paymentCategory corresponds to obeu-dimension:classification/skos:notation).
 
 #############################################################
 ### Links to MFČR (http://opendata.vse.cz/mfcr/vocab.ttl) ###
