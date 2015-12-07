@@ -30,7 +30,7 @@ pay:payer rdfs:subPropertyOf obeu-dimension:organization .
 
 pay:procurementCategory rdfs:subPropertyOf obeu-dimension:functionalClassification .
 
-pay:unit rdfs:subPropertyOf obeu-dimension:organization .
+pay:unit rdfs:subPropertyOf obeu-dimension:administrativeClassification .
 
 ############################################
 ### Links to publicspending.net/ontology ###
