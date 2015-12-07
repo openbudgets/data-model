@@ -14,11 +14,11 @@
 ### Links to the Payments Ontology ###
 ######################################
 
-obeu:contract owl:equivalentProperty pay:contract .
+pay:contract owl:equivalentProperty obeu:contract .
 
-obeu-attribute:currency owl:equivalentProperty pay:currency .
+pay:currency owl:equivalentProperty obeu-attribute:currency .
 
-obeu-dimension:date owl:equivalentProperty pay:date .
+pay:date owl:equivalentProperty obeu-dimension:date .
 
 pay:expenditureCategory rdfs:subPropertyOf obeu-dimension:operationCharacter .
 
