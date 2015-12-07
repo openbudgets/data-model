@@ -20,7 +20,7 @@ obeu-attribute:currency owl:equivalentProperty pay:currency .
 
 obeu-dimension:date owl:equivalentProperty pay:date .
 
-pay:expenditure-category rdfs:subPropertyOf obeu-dimension:classification .
+pay:expenditureCategory rdfs:subPropertyOf obeu-dimension:operationCharacter .
 
 pay:invoice rdfs:subPropertyOf obeu-dimension:accountingRecord .
 
@@ -30,7 +30,7 @@ pay:payee rdfs:subPropertyOf obeu-dimension:partner .
 
 pay:payer rdfs:subPropertyOf obeu-dimension:organization .
 
-pay:procurementCategory rdfs:subPropertyOf obeu-dimension:classification .
+pay:procurementCategory rdfs:subPropertyOf obeu-dimension:functionalClassification .
 
 pay:unit rdfs:subPropertyOf obeu-dimension:organization .
 
