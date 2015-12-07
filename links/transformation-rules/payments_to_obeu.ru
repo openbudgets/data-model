@@ -1,86 +1,45 @@
 PREFIX obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/>
-PREFIX obeu-currency:  <http://data.openbudgets.eu/resource/codelist/currency/>
 PREFIX obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/>
 PREFIX obeu-measure:   <http://data.openbudgets.eu/ontology/dsd/measure/>
-PREFIX obeu-operation: <http://data.openbudgets.eu/resource/codelist/operation-character/>
 PREFIX obeu:           <http://data.openbudgets.eu/ontology/>
-PREFIX org:            <http://www.w3.org/ns/org#>
-PREFIX owl:            <http://www.w3.org/2002/07/owl#>
 PREFIX pay:            <http://reference.data.gov.uk/def/payment#>
 PREFIX qb:             <http://purl.org/linked-data/cube#>
-PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX time:           <http://www.w3.org/2006/time#>            
-PREFIX skos:           <http://www.w3.org/2004/02/skos/core#>
-
-PREFIX example:        <http://example.openbudgets.eu/vocabulary/>
 
 INSERT {
-  [] a qb:Observation ;
-    obeu-measure:amount ?netAmount ;
-    obeu-attribute:taxesIncluded false ;
-    obeu-dimension:date ?date ;
-    obeu-attribute:currency obeu-currency:GBP ;
-    example:expenditureCategory ?category ;
-    example:procurementCategory ?procurementCategory ;  
-    example:expenditureCode ?expenditureCodeUri ;    
-    obeu-dimension:administrativeClassification ?unit ;
-    obeu-dimension:organization ?payer ;
-    obeu-dimension:partner ?payee ;
-    obeu-dimension:operationCharacter obeu-operation:expenditure .
-
- [] a qb:Observation ;
-    obeu-measure:amount ?grossAmount ;
-    obeu-attribute:taxesIncluded true ;
-    obeu-dimension:date ?date ;
-    obeu-attribute:currency obeu-currency:GBP ;
-    example:expenditureCategory ?category ;
-    example:procurementCategory ?procurementCategory ;
-    example:expenditureCode ?expenditureCodeUri ;
-    obeu-dimension:administrativeClassification ?unit ;
-    obeu-dimension:organization ?payer ;
-    obeu-dimension:partner ?payee ;
-    obeu-dimension:operationCharacter obeu-operation:expenditure .
-    
-  ?expenditureCodeUri skos:notation ?expenditureCode .
+  ?observation a qb:Observation ;
+    obeu-measure:amount ?amount ;
+    obeu-attribute:taxesIncluded ?taxesIncluded ;
+    ?obeuDimension ?dimensionValue ;
+    ?obeuAttribute ?attributeValue ;
+    ?obeuProperty ?propertyValue .
 }
 WHERE {
-  [] pay:netAmount ?netAmount ;
-    pay:grossAmount ?grossAmount ;
-    pay:netAmount ?netAmount ;
-    pay:expenditureCategory ?category ;
-    pay:expenditureCode ?expenditureCode ;
-    pay:payment ?payment .
+  # Measures
+  VALUES (?amountProperty ?taxesIncluded) {
+         (pay:grossAmount true)
+         (pay:netAmount   false)
+  }
+  # Attributes
+  VALUES (?payAttribute ?obeuAttribute) {
+         (pay:currency  obeu-attribute:currency)
+  }
+  # Dimensions
+  VALUES (?payDimension           ?obeuDimension) {
+         (pay:date                obeu-dimension:date)
+         (pay:expenditureCategory obeu-dimension:operationCharacter)
+         (pay:payee               obeu-dimension:partner)
+         (pay:payer               obeu-dimension:organization)
+         (pay:procurementCategory obeu-dimension:functionalClassification)
+  }
+  # Other properties
+  VALUES (?payProperty ?obeuProperty) {
+         (pay:contract obeu:contract)
+         (pay:invoice  obeu-dimension:accountingRecord)
+         (pay:unit     obeu-dimension:administrativeClassification)
+  }
 
-  ?payment pay:unit ?unit ;
-    pay:payee ?payee ;
-    pay:payer ?payer ;
-    pay:date ?date ;
-    pay:purchase ?purchase .
-
-  ?purchase pay:procurementCategory ?procurementCategory .
-  
-  BIND(URI(CONCAT("http://example.openbudgets.eu/expenditureCode/", ?expenditureCode)) AS ?expenditureCodeUri)
-};
-
-# The examples of Payments documentation seem to be contradictory with available DSD
-# The query is designed according to the examples at https://data.gov.uk/resources/payments
-
-# Creation of additional properties
-INSERT DATA {
-  example:expenditureCategory rdfs:subPropertyOf obeu-dimension:classification,
-    pay:expenditureCategory .
-  example:procurementCategory rdfs:subPropertyOf obeu-dimension:functionalClassification,
-    pay:procurementCategory .  
-  example:expenditureCode rdfs:subPropertyOf obeu-dimension:classification .
-};
-
-# Currency is not specified, expecting GBP since it is gov.uk vocabulary:
-INSERT DATA {
-  obeu-currency:GBP a skos:Concept ;
-    skos:prefLabel "Pound sterling"@en ;
-    skos:notation "GBP" ;
-    dbp:isoCode "GBP" ;
-    owl:sameAs <http://dbpedia.org/resource/GBP> ;
-    skos:topConceptOf obeu-codelist:currency ;
-    skos:inScheme obeu-codelist:currency .
+  ?observation ?amountProperty ?amount ;
+    ?payDimension ?dimensionValue .
+  OPTIONAL { ?observation ?payAttribute ?attributeValue . }
+  OPTIONAL { ?observation ?payProperty ?propertyValue . }
 }
