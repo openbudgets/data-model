@@ -22,13 +22,7 @@ obeu-dimension:date owl:equivalentProperty pay:date .
 
 pay:expenditure-category rdfs:subPropertyOf obeu-dimension:classification .
 
-# pay:expenditureCode => obeu-dimension:classification/skos:notation
-
-# pay:grossAmount => [obeu-attribute:taxesIncluded = false]/obeu-measure:amount
-
 pay:invoice rdfs:subPropertyOf obeu-dimension:accountingRecord .
-
-# pay:netAmount => [obeu-attribute:taxesIncluded = true]/obeu-measure:amount
 
 pay:order rdfs:subPropertyOf obeu-dimension:accountingRecord .
 
