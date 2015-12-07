@@ -24,8 +24,6 @@ pay:expenditureCategory rdfs:subPropertyOf obeu-dimension:operationCharacter .
 
 pay:invoice rdfs:subPropertyOf obeu-dimension:accountingRecord .
 
-pay:order rdfs:subPropertyOf obeu-dimension:accountingRecord .
-
 pay:payee rdfs:subPropertyOf obeu-dimension:partner .
 
 pay:payer rdfs:subPropertyOf obeu-dimension:organization .
