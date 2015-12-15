@@ -1,6 +1,11 @@
+//description of how to create a FDP datapackage json descriptor from a RDF OBEU spending dataset
+//covers all OBEU spending properties - omit those unused in a specific dataset
+//expressions in "{ }" suggest how to retrieve the value from a given dataset in a SPARQL-like syntax
+//more complex description on how to implement the OBEU-to-FDP conversion are in // comments 
 {
-  "name": "{local_part_of_iri(?dsd)}", //{?dsd a qb:DataSet .}
-  "title": "?dsd rdfs:label ?title",
+  //local_part_of_iri is a made-up function returning substring after the last / or # from IRI
+  "name": "{local_part_of_iri(?dataset)}", //{?dataset a qb:DataSet .}
+  "title": "?dataset rdfs:label ?title",
   "license": "cc-by 3.0",
   "profiles": {
     "fiscal": "*",
@@ -79,7 +84,7 @@
           {
             "fields": "organization_id",
             "reference": {
-                "datapackage": "{local_part_of_iri(?dsd)}",
+                "datapackage": "{local_part_of_iri(?dataset)}",
                 "resource": "entitiesFile",
                 "fields": "id" 
             }
@@ -87,7 +92,7 @@
           {
             "fields": "partner_id",
             "reference": {
-                "datapackage": "{local_part_of_iri(?dsd)}",
+                "datapackage": "{local_part_of_iri(?dataset)}",
                 "resource": "entitiesFile",
                 "fields": "id" 
             }
@@ -95,7 +100,7 @@
           {
             "fields": "project_id",
             "reference": {
-                "datapackage": "{local_part_of_iri(?dsd)}",
+                "datapackage": "{local_part_of_iri(?dataset)}",
                 "resource": "projectsFile",
                 "fields": "id" 
             }
@@ -104,7 +109,7 @@
           {
             "fields": "{concat(local_part_of_iri(?programmeClassification),'_id'}",
             "reference": {
-                "datapackage": "{local_part_of_iri(?dsd)}",
+                "datapackage": "{local_part_of_iri(?dataset)}",
                 "resource": "programmesFile",
                 "fields": "id" 
             }
@@ -113,7 +118,7 @@
           {
             "fields": "{concat(local_part_of_iri(?economicClassification),'_id'}",
             "reference": {
-                "datapackage": "{local_part_of_iri(?dsd)}",
+                "datapackage": "{local_part_of_iri(?dataset)}",
                 "resource": "economicConceptsFile",
                 "fields": "id" 
             }
@@ -122,7 +127,7 @@
           {
             "fields": "{concat(local_part_of_iri(?administrativeClassification),'_id'}",
             "reference": {
-                "datapackage": "{local_part_of_iri(?dsd)}",
+                "datapackage": "{local_part_of_iri(?dataset)}",
                 "resource": "administrativeConceptsFile",
                 "fields": "id" 
             }
@@ -130,7 +135,7 @@
           {
             "fields": "location_id",
             "reference": {
-                "datapackage": "{local_part_of_iri(?dsd)}",
+                "datapackage": "{local_part_of_iri(?dataset)}",
                 "resource": "locationsFile",
                 "fields": "id" 
             }
