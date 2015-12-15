@@ -1,5 +1,5 @@
 {
-  "name": "{local_part_of_iri(?dsd)}",
+  "name": "{local_part_of_iri(?dsd)}", //{?dsd a qb:DataSet .}
   "title": "?dsd rdfs:label ?title",
   "license": "cc-by 3.0",
   "profiles": {
@@ -42,11 +42,6 @@
             "format": "uri"
           },
           {
-            "name": "currency_id",
-            "type": "string",
-            "format": "uri"
-          },
-          {
             "name": "taxesIncluded",
             "type": "boolean"
           }, 
@@ -78,7 +73,69 @@
             "type": "string",
             "format": "uri" 
           }
-        }
+         ]         
+        },
+        "foreignKeys": [            
+          {
+            "fields": "organization_id",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dsd)}",
+                "resource": "entitiesFile",
+                "fields": "id" 
+            }
+          },
+          {
+            "fields": "partner_id",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dsd)}",
+                "resource": "entitiesFile",
+                "fields": "id" 
+            }
+          },
+          {
+            "fields": "project_id",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dsd)}",
+                "resource": "projectsFile",
+                "fields": "id" 
+            }
+          },
+          //for each ?programmeClassification as a subproperty of obeu-dimension:programmeClassification:
+          {
+            "fields": "{concat(local_part_of_iri(?programmeClassification),'_id'}",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dsd)}",
+                "resource": "programmesFile",
+                "fields": "id" 
+            }
+          },
+          //for each ?economicClassification as a subproperty of obeu-dimension:economicClassification
+          {
+            "fields": "{concat(local_part_of_iri(?economicClassification),'_id'}",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dsd)}",
+                "resource": "economicConceptsFile",
+                "fields": "id" 
+            }
+          },
+          //for each ?administrativeClassification as a subproperty of obeu-dimension:economicClassification
+          {
+            "fields": "{concat(local_part_of_iri(?administrativeClassification),'_id'}",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dsd)}",
+                "resource": "administrativeConceptsFile",
+                "fields": "id" 
+            }
+          },
+          {
+            "fields": "location_id",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dsd)}",
+                "resource": "locationsFile",
+                "fields": "id" 
+            }
+          }
+        ]
       },
       {
         "name": "entitiesFile",
@@ -97,6 +154,27 @@
           ]
         }            
       },
+      {
+        "name": "projectsFile",
+        "path": "projectsFile.csv",
+        "schema": {
+          "fields": [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri" 
+            },
+            {
+              "name": "label",
+              "type": "string"            
+            },
+            {
+              "name": "adms_id",
+              "type": "string"            
+            }
+          ]
+        }
+      }
       {
         "name": "programmesFile",
         "path": "programmesFile.csv",
@@ -267,16 +345,6 @@
           "primaryKey": "project_id",
           "dimensionType": "activity"
        },
-       "currency": {
-         "attributes": {
-          "currency_id": {
-            "source": "currency_id",
-            "resource": "observationsFile"
-            }
-          }
-          "primaryKey": "currency_id",
-          "dimensionType": "other"
-        },
         "taxesIncluded": {
           "attributes": {
             "source": "taxesIncluded",
