@@ -2,7 +2,6 @@
 
 @prefix eu-attribute:     <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/attribute/> .
 @prefix eu-dimension:     <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/dimension/> .
-@prefix eu-measure:       <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/measure/> .
 @prefix eu-codelist:      <http://example.openbudgets.eu/resource/eu-budget-2014/codelist/> .
 @prefix eu-operation:     <http://example.openbudgets.eu/resource/eu-budget-2014/codelist/operation-character/> .
 
