@@ -1,0 +1,456 @@
+//description of how to create a FDP datapackage json descriptor from a RDF OBEU spending dataset
+//covers all OBEU spending properties - omit those unused in a specific dataset
+//expressions in "{ }" suggest how to retrieve the value from a given dataset in a SPARQL-like syntax
+//more complex description on how to implement the OBEU-to-FDP conversion are in // comments 
+{
+  //local_part_of_iri is a made-up function returning substring after the last / or # from IRI
+  "name": "{local_part_of_iri(?dataset)}", //{?dataset a qb:DataSet .}
+  "title": "?dataset rdfs:label ?title",
+  "license": "cc-by 3.0",
+  "profiles": {
+    "fiscal": "*",
+    "tabular": "*"
+  },
+  //"granularity": "transaction" if obeu-dimension:date used on observations, "aggregated" if obeu-dimension:fiscalPeriod or its subproperty is used on observations
+  "fiscalPeriod": {
+    "start": //oldest date in the dataset: extract date part from oldest ?date in ?observation (any subproperty of)sdmx-dimension:refPeriod [time:hasBeginning [time:inXSDDateTime ?date]]
+    "end": //newest date in the dataset: extract date part from newest ?date in ?observation (any subproperty of)sdmx-dimension:refPeriod [time:hasEnd [time:inXSDDateTime ?date]]
+  }, 
+  "resources": [
+    {
+      "name": "observationsFile",
+      "path": "observationsFile.csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "organization_id",
+            "type": "string",
+            "format": "uri"
+          },
+          {
+            "name": "partner_id",
+            "type": "string",
+            "format": "uri"
+          },
+          {
+            "name": "date",
+            "type": "datetime"
+          },
+          {
+            "name": "budgetLine",
+            "type": "string",
+            "format": "uri"
+          },
+          {
+            "name": "project_id",
+            "type": "string",
+            "format": "uri"
+          },
+          {
+            "name": "taxesIncluded",
+            "type": "boolean"
+          }, 
+          //for each ?programmeClassification as a subproperty of obeu-dimension:programmeClassification:        
+          {
+            "name": "{concat(local_part_of_iri(?programmeClassification),'_id'}",
+            "type": "string",
+            "format": "uri"            
+          },
+          //for each ?economicClassification as a subproperty of obeu-dimension:economicClassification
+          {
+            "name": "{concat(local_part_of_iri(?economicClassification),'_id'}",
+            "type": "string",
+            "format": "uri"            
+          },
+          //for each ?administrativeClassification as a subproperty of obeu-dimension:economicClassification
+          {
+            "name": "{concat(local_part_of_iri(?administrativeClassification),'_id'}",
+            "type": "string",
+            "format": "uri"            
+          },
+          {
+            "name": "accountingRecord_id",
+            "type": "string",
+            "format": "uri" 
+          },
+          {
+            "name": "location_id",
+            "type": "string",
+            "format": "uri" 
+          }
+         ]         
+        },
+        "foreignKeys": [            
+          {
+            "fields": "organization_id",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dataset)}",
+                "resource": "entitiesFile",
+                "fields": "id" 
+            }
+          },
+          {
+            "fields": "partner_id",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dataset)}",
+                "resource": "entitiesFile",
+                "fields": "id" 
+            }
+          },
+          {
+            "fields": "project_id",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dataset)}",
+                "resource": "projectsFile",
+                "fields": "id" 
+            }
+          },
+          //for each ?programmeClassification as a subproperty of obeu-dimension:programmeClassification:
+          {
+            "fields": "{concat(local_part_of_iri(?programmeClassification),'_id'}",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dataset)}",
+                "resource": "programmesFile",
+                "fields": "id" 
+            }
+          },
+          //for each ?economicClassification as a subproperty of obeu-dimension:economicClassification
+          {
+            "fields": "{concat(local_part_of_iri(?economicClassification),'_id'}",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dataset)}",
+                "resource": "economicConceptsFile",
+                "fields": "id" 
+            }
+          },
+          //for each ?administrativeClassification as a subproperty of obeu-dimension:economicClassification
+          {
+            "fields": "{concat(local_part_of_iri(?administrativeClassification),'_id'}",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dataset)}",
+                "resource": "administrativeConceptsFile",
+                "fields": "id" 
+            }
+          },
+          {
+            "fields": "location_id",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dataset)}",
+                "resource": "locationsFile",
+                "fields": "id" 
+            }
+          }
+        ]
+      },
+      {
+        "name": "entitiesFile",
+        "path": "entitiesFile.csv",
+        "schema": {
+          "fields": [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri" 
+            },
+            {
+              "name": "label",
+              "type": "string"            
+            }            
+          ]
+        }            
+      },
+      {
+        "name": "projectsFile",
+        "path": "projectsFile.csv",
+        "schema": {
+          "fields": [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri" 
+            },
+            {
+              "name": "label",
+              "type": "string"            
+            },
+            {
+              "name": "adms_id",
+              "type": "string"            
+            }
+          ]
+        }
+      }
+      {
+        "name": "programmesFile",
+        "path": "programmesFile.csv",
+        "schema" {
+          "fields" [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri" 
+            },
+            {
+              "name": "skosPrefLabel",
+              "type": "string"
+            },
+            {
+              "name": "skosNotation",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      {
+        "name": "economicConceptsFile",
+        "path": "economicConceptsFile.csv",
+        "schema" {
+          "fields" [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri" 
+            },
+            {
+              "name": "skosPrefLabel",
+              "type": "string"
+            },
+            {
+              "name": "skosNotation",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      {
+        "name": "administrativeConceptsFile",
+        "path": "administrativeConceptsFile.csv",
+        "schema" {
+          "fields" [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri" 
+            },
+            {
+              "name": "skosPrefLabel",
+              "type": "string"
+            },
+            {
+              "name": "skosNotation",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      {
+        "name": "locationsFile",
+        "path": "locationsFile.csv",
+        "schema" {
+          "fields" [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri" 
+            },
+            {
+              "name": "schemaName",
+              "type": "string"
+            },
+            {
+              "name": "schemaDescription",
+              "type": "string"
+            }
+          ]
+        }
+      }        
+    ],
+  
+  "mapping": {
+    
+    "measures": {
+      // for each measure ?measure in the dataset:
+      "{local_part_of_iri(?measure)}": {
+        "source": "{local_part_of_iri(?measure)}",
+        //datasets with different currencies in one measure have to be split by currency into separate datapackages
+        "currency": "{[] obeu-attribute:currency [skos:notation ?currency]; qb:measureType ?measure .}",
+        "resource": "observationsFile",
+        
+        //datasets with different operation characters in one measure have to be split by operation character; or this attribute might be omitted as it is optional
+        "direction": "{[] obeu-dimension:operationCharacter [skos:preferredLabel ?direction]}",
+        
+      }
+    },
+    
+    "dimensions": {
+       "organization": {
+          "attributes": {
+            "id": {
+              "source": "organization_id",
+              "resource": "observationsFile"              
+            },
+            "label" {
+              "source": "label",
+              "resource": "entitiesFile",
+              "labelfor": "organization_id"
+            }
+          }
+          "primaryKey":  "organization_id",
+          "dimensionType": "entity" //open an issue for this: no difference between payer and payee                                    
+       },
+       "partner": {
+          "attributes": {
+            "id": {
+              "source": "partner_id",
+              "resource": "observationsFile"              
+            },
+            "label" {
+              "source": "label",
+              "resource": "entitiesFile",
+              "labelfor": "partner_id"
+            }
+          }
+          "primaryKey":  "partner_id",
+          "dimensionType": "entity" //open an issue for this: no difference between payer and payee                                    
+       },
+       "date": {
+        "attributes": {
+           "date": {
+             "source": "date",
+             "resource": "observationsFile"
+           }
+           "primaryKey": "date",
+           "dimensionType": "date"
+        }
+       },
+       "budgetLine": {
+        "attributes": {
+          "budgetLine": {
+            "source": "budgetLine",
+            "resource": "observationsFile" 
+          }
+        }
+        "primaryKey": "budgetLine",
+        "dimensionType": "fact"
+       },
+       "project": {
+          "attributes": {
+            "project_id": {
+              "source": "project_id",
+              "resource": "observationsFile"
+            }
+            "project_label": {                  
+              "source": "project_label",
+              "resource": "projectsFile",
+              "labelfor": "project_id"
+            }
+            "project_adms_id": "project_adms_id",
+            "resource": "projectsFile"
+          },
+          "primaryKey": "project_id",
+          "dimensionType": "activity"
+       },
+        "taxesIncluded": {
+          "attributes": {
+            "source": "taxesIncluded",
+            "resource": "observationsFile"
+          },
+          "primaryKey": "taxesIncluded",
+          "dimensionType": "other"                 
+        },
+        //for each ?programmeClassification as a subproperty of obeu-dimension:programmeClassification
+        "{local_part_of_iri(?programmeClassification)}": {
+          "attributes": {
+             "{concat(local_part_of_iri(?programmeClassification),'_id'}": {
+               "source": "{concat(local_part_of_iri(?programmeClassification),'_',id}",
+               "resource": "observationsFile" 
+             },
+             "{concat(local_part_of_iri(?programmeClassification),'_skosPrefLabel'}": {
+               "source": "skosPrefLabel",
+               "resource": "programmesFile",
+               "labelfor": "{concat(local_part_of_iri(?programmeClassification),'_id'}" 
+             },    
+             "{concat(local_part_of_iri(?programmeClassification),'_skosNotation'}": {
+               "source": "skosNotation",
+               "resource": "programmesFile" 
+             }
+          },
+          "primaryKey": "{concat(local_part_of_iri(?programmeClassification),'_id'}",
+          "dimensionType": "activity"           
+        },
+        //for each ?economicClassification as a subproperty of obeu-dimension:economicClassification
+        "{local_part_of_iri(?economicClassification)}": {
+          "attributes": {
+             "{concat(local_part_of_iri(?economicClassification),'_id'}": {
+               "source": "{concat(local_part_of_iri(?economicClassification),'_',id}",
+               "resource": "observationsFile" 
+             },
+             "{concat(local_part_of_iri(?economicClassification),'_skosPrefLabel'}": {
+               "source": "{concat(local_part_of_iri(?economicClassification),'_skosPrefLabel'}",
+               "resource": "economicConceptsFile", 
+               "labelfor": "{concat(local_part_of_iri(?economicClassification),'_id'}" 
+             },    
+             "{concat(local_part_of_iri(?economicClassification),'_skosNotation'}": {
+               "source": "{concat(local_part_of_iri(?economicClassification),'_skosNotation'}",
+               "resource": "economicConceptsFile" 
+             }
+          },
+          "primaryKey": "{concat(local_part_of_iri(?economicClassification),'_id'}",
+          "dimensionType": "classification",
+          "classificationType": "economic"           
+        },                 
+        //for each ?administrativeClassification as a subproperty of obeu-dimension:economicClassification
+        "{local_part_of_iri(?administrativeClassification)}": {
+          "attributes": {
+             "{concat(local_part_of_iri(?administrativeClassification),'_id'}": {
+               "source": "{concat(local_part_of_iri(?administrativeClassification),'_',id}",
+               "resource": "observationsFile" 
+             },
+             "{concat(local_part_of_iri(?administrativeClassification),'_skosPrefLabel'}": {
+               "source": "{concat(local_part_of_iri(?administrativeClassification),'_skosPrefLabel'}",
+               "resource": "administrativeConceptsFile",
+              "labelfor": "{concat(local_part_of_iri(?administrativeClassification),'_id'}" 
+             },    
+             "{concat(local_part_of_iri(?administrativeClassification),'_skosNotation'}": {
+               "source": "{concat(local_part_of_iri(?administrativeClassification),'_skosNotation'}",
+               "resource": "administrativeConceptsFile" 
+             }
+          },
+          "primaryKey": "{concat(local_part_of_iri(?administrativeClassification),'_id'}",
+          "dimensionType": "classification",
+          "classificationType": "administrative"           
+        },
+        "accountingRecord": {
+          "attributes": {
+            "accountingRecord_id": {
+              "source": "accountingRecord_id",
+              "resource": "observationsFile"
+            }
+            "primaryKey": "accountingRecord_id",
+            "dimensionType": "fact"
+          }
+        },
+        "location": {
+          "attributes": {
+            "location_id": {
+              "source": "location_id",
+              "resource": "observationsFile"
+            },
+            "location_name" {
+              "source": "schemaName",
+              "resource": "locationsFile",
+              "labelfor": "location_id"
+            },
+            "location_description" {
+              "source": "schemaDescription",
+              "resource": "locationsFile",
+              "labelfor": "location_id"
+            }
+            "primaryKey": "location_id",
+            "dimensionType": "location" 
+          }
+        }                
+    }
+  }
+  
+}
