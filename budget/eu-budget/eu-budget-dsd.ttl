@@ -1,9 +1,9 @@
 # ----- DSD-specific namespaces -----
 
-@prefix eu-attribute:     <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/attribute/> .
-@prefix eu-dimension:     <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/dimension/> .
-@prefix eu-codelist:      <http://example.openbudgets.eu/resource/eu-budget-2014/codelist/> .
-@prefix eu-operation:     <http://example.openbudgets.eu/resource/eu-budget-2014/codelist/operation-character/> .
+@prefix eu-attribute:     <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014/attribute/> .
+@prefix eu-dimension:     <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014/dimension/> .
+@prefix eu-codelist:      <http://data.openbudgets.eu/resource/eu-budget-2014/codelist/> .
+@prefix eu-operation:     <http://data.openbudgets.eu/resource/eu-budget-2014/codelist/operation-character/> .
 
 # ----- OpenBudgets.eu namespaces -----
 
@@ -23,7 +23,7 @@
 
 # ----- DSD -----
 
-<http://example.openbudgets.eu/ontology/dsd/eu-budget-2014> a qb:DataStructureDefinition ;
+<http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> a qb:DataStructureDefinition ;
   rdfs:label "Data structure definition for the budget of the European Union of the year 2014"@en ;
   qb:component [ qb:dimension obeu-dimension:budgetaryUnit ;
                  qb:componentAttachment qb:DataSet ],
@@ -46,14 +46,14 @@ eu-dimension:budgetNomenclature a rdf:Property, qb:CodedProperty, qb:DimensionPr
   rdfs:comment "Concepts in the EU’s Activity-Based Budgeting nomenclature are hierarchically organized into sections, chapters, articles, items, and sub-items. Each concept may have a supplementary editorial and legal notes."@en ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   qb:codeList eu-codelist:budget-nomenclature-2014 ;
-  rdfs:isDefinedBy <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014> . 
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> . 
 
 eu-dimension:catpol a rdf:Property, qb:CodedProperty, qb:DimensionProperty ;
   rdfs:label "MFF/CATPOL heading"@en ;
   rdfs:comment "Multiannual Financial Framework Political Category classification of a budget line."@en ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   qb:codeList eu-codelist:catpol ;
-  rdfs:isDefinedBy <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014> . 
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> . 
 
 eu-dimension:operationCharacter a rdf:Property, qb:CodedProperty, qb:DimensionProperty ;
   rdfs:label "Operation character"@en ;
@@ -61,13 +61,13 @@ eu-dimension:operationCharacter a rdf:Property, qb:CodedProperty, qb:DimensionPr
   rdfs:subPropertyOf obeu-dimension:operationCharacter ;
   qb:codeList eu-codelist:operation-character ;
   rdfs:range obeu:OperationCharacter ;
-  rdfs:isDefinedBy <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014> .
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
 
 eu-attribute:reserve a rdf:Property, qb:AttributeProperty ;
   rdfs:label "Reserve"@en ;
   rdfs:comment "Reserves set aside for the budget line. They are not allocated to any precise purpose, i.e., there is no basic act for the action when the budget is established or there are doubts about the adequacy of the appropriation; they may be used only after approved transfer. Currency of the reserve is the same as of the budget line's amount"@en ; 
   rdfs:range xsd:decimal ;
-  rdfs:isDefinedBy <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014> .
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
 
 # ----- Code lists -----
 
