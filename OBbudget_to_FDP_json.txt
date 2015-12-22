@@ -143,11 +143,25 @@
                 "fields": "id" 
             }
           },
+          //(end foreach)
           {
             "fields": "location_id",
             "reference": {
                 "datapackage": "{local_part_of_iri(?dataset)}",
                 "resource": "locationsFile",
+                "fields": "id" 
+            }
+          }
+          //for each of remaining custom dimension as ?customDimension
+          //WHERE {?someObservation ?customDimension [skos:prefLabel ?something; skos:notation ?somethingElse]}
+          // (at least one of skos:notation or skos:prefLabel)
+          //BIND(local_part_of_iri(?customDimension) as ?customDimensionName)
+          //BIND(concat(?customDimensionName, "File") as ?customDimensionFile)
+          ,{
+            "fields": "{concat(?customDimensionName,'_id'}",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dataset)}",
+                "resource": "{?customDimensionFile}",
                 "fields": "id" 
             }
           }
@@ -291,6 +305,28 @@
             },
             {
               "name": "schemaDescription",
+              "type": "string"
+            }
+          ]
+        }
+      }
+      //for each ?customDimensionFile
+      ,{
+        "name": "{?customDimensionFile}",
+        "path": "{?customDimensionFile}.csv",
+        "schema" {
+          "fields" [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri" 
+            },
+            {
+              "name": "skosPrefLabel",
+              "type": "string"
+            },
+            {
+              "name": "skosNotation",
               "type": "string"
             }
           ]
@@ -452,7 +488,38 @@
           "primaryKey": "{concat(local_part_of_iri(?administrativeClassification),'_id'}",
           "dimensionType": "classification",
           "classificationType": "administrative"           
-        }              
+        }
+        
+        //for each of remaining custom dimension as ?customDimension
+        //WHERE {?someObservation ?customDimension [skos:prefLabel ?something; skos:notation ?somethingElse]}
+        // (at least one of skos:notation or skos:prefLabel)
+        //BIND(local_part_of_iri(?customDimension) as ?customDimensionName)
+        //BIND(concat(?customDimensionName, "File") as ?customDimensionFile)
+        ,"{?customDimensionName}": {
+          "attributes": {
+             "{concat(?customDimensionName,'_id'}": {
+               "source": "{concat(local_part_of_iri(?administrativeClassification),'_',id}",
+               "resource": "observationsFile" 
+             },
+             "{concat(?customDimensionName,'_skosPrefLabel'}": {
+               "source": "{concat(?customDimensionName,'_skosPrefLabel'}",
+               "resource": "{?customDimensionFile}",
+              "labelfor": "{concat(?customDimensionName,'_id'}" 
+             },    
+             "{concat(?customDimensionName,'_skosNotation'}": {
+               "source": "{concat(?customDimensionName,'_skosNotation'}",
+               "resource": "{?customDimensionFile}" 
+             }
+          },
+          "primaryKey": "{concat(local_part_of_iri(?administrativeClassification),'_id'}",
+          "dimensionType": "classification",
+          "classificationType": "administrative"           
+        }
+        //for each custom attribute as ?attribute
+        //WHERE {?attribute a qb:AttributeProperty . 
+        //      ?someObservation ?attribute ?attrVal .
+        //      ?someObservation }
+        //TBD              
     }
   }
   
