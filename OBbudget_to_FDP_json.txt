@@ -5,7 +5,9 @@
 {
   //local_part_of_iri is a made-up function returning substring after the last / or # from IRI
   "name": "{local_part_of_iri(?dataset)}", //{?dataset a qb:DataSet .}
-  "title": "?dataset rdfs:label ?title",
+  //finding title: SELECT ?title WHERE {?dataset rdfs:label ?customTitle .
+  //                BIND(IF(BOUND(?customTitle), ?customTitle, local_part_of_iri(?dataset)) AS ?title)}
+  "title": "{?title}", 
   "license": "cc-by 3.0",
   "profiles": {
     "fiscal": "*",
@@ -15,8 +17,9 @@
   "granularity": //"transaction" if obeu-dimension:date used on observations, "aggregated" if obeu-dimension:fiscalPeriod or its subproperty is used on observations
   
   "fiscalPeriod": {
-    "start": //oldest date in the dataset: extract date part from oldest ?date in ?observation (any subproperty of)sdmx-dimension:refPeriod [time:hasBeginning [time:inXSDDateTime ?date]]
-    "end": //newest date in the dataset: extract date part from newest ?date in ?observation (any subproperty of)sdmx-dimension:refPeriod [time:hasEnd [time:inXSDDateTime ?date]]
+    "start": //oldest date in the dataset: extract date part from oldest ?date in 
+    //{?observation (any subproperty of)sdmx-dimension:refPeriod [time:hasBeginning [time:inXSDDateTime ?date]]} UNION {observation (any subproperty of)sdmx-dimension:refPeriod [time:intervalMetBy [time:hasBeginning [time:inXSDDateTime ?date]] }
+    "end": //newest date in the dataset: extract date part from newest ?date in {?observation (any subproperty of)sdmx-dimension:refPeriod [time:hasEnd [time:inXSDDateTime ?date]]} UNION {observation (any subproperty of)sdmx-dimension:refPeriod [time:intervalMetBy [time:hasEnd [time:inXSDDateTime ?date]] }
   }, 
   "resources": [
     {
@@ -137,14 +140,6 @@
                 "fields": "id" 
             }
           },
-          {
-            "fields": "project_id",
-            "reference": {
-                "datapackage": "{local_part_of_iri(?dataset)}",
-                "resource": "projectsFile",
-                "fields": "id" 
-            }
-          },
           //for each ?functionalClassification as a subproperty of obeu-dimension:functionalClassification:
           {
             "fields": "{concat(local_part_of_iri(?functionalClassification),'_id'}",
@@ -182,14 +177,8 @@
             }
           },
           //(end foreach)
-          {
-            "fields": "location_id",
-            "reference": {
-                "datapackage": "{local_part_of_iri(?dataset)}",
-                "resource": "locationsFile",
-                "fields": "id" 
-            }
-          }
+          
+          
           //for each of remaining custom dimension as ?customDimension
           //WHERE {?customDimension a qb:CodedProperty}
           //BIND(local_part_of_iri(?customDimension) as ?customDimensionName)
@@ -203,6 +192,7 @@
                 "fields": "id" 
             }
           }
+        ]
       },
       {
         //values for rows: SELECT ?id, ?label WHERE {
@@ -388,7 +378,8 @@
         "resource": "observationsFile",
         
         //datasets with different operation characters in one measure have to be split by operation character; or this attribute might be omitted as it is optional
-        "direction": "{[] obeu-dimension:operationCharacter [skos:preferredLabel ?direction]}",
+        //NOTE hard to deal with values other than expenditure/revenue
+        "direction": "{[] ?operationChar [skos:prefLabel ?direction] . ?operationChar rdfs:subPropertyOf obeu-dimension:operationCharacter .}",
         
         //datasets with different budgetPhases in one measure have to be split by the phase
         "phase": //use following mapping of values of obeu-dimension:budgetPhase
@@ -401,6 +392,7 @@
     },
     
     "dimensions": {
+      // omit dimensions that are not defined in the DSD
        "budgetaryUnit": {
           "attributes": {
             "id": {
@@ -414,7 +406,7 @@
             }
           }
           "primaryKey":  "organization_id",
-          "dimensionType": "entity" //open an issue for this: no difference between payer and payee                                    
+          "dimensionType": "entity" //NOTE open an issue for this: no difference between payer and payee                                    
        },
        "fiscalPeriod": {
         "attributes": {
@@ -539,7 +531,7 @@
         ,"{?customDimensionName}": {
           "attributes": {
              "{concat(?customDimensionName,'_id'}": {
-               "source": "{concat(local_part_of_iri(?administrativeClassification),'_',id}",
+               "source": "{concat(?customDimensionName,'_',id)}",
                "resource": "observationsFile" 
              },
              "{concat(?customDimensionName,'_skosPrefLabel'}": {
@@ -552,15 +544,14 @@
                "resource": "{?customDimensionFile}" 
              }
           },
-          "primaryKey": "{concat(local_part_of_iri(?administrativeClassification),'_id'}",
-          "dimensionType": "classification",
-          "classificationType": "administrative"           
+          "primaryKey": "{concat(?customDimensionName,'_id'}",
+          "dimensionType": "classification"     
         }
         
         //for each custom attribute as ?attribute
         //WHERE {?attribute a qb:AttributeProperty . 
         //      ?someObservation ?attribute ?attrVal .
-        //      FILTER(isLiteral(?someObservation)) } 
+        //      FILTER(isLiteral(?attrVal)) } 
         //BIND(local_part_of_iri(?attribute) as ?attributeName)
         ,"{?attributeName}": {
           "attributes": {
