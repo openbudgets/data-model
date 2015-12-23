@@ -24,75 +24,113 @@
       "path": "observationsFile.csv",
       "schema": {
         "fields": [
+          // for each measure ?measure in the dataset:
           {
-            "name": "organization_id",
+            "name": "{local_part_of_iri(?measure)}",
+            "type": "number",
+            "format": "currency"
+            //values: SELECT ?val WHERE {?observation ?measure ?val}
+          },
+          // end foreach
+          {
+            "name": "budgetaryUnit_id",
             "type": "string",
             "format": "uri"
+            //values: SELECT ?val WHERE {?observation obeu-dimension:budgetaryUnit ?val}
           },
           {
-            "name": "partner_id",
-            "type": "string",
-            "format": "uri"
-          },
+            "name": "fiscalPeriodStart",
+            "type": "date",
+            "format": "dateTime"
+            //values: SELECT ?val WHERE {?observation obeu-dimension:fiscalPeriod 
+            //                            [time:hasBeginning [time:inXSDDateTime ?val]]}
+          },      
           {
-            "name": "date",
-            "type": "datetime"
+            "name": "fiscalPeriodEnd",
+            "type": "date",
+            "format": "dateTime"
+            //values: SELECT ?val WHERE {?observation obeu-dimension:fiscalPeriod 
+            //                            [time:hasEnd [time:inXSDDateTime ?val]]}
+          },        
+          {
+            "name": "fiscalYear",
+            "type": "date",
+            "format": "dateTime"
+            //values: SELECT ?val WHERE {?observation obeu-dimension:fiscalPeriod 
+            //                            [time:hasBeginning [time:inDateTime [time:year ?val]]]}
           },
           {
             "name": "budgetLine",
             "type": "string",
-            "format": "uri"
-          },
-          {
-            "name": "project_id",
-            "type": "string",
-            "format": "uri"
+            "format": "uri"              
+            //values: SELECT ?val WHERE {?observation obeu-dimension:budgetLine ?val}
           },
           {
             "name": "taxesIncluded",
             "type": "boolean"
+            //values: SELECT ?val WHERE {?observation obeu-attribute:taxesIncluded ?val}
           }, 
           //for each ?programmeClassification as a subproperty of obeu-dimension:programmeClassification:        
           {
             "name": "{concat(local_part_of_iri(?programmeClassification),'_id'}",
             "type": "string",
-            "format": "uri"            
+            "format": "uri"           
+            //values: SELECT ?val WHERE {?observation ?programmeClassification ?val .
+            //                           ?programmeClassification rdfs:subPropertyOf obeu-dimension:programmeClassification .}
+            
           },
           //for each ?economicClassification as a subproperty of obeu-dimension:economicClassification
           {
             "name": "{concat(local_part_of_iri(?economicClassification),'_id'}",
             "type": "string",
-            "format": "uri"            
+            "format": "uri"         
+            //values: SELECT ?val WHERE {?observation ?economicClassification ?val .
+            //                           ?economicClassification rdfs:subPropertyOf obeu-dimension:economicClassification .}   
           },
-          //for each ?administrativeClassification as a subproperty of obeu-dimension:economicClassification
+          //for each ?administrativeClassification as a subproperty of obeu-dimension:administrativeClassification
           {
             "name": "{concat(local_part_of_iri(?administrativeClassification),'_id'}",
             "type": "string",
-            "format": "uri"            
-          },
+            "format": "uri"                                                            
+            //values: SELECT ?val WHERE {?observation ?administrativeClassification ?val .
+            //                           ?administrativeClassification rdfs:subPropertyOf obeu-dimension:administrativeClassification .} 
+          },  
+          //for each ?functionalClassification as a subproperty of obeu-dimension:functionalClassification
           {
-            "name": "accountingRecord_id",
+            "name": "{concat(local_part_of_iri(?functionalClassification),'_id'}",
             "type": "string",
-            "format": "uri" 
-          },
+            "format": "uri"                                                          
+            //values: SELECT ?val WHERE {?observation ?functionalClassification ?val .
+            //                           ?functionalClassification rdfs:subPropertyOf obeu-dimension:functionalClassification .}        
+          }
+          
+          //for each of remaining custom dimension as ?customDimension
+          //WHERE {?customDimension a qb:CodedProperty}
+          //BIND(local_part_of_iri(?customDimension) as ?customDimensionName)
+          //BIND(concat(?customDimensionName, "File") as ?customDimensionFile)
+          ,
           {
-            "name": "location_id",
+            "name": "{concat(?customDimensionName,'_id'}",
             "type": "string",
-            "format": "uri" 
+            "format": "uri"
+            //values: SELECT ?val WHERE {?observation ?customDimension ?val}
+          }
+          
+          //for each custom attribute as ?attribute
+          //WHERE {?attribute a qb:AttributeProperty . 
+          //      ?someObservation ?attribute ?attrVal .
+          //      FILTER(isLiteral(?someObservation)) } 
+          //BIND(local_part_of_iri(?attribute) as ?attributeName)
+          ,
+          {
+            "name": "{?attributeName}"
+            //values: SELECT ?val WHERE {?observation ?attribute ?val}
           }
          ]         
         },
         "foreignKeys": [            
           {
-            "fields": "organization_id",
-            "reference": {
-                "datapackage": "{local_part_of_iri(?dataset)}",
-                "resource": "entitiesFile",
-                "fields": "id" 
-            }
-          },
-          {
-            "fields": "partner_id",
+            "fields": "budgetaryUnit_id",
             "reference": {
                 "datapackage": "{local_part_of_iri(?dataset)}",
                 "resource": "entitiesFile",
@@ -153,11 +191,11 @@
             }
           }
           //for each of remaining custom dimension as ?customDimension
-          //WHERE {?someObservation ?customDimension [skos:prefLabel ?something; skos:notation ?somethingElse]}
-          // (at least one of skos:notation or skos:prefLabel)
+          //WHERE {?customDimension a qb:CodedProperty}
           //BIND(local_part_of_iri(?customDimension) as ?customDimensionName)
           //BIND(concat(?customDimensionName, "File") as ?customDimensionFile)
-          ,{
+          ,
+          {
             "fields": "{concat(?customDimensionName,'_id'}",
             "reference": {
                 "datapackage": "{local_part_of_iri(?dataset)}",
@@ -165,9 +203,12 @@
                 "fields": "id" 
             }
           }
-        ]
       },
       {
+        //values for rows: SELECT ?id, ?label WHERE {
+        //    ?observation obeu-dimension:budgetaryUnit ?id .
+        //     ?id rdfs:label ?label . 
+        //  }
         "name": "entitiesFile",
         "path": "entitiesFile.csv",
         "schema": {
@@ -176,36 +217,22 @@
               "name": "id",
               "type": "string",
               "format": "uri" 
+              //values: {?id}
             },
             {
               "name": "label",
-              "type": "string"            
+              "type": "string"
+              //values: {?label}            
             }            
           ]
         }            
       },
       {
-        "name": "projectsFile",
-        "path": "projectsFile.csv",
-        "schema": {
-          "fields": [
-            {
-              "name": "id",
-              "type": "string",
-              "format": "uri" 
-            },
-            {
-              "name": "label",
-              "type": "string"            
-            },
-            {
-              "name": "adms_id",
-              "type": "string"            
-            }
-          ]
-        }
-      },
-      {
+        //values for rows: SELECT ?id, ?label, ?notation WHERE {
+        //    {?observation obeu-dimension:functionalClassification ?id .
+        //     ?id skos:prefLabel ?label;
+        //         skos:notation ?notation . }
+        //  }
         "name": "functionsFile",
         "path": "functionsFile.csv",
         "schema" {
@@ -213,20 +240,28 @@
             {
               "name": "id",
               "type": "string",
-              "format": "uri" 
+              "format": "uri"   
+              //value: {?id}
             },
             {
               "name": "skosPrefLabel",
               "type": "string"
+              //value: {?label}
             },
             {
               "name": "skosNotation",
-              "type": "string"
+              "type": "string"   
+              //value: {?notation}
             }
           ]
         }
       },
-      {
+      {         
+        //values for rows: SELECT ?id, ?label, ?notation WHERE {
+        //    {?observation obeu-dimension:programmeClassification ?id .
+        //     ?id skos:prefLabel ?label;
+        //         skos:notation ?notation . }
+        //  }
         "name": "programmesFile",
         "path": "programmesFile.csv",
         "schema" {
@@ -234,20 +269,28 @@
             {
               "name": "id",
               "type": "string",
-              "format": "uri" 
+              "format": "uri"       
+              //value: {?id}
             },
             {
               "name": "skosPrefLabel",
-              "type": "string"
+              "type": "string"             
+              //value: {?label}
             },
             {
               "name": "skosNotation",
-              "type": "string"
+              "type": "string"           
+              //value: {?notation}
             }
           ]
         }
       },
-      {
+      {            
+        //values for rows: SELECT ?id, ?label, ?notation WHERE {
+        //    {?observation obeu-dimension:economicClassification ?id .
+        //     ?id skos:prefLabel ?label;
+        //         skos:notation ?notation . }
+        //  }
         "name": "economicConceptsFile",
         "path": "economicConceptsFile.csv",
         "schema" {
@@ -256,19 +299,27 @@
               "name": "id",
               "type": "string",
               "format": "uri" 
+              //value: {?id}
             },
             {
               "name": "skosPrefLabel",
-              "type": "string"
+              "type": "string"                  
+              //value: {?label}
             },
             {
               "name": "skosNotation",
-              "type": "string"
+              "type": "string"            
+              //value: {?notation}
             }
           ]
         }
       },
-      {
+      {                  
+        //values for rows: SELECT ?id, ?label, ?notation WHERE {
+        //    {?observation obeu-dimension:administrativeClassification ?id .
+        //     ?id skos:prefLabel ?label;
+        //         skos:notation ?notation . }
+        //  }
         "name": "administrativeConceptsFile",
         "path": "administrativeConceptsFile.csv",
         "schema" {
@@ -276,42 +327,30 @@
             {
               "name": "id",
               "type": "string",
-              "format": "uri" 
+              "format": "uri"           
+              //value: {?id}
             },
             {
               "name": "skosPrefLabel",
-              "type": "string"
+              "type": "string"        
+              //value: {?label}
             },
             {
               "name": "skosNotation",
-              "type": "string"
-            }
-          ]
-        }
-      },
-      {
-        "name": "locationsFile",
-        "path": "locationsFile.csv",
-        "schema" {
-          "fields" [
-            {
-              "name": "id",
-              "type": "string",
-              "format": "uri" 
-            },
-            {
-              "name": "schemaName",
-              "type": "string"
-            },
-            {
-              "name": "schemaDescription",
-              "type": "string"
+              "type": "string"         
+              //value: {?notation}
             }
           ]
         }
       }
+      
       //for each ?customDimensionFile
       ,{
+         //values for rows: SELECT ?id, ?label, ?notation WHERE {
+        //    {?observation ?customDimension ?id .
+        //     ?id skos:prefLabel ?label;
+        //         skos:notation ?notation . }
+        //  }
         "name": "{?customDimensionFile}",
         "path": "{?customDimensionFile}.csv",
         "schema" {
@@ -320,14 +359,17 @@
               "name": "id",
               "type": "string",
               "format": "uri" 
+              //value: {?id}
             },
             {
               "name": "skosPrefLabel",
-              "type": "string"
+              "type": "string"       
+              //value: {?label}
             },
             {
               "name": "skosNotation",
-              "type": "string"
+              "type": "string"          
+              //value: {?notation}
             }
           ]
         }
@@ -491,8 +533,7 @@
         }
         
         //for each of remaining custom dimension as ?customDimension
-        //WHERE {?someObservation ?customDimension [skos:prefLabel ?something; skos:notation ?somethingElse]}
-        // (at least one of skos:notation or skos:prefLabel)
+        //WHERE {?customDimension a qb:CodedProperty}
         //BIND(local_part_of_iri(?customDimension) as ?customDimensionName)
         //BIND(concat(?customDimensionName, "File") as ?customDimensionFile)
         ,"{?customDimensionName}": {
@@ -515,11 +556,22 @@
           "dimensionType": "classification",
           "classificationType": "administrative"           
         }
+        
         //for each custom attribute as ?attribute
         //WHERE {?attribute a qb:AttributeProperty . 
         //      ?someObservation ?attribute ?attrVal .
-        //      ?someObservation }
-        //TBD              
+        //      FILTER(isLiteral(?someObservation)) } 
+        //BIND(local_part_of_iri(?attribute) as ?attributeName)
+        ,"{?attributeName}": {
+          "attributes": {
+             "{?attributeName}": {
+               "source": "{?attributeName}",
+               "resource": "observationsFile" 
+             }
+          },
+          "primaryKey": "{?attributeName}",
+          "dimensionType": "other"           
+        }             
     }
   }
   
