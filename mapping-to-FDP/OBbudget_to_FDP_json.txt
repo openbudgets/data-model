@@ -2,6 +2,36 @@
 //covers all OBEU spending properties - omit those unused in a specific dataset
 //expressions in "{ }" suggest how to retrieve the value from a given dataset in a SPARQL-like syntax
 //more complex description on how to implement the OBEU-to-FDP conversion are in // comments 
+
+//the description expects that all DCV components are attached to the observation
+
+//used prefixes
+//@prefix dbp:              <http://dbpedia.org/property/> .
+//@prefix eu-attribute:     <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/attribute/> .
+//@prefix eu-dimension:     <http://example.openbudgets.eu/ontology/dsd/eu-budget-2014/dimension/> .
+//@prefix eu-codelist:      <http://example.openbudgets.eu/resource/eu-budget-2014/codelist/> .
+//@prefix interval:         <http://reference.data.gov.uk/def/intervals/> .
+//@prefix obeu:             <http://data.openbudgets.eu/ontology/> .
+//@prefix obeu-attribute:   <http://data.openbudgets.eu/ontology/dsd/attribute/> .
+//@prefix obeu-codelist:    <http://data.openbudgets.eu/resource/codelist/> .
+//@prefix obeu-dimension:   <http://data.openbudgets.eu/ontology/dsd/dimension/> .
+//@prefix obeu-measure:     <http://data.openbudgets.eu/ontology/dsd/measure/> .
+//@prefix obeu-budgetphase: <http://data.openbudgets.eu/resource/codelist/budget-phase/> .
+//@prefix obeu-currency:    <http://data.openbudgets.eu/resource/codelist/currency/> .
+//@prefix obeu-operation:   <http://data.openbudgets.eu/resource/codelist/operation-character/> .
+//@prefix owl:              <http://www.w3.org/2002/07/owl#> .
+//@prefix qb:               <http://purl.org/linked-data/cube#> .
+//@prefix rdf:              <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+//@prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
+//@prefix schema:           <http://schema.org/> . 
+//@prefix skos:             <http://www.w3.org/2004/02/skos/core#> .
+//@prefix time:             <http://www.w3.org/2006/time#> .
+//@prefix xsd:              <http://www.w3.org/2001/XMLSchema#> .
+
+// in case of multiple values for one property:
+// * use english variant if language tags are used
+// * use first one retrieved otherwise
+
 {
   //local_part_of_iri is a made-up function returning substring after the last / or # from IRI
   "name": "{local_part_of_iri(?dataset)}", //{?dataset a qb:DataSet .}
@@ -26,15 +56,20 @@
       "name": "observationsFile",
       "path": "observationsFile.csv",
       "schema": {
+        //omit fields which have no data in the described dataset
+      
         "fields": [
           // for each measure ?measure in the dataset:
+          // split ?measure by obeu-dimension:budgetPhase into ?split_measures
+          // for each ?split_measure in ?split_measures
+          // SELECT ?budgetPhaseLabel WHERE {?observation ?measure ?something; obeu-dimension:budgetPhase [skos:prefLabel ?budgetPhaseLabel] .}
           {
-            "name": "{local_part_of_iri(?measure)}",
+            "name": "{concat{local_part_of_iri(?measure), '_', ?budgetPhaseLabel}",
             "type": "number",
             "format": "currency"
             //values: SELECT ?val WHERE {?observation ?measure ?val}
-          },
-          // end foreach
+          }, 
+          // end foreaches
           {
             "name": "budgetaryUnit_id",
             "type": "string",
@@ -381,7 +416,10 @@
         //NOTE hard to deal with values other than expenditure/revenue
         "direction": "{[] ?operationChar [skos:prefLabel ?direction] . ?operationChar rdfs:subPropertyOf obeu-dimension:operationCharacter .}",
         
-        //datasets with different budgetPhases in one measure have to be split by the phase
+        //if there are different budgetPhases in one measure it has to be split 
+        //by the phase into separate columns named 
+        //{concat(local_part_of_iri(?measure), '_', ?budgetPhase}
+        //use the same name for the mapping
         "phase": //use following mapping of values of obeu-dimension:budgetPhase
         //obeu-budgetphase:draft -> "proposed"
         //obeu-budgetphase:revised -> "adjusted"

@@ -1,6 +1,8 @@
 // OBEU budget example data https://github.com/openbudgets/data-model/blob/master/budget/eu-budget/eu-budget-data.ttl
 // transformed into Fiscal Data Package
 
+
+
 {
   //local_part_of_iri is a made-up function returning substring after the last / or # from IRI
   "name": "eu-budget-2014", //{?dataset a qb:DataSet .}
@@ -25,38 +27,30 @@
       "schema": {
         "fields": [
           {
-            "name": "amount",
+            "name": "amount_approved",
             "type": "number",
             "format": "currency"
+            //values: SELECT ?val WHERE {?observation obeu-measure:amount ?val;
+            //                                        obeu-dimension:budgetPhase obeu-budgetphase:approved .}
+          }, 
+          {
+            "name": "amount_executed",
+            "type": "number",
+            "format": "currency"      
+            //values: SELECT ?val WHERE {?observation obeu-measure:amount ?val;
+            //                                        obeu-dimension:budgetPhase obeu-budgetphase:executed .}
           },
           {
             "name": "budgetaryUnit_id",
             "type": "string",
             "format": "uri"
-          },
-          {
-            "name": "fiscalPeriodStart",
-            "type": "date",
-            "format": "dateTime"
-          },      
-          {
-            "name": "fiscalPeriodEnd",
-            "type": "date",
-            "format": "dateTime"
-          },        
+            
+          },     
           {
             "name": "fiscalYear",
             "type": "date",
             "format": "dateTime"
-          },
-          {
-            "name": "budgetLine",
-            "type": "string",
-            "format": "uri"              
-          },
-          {
-            "name": "taxesIncluded",
-            "type": "boolean"
+            
           },
           {
             "name": "operationCharacter_id",
@@ -214,12 +208,19 @@
     ],
   "mapping": {    
     "measures": {  
-      "amount": {
-        "source": "amount", 
+      "amount_approved": {
+        "source": "amount_approved", 
         "currency": "EUR",
         "resource": "observationsFile", 
         "direction": "Expenditure",
         "phase": "approved"
+      }, 
+      "amount_executed": {
+        "source": "amount_executed", 
+        "currency": "EUR",
+        "resource": "observationsFile", 
+        "direction": "Expenditure",
+        "phase": "executed"
       }
     },
     "budgetaryUnit": {
@@ -234,7 +235,7 @@
               "labelfor": "id"
             }
           }
-          "primaryKey":  "organization_id",
+          "primaryKey":  "id",
           "dimensionType": "entity"                                    
      },
     "fiscalYear": {
