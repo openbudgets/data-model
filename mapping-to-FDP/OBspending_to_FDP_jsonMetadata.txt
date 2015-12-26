@@ -231,6 +231,12 @@
         //    UNION
         //    {?observation obeu-dimension:partner ?id .
         //     ?id rdfs:label ?label . }
+        //    UNION
+        //    {?observation obeu-dimension:organization ?id .
+        //     ?id schema:legalName ?label . }
+        //    UNION
+        //    {?observation obeu-dimension:partner ?id .
+        //     ?id schema:legalName ?label . }
         //  }
         "name": "entitiesFile",
         "path": "entitiesFile.csv",
@@ -252,9 +258,13 @@
       },
       {
         //values for rows: SELECT ?id, ?label, ?adms_id WHERE {
-        //    ?observation obeu-dimension:project ?id .
+        //    {?observation obeu-dimension:project ?id .
         //     ?id foaf:name ?label;
-        //         adms:identifier ?adms_id . 
+        //         adms:identifier [skos:notation ?adms_id ].}
+        //    UNION
+        //    {?observation obeu-dimension:project ?id .
+        //     ?id rdfs:label ?label;
+        //         adms:identifier [skos:notation ?adms_id ].}
         //  }
         "name": "projectsFile",
         "path": "projectsFile.csv",

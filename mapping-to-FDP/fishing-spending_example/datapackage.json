@@ -1,0 +1,281 @@
+// OBEU RDF DCV dataset
+// https://github.com/openbudgets/data-model/blob/master/spending/eu-fishing-subsidies/
+// transformed to Fiscal Data Package format
+
+{
+  "name": "eu-fishing-subsidies-CS-2007-2013", 
+  "title": "eu-fishing-subsidies-CS-2007-2013", 
+  "license": "cc-by 3.0",
+  "profiles": {
+    "fiscal": "*",
+    "tabular": "*"
+  },
+  "granularity": "transaction", //there are no dates in the dataset, assuming transaction based on 'expert opinion'
+  //there are no dates in the dataset, assuming dates are start of 2007 and end of 2013 based on dataset name
+  "fiscalPeriod": {
+    "start": "2007-01-01"
+    "end": "2014-12-31"
+  }, 
+  "resources": [
+    {
+      "name": "observationsFile",
+      "path": "observationsFile.csv",
+      "schema": {
+        "fields": [                        
+          {
+            "name": "amountCZ",
+            "type": "number",
+            "format": "currency"
+            //values: SELECT ?val WHERE {?observation ?measure ?val}
+          }, 
+          {
+            "name": "amountEU",
+            "type": "number",
+            "format": "currency"
+            //values: SELECT ?val WHERE {?observation ?measure ?val}
+          },
+          {
+            "name": "amountTotal",
+            "type": "number",
+            "format": "currency"
+            //values: SELECT ?val WHERE {?observation ?measure ?val}
+          },  
+          {
+            "name": "organization_id",
+            "type": "string",
+            "format": "uri"     
+            //values: SELECT ?val WHERE {?observation obeu-dimension:organization ?val}
+          },
+          {
+            "name": "partner_id",
+            "type": "string",
+            "format": "uri"       
+            //values: SELECT ?val WHERE {?observation obeu-dimension:partner ?val}
+          },
+          {
+            "name": "project_id",
+            "type": "string",
+            "format": "uri" 
+            //values: SELECT ?val WHERE {?observation obeu-dimension:project ?val}
+          },
+          //for each ?programmeClassification as a subproperty of obeu-dimension:programmeClassification:        
+          {
+            "name": "eu-fishing-subsidies-2007-2013_id",
+            "type": "string",
+            "format": "uri"       
+            //values: SELECT ?val WHERE {?observation ?programmeClassification ?val .
+            //                           ?programmeClassification rdfs:subPropertyOf obeu-dimension:programmeClassification .}        
+          },
+         ]         
+        },
+        "foreignKeys": [            
+          {
+            "fields": "organization_id",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dataset)}",
+                "resource": "entitiesFile",
+                "fields": "id" 
+            }
+          },
+          {
+            "fields": "partner_id",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dataset)}",
+                "resource": "entitiesFile",
+                "fields": "id" 
+            }
+          },
+          {
+            "fields": "project_id",
+            "reference": {
+                "datapackage": "{local_part_of_iri(?dataset)}",
+                "resource": "projectsFile",
+                "fields": "id" 
+            }
+          },
+          {
+            "fields": "eu-fishing-subsidies-2007-2013_id",
+            "reference": {
+                "datapackage": "eu-fishing-subsidies-2007-2013",
+                "resource": "programmesFile",
+                "fields": "id" 
+            }
+          }
+        ]
+      },
+      {                           
+        "name": "entitiesFile",
+        "path": "entitiesFile.csv",
+        "schema": {
+          "fields": [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri"  
+            },
+            {
+              "name": "label",
+              "type": "string"           
+            }            
+          ]
+        }            
+      },
+      {
+        //values for rows: SELECT ?id, ?label, ?adms_id WHERE {
+        //    {?observation obeu-dimension:project ?id .
+        //     ?id foaf:name ?label;
+        //         adms:identifier [skos:notation ?adms_id ].}
+        //    UNION
+        //    {?observation obeu-dimension:project ?id .
+        //     ?id rdfs:label ?label;
+        //         adms:identifier [skos:notation ?adms_id ].}
+        //  }
+        "name": "projectsFile",
+        "path": "projectsFile.csv",
+        "schema": {
+          "fields": [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri" 
+              //value: {?id} 
+            },
+            {
+              "name": "label",
+              "type": "string" 
+              //value: {?label}            
+            },
+            {
+              "name": "adms_id",
+              "type": "string"   
+              //value: {?adms_id}         
+            }
+          ]
+        }
+      },
+      {         
+        //values for rows: SELECT ?id, ?label, ?notation WHERE {
+        //    {?observation obeu-dimension:programmeClassification ?id .
+        //     ?id skos:prefLabel ?label;
+        //         skos:notation ?notation . }
+        //  }
+        "name": "programmesFile",
+        "path": "programmesFile.csv",
+        "schema" {
+          "fields" [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri"       
+              //value: {?id}
+            },
+            {
+              "name": "skosPrefLabel",
+              "type": "string"             
+              //value: {?label}
+            },
+            {
+              "name": "skosNotation",
+              "type": "string"           
+              //value: {?notation}
+            }
+          ]
+        }
+      }
+    ],
+  
+  "mapping": {
+    
+    "measures": {
+      "amountCZ": {
+        "source": "amountCZ",
+        "currency": "CZK",
+        "resource": "observationsFile",             
+        "direction": "expenditure",                
+      },            
+      "amountEU": {
+        "source": "amountEU",
+        "currency": "EUR",
+        "resource": "observationsFile",             
+        "direction": "expenditure",                
+      },
+      "amountTotal": {
+        "source": "amountCZ",
+        "currency": "CZK",
+        "resource": "observationsFile",             
+        "direction": "expenditure",                
+      }
+    },
+    
+    "dimensions": {
+       "organization": {
+          "attributes": {
+            "id": {
+              "source": "organization_id",
+              "resource": "observationsFile"              
+            },
+            "label" {
+              "source": "label",
+              "resource": "entitiesFile",
+              "labelfor": "id"
+            }
+          }
+          "primaryKey":  "organization_id",
+          "dimensionType": "entity"                                 
+       },
+       "partner": {
+          "attributes": {
+            "id": {
+              "source": "partner_id",
+              "resource": "observationsFile"              
+            },
+            "label" {
+              "source": "label",
+              "resource": "entitiesFile",
+              "labelfor": "id"
+            }
+          }
+          "primaryKey":  "partner_id",
+          "dimensionType": "entity"                                
+       },
+       "project": {
+          "attributes": {
+            "project_id": {
+              "source": "project_id",
+              "resource": "observationsFile"
+            }
+            "project_label": {                  
+              "source": "project_label",
+              "resource": "projectsFile",
+              "labelfor": "project_id"
+            }
+            "project_adms_id": "project_adms_id",
+            "resource": "projectsFile"
+          },
+          "primaryKey": "project_id",
+          "dimensionType": "activity"
+       },
+       //for each ?programmeClassification as a subproperty of obeu-dimension:programmeClassification
+        "eu-fishing-subsidies-2007-2013": {
+          "attributes": {
+             "eu-fishing-subsidies-2007-2013_id": {
+               "source": "eu-fishing-subsidies-2007-2013_id",
+               "resource": "observationsFile" 
+             },
+             "eu-fishing-subsidies-2007-2013_skosPrefLabel": {
+               "source": "skosPrefLabel",
+               "resource": "programmesFile",
+               "labelfor": "{concat(local_part_of_iri(?programmeClassification),'_id'}" 
+             },    
+             "eu-fishing-subsidies-2007-2013_skosNotation": {
+               "source": "skosNotation",
+               "resource": "programmesFile" 
+             }
+          },
+          "primaryKey": "eu-fishing-subsidies-2007-2013_id",
+          "dimensionType": "activity"           
+        }               
+    }
+  }
+  
+}
