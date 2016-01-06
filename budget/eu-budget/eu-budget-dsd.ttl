@@ -1,5 +1,6 @@
 # ----- DSD-specific namespaces -----
 
+@prefix eu:               <http://data.openbudgets.eu/ontology/budget-of-the-european-union/> .
 @prefix eu-attribute:     <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014/attribute/> .
 @prefix eu-dimension:     <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014/dimension/> .
 @prefix eu-codelist:      <http://data.openbudgets.eu/resource/eu-budget-2014/codelist/> .
@@ -15,6 +16,7 @@
 
 # ----- Generic namespaces ------
 
+@prefix org:              <http://www.w3.org/ns/org#> .
 @prefix qb:               <http://purl.org/linked-data/cube#> .
 @prefix rdf:              <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:             <http://www.w3.org/2000/01/rdf-schema#> .
@@ -46,6 +48,7 @@ eu-dimension:budgetNomenclature a rdf:Property, qb:CodedProperty, qb:DimensionPr
   rdfs:comment "Concepts in the EU’s Activity-Based Budgeting nomenclature are hierarchically organized into sections, chapters, articles, items, and sub-items. Each concept may have a supplementary editorial and legal notes."@en ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   qb:codeList eu-codelist:budget-nomenclature-2014 ;
+  rdfs:range eu:BudgetNomenclature ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> . 
 
 eu-dimension:catpol a rdf:Property, qb:CodedProperty, qb:DimensionProperty ;
@@ -53,6 +56,7 @@ eu-dimension:catpol a rdf:Property, qb:CodedProperty, qb:DimensionProperty ;
   rdfs:comment "Multiannual Financial Framework Political Category classification of a budget line."@en ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   qb:codeList eu-codelist:catpol ;
+  rdfs:range eu:CATPOL ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> . 
 
 eu-dimension:operationCharacter a rdf:Property, qb:CodedProperty, qb:DimensionProperty ;
@@ -68,6 +72,32 @@ eu-attribute:reserve a rdf:Property, qb:AttributeProperty ;
   rdfs:comment "Reserves set aside for the budget line. They are not allocated to any precise purpose, i.e., there is no basic act for the action when the budget is established or there are doubts about the adequacy of the appropriation; they may be used only after approved transfer. Currency of the reserve is the same as of the budget line's amount"@en ; 
   rdfs:range xsd:decimal ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
+
+# ----- Non-DCV classes and properties -----
+
+eu:BudgetNomenclature a rdfs:Class ;
+  rdfs:label "Budget nomenclature"@en ;
+  rdfs:comment "Concept from the budget nomenclature for the EU budget 2014"@en ;
+  rdfs:subClassOf skos:Concept ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/budget-of-the-european-union> .
+  
+eu:CATPOL a rdfs:Class ;
+  rdfs:label "CATPOL"@en ;
+  rdfs:comment "Concept from the Multiannual Financial Framework's Political Category headings"@en ;
+  rdfs:subClassOf skos:Concept ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/budget-of-the-european-union> .
+
+eu:programClassification a rdf:Property ;
+  rdfs:label "Program classification"@en ;
+  rdfs:domain qb:Observation ;
+  rdfs:range skos:Concept ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/budget-of-the-european-union> .
+
+eu:agencyClassification a rdf:Property ;
+  rdfs:label "Agency classification"@en ;
+  rdfs:domain qb:Observation ;
+  rdfs:range org:Organization ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/budget-of-the-european-union> .
 
 # ----- Code lists -----
 
