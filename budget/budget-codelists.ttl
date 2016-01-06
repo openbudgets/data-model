@@ -9,6 +9,7 @@
 # OperationCharacter
 obeu:OperationCharacter a rdfs:Class ;
   rdfs:label "Operation character"@en ;
+  rdfs:subClassOf skos:Concept ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
   
 obeu-codelist:operation-character a skos:ConceptScheme ;
