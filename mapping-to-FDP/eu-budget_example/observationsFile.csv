@@ -1,0 +1,4 @@
+amount_approved;amount_executed;budgetaryUnit_id;fiscalYear;operationCharacter_id;budgetNomenclature_id;catpol_id;reserve
+14398000.0 ;;http://dbpedia.org/resource/European_Union;2014;http://data.openbudgets.eu/resource/codelist/operation-character/expenditure;http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX-01-01-01-02;http://data.openbudgets.eu/resource/codelist/catpol/5.2.3X;
+14873000.0;;http://dbpedia.org/resource/European_Union;2013;http://data.openbudgets.eu/resource/codelist/operation-character/expenditure;http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX-01-01-01-02;http://data.openbudgets.eu/resource/codelist/catpol/5.2.3X;
+;13301985.8;http://dbpedia.org/resource/European_Union;2012;http://data.openbudgets.eu/resource/codelist/operation-character/expenditure;http://data.openbudgets.eu/resource/codelist/eu-budget-nomenclature/XX-01-01-01-02;http://data.openbudgets.eu/resource/codelist/catpol/5.2.3X;

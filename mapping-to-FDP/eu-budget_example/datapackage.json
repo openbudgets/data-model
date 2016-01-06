@@ -1,0 +1,309 @@
+// OBEU budget example data https://github.com/openbudgets/data-model/blob/master/budget/eu-budget/eu-budget-data.ttl
+// transformed into Fiscal Data Package
+
+
+
+{
+  //local_part_of_iri is a made-up function returning substring after the last / or # from IRI
+  "name": "eu-budget-2014", //{?dataset a qb:DataSet .}
+  "title": "eu-budget-2014",
+  "license": "cc-by 3.0",
+  "profiles": {
+    "fiscal": "*",
+    "tabular": "*"
+  },
+  
+  "granularity": "aggregated",
+  
+  "fiscalPeriod": {
+    "start": "2012-01-01T00:00:00"
+    "end": "2015-01-01T00:00:00"
+  },
+  
+  "resources": [
+    {
+      "name": "observationsFile",
+      "path": "observationsFile.csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "amount_approved",
+            "type": "number",
+            "format": "currency"
+            //values: SELECT ?val WHERE {?observation obeu-measure:amount ?val;
+            //                                        obeu-dimension:budgetPhase obeu-budgetphase:approved .}
+          }, 
+          {
+            "name": "amount_executed",
+            "type": "number",
+            "format": "currency"      
+            //values: SELECT ?val WHERE {?observation obeu-measure:amount ?val;
+            //                                        obeu-dimension:budgetPhase obeu-budgetphase:executed .}
+          },
+          {
+            "name": "budgetaryUnit_id",
+            "type": "string",
+            "format": "uri"
+            
+          },     
+          {
+            "name": "fiscalYear",
+            "type": "date",
+            "format": "dateTime"
+            
+          },
+          {
+            "name": "operationCharacter_id",
+            "type": "string",
+            "format": "uri"
+            //values: SELECT ?val WHERE {?observation operationCharacter ?val}
+          },
+          {
+            "name": "budgetNomenclature_id",
+            "type": "string",
+            "format": "uri"
+            //values: SELECT ?val WHERE {?observation budgetNomenclature ?val}
+          },
+          {
+            "name": "catpol_id",
+            "type": "string",
+            "format": "uri"
+            //values: SELECT ?val WHERE {?observation catpol ?val}
+          },
+          {
+            "name": "reserve"
+          }
+        ]
+      },
+      "foreignKeys": [            
+          {
+            "fields": "budgetaryUnit_id",
+            "reference": {
+                "datapackage": "eu-budget-2014",
+                "resource": "entitiesFile",
+                "fields": "id" 
+            }
+          },
+          {
+            "fields": "operationCharacter_id",
+            "reference": {
+                "datapackage": "eu-budget-2014",
+                "resource": "operationCharacterFile",
+                "fields": "id" 
+            }
+          },
+          {
+            "fields": "budgetNomenclature_id",
+            "reference": {
+                "datapackage": "eu-budget-2014",
+                "resource": "budgetNomenclatureFile",
+                "fields": "id" 
+            }
+          },
+          {
+            "fields": "catpol_id",
+            "reference": {
+                "datapackage": "eu-budget-2014",
+                "resource": "catpolFile",
+                "fields": "id" 
+            }
+          }
+        ]
+      },
+      {
+        //values for rows: SELECT ?id, ?label WHERE {
+        //    ?observation obeu-dimension:budgetaryUnit ?id .
+        //     ?id rdfs:label ?label . 
+        //  }
+        "name": "entitiesFile",
+        "path": "entitiesFile.csv",
+        "schema": {
+          "fields": [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri" 
+              //values: {?id}
+            },
+            {
+              "name": "label",
+              "type": "string"
+              //values: {?label}            
+            }            
+          ]
+        }            
+      },
+      {
+        "name": "operationCharacterFile",
+        "path": "operationCharacterFile.csv",
+        "schema" {
+          "fields" [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri" 
+              //value: {?id}
+            },
+            {
+              "name": "skosPrefLabel",
+              "type": "string"       
+              //value: {?label}
+            },
+            {
+              "name": "skosNotation",
+              "type": "string"          
+              //value: {?notation}
+            }
+          ]
+        }
+      },
+      {
+        "name": "budgetNomenclatureFile",
+        "path": "budgetNomenclatureFile.csv",
+        "schema" {
+          "fields" [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri" 
+              //value: {?id}
+            },
+            {
+              "name": "skosPrefLabel",
+              "type": "string"       
+              //value: {?label}
+            },
+            {
+              "name": "skosNotation",
+              "type": "string"          
+              //value: {?notation}
+            }
+          ]
+        }
+      },
+      {
+        "name": "catpolFile",
+        "path": "catpolFile.csv",
+        "schema" {
+          "fields" [
+            {
+              "name": "id",
+              "type": "string",
+              "format": "uri" 
+              //value: {?id}
+            },
+            {
+              "name": "skosPrefLabel",
+              "type": "string"       
+              //value: {?label}
+            },
+            {
+              "name": "skosNotation",
+              "type": "string"          
+              //value: {?notation}
+            }
+          ]
+        }
+      }
+    ],
+  "mapping": {    
+    "measures": {  
+      "amount_approved": {
+        "source": "amount_approved", 
+        "currency": "EUR",
+        "resource": "observationsFile", 
+        "direction": "Expenditure",
+        "phase": "approved"
+      }, 
+      "amount_executed": {
+        "source": "amount_executed", 
+        "currency": "EUR",
+        "resource": "observationsFile", 
+        "direction": "Expenditure",
+        "phase": "executed"
+      }
+    },
+    "budgetaryUnit": {
+          "attributes": {
+            "id": {
+              "source": "budgetaryUnit_id",
+              "resource": "observationsFile"              
+            },
+            "label" {
+              "source": "label",
+              "resource": "entitiesFile",
+              "labelfor": "id"
+            }
+          }
+          "primaryKey":  "id",
+          "dimensionType": "entity"                                    
+     },
+    "fiscalYear": {
+      "attributes": {
+         "year": {
+           "source": "fiscalYear",
+           "resource": "observationsFile"
+         },
+         "primaryKey": "year", 
+         "dimensionType": "date"
+      }
+     },
+     "operationCharacter": {
+        "attributes": {
+           "operationCharacter_id": {
+             "source": "operationCharacter_id",
+             "resource": "observationsFile" 
+           },
+           "operationCharacter_skosPrefLabel": {
+             "source": "operationCharacter_skosPrefLabel",
+             "resource": "operationCharacterFile",
+            "labelfor": "operationCharacter_id" 
+           },    
+           "operationCharacter_skosNotation": {
+             "source": "operationCharacter_skosNotation",
+             "resource": "operationCharacterFile" 
+           }
+          },
+          "primaryKey": "operationCharacter_id",
+          "dimensionType": "classification"     
+        },
+      "budgetNomenclature": {
+        "attributes": {
+           "budgetNomenclature_id": {
+             "source": "budgetNomenclature_id",
+             "resource": "observationsFile" 
+           },
+           "budgetNomenclature_skosPrefLabel": {
+             "source": "budgetNomenclature_skosPrefLabel",
+             "resource": "budgetNomenclatureFile",
+            "labelfor": "budgetNomenclature_id" 
+           },    
+           "budgetNomenclature_skosNotation": {
+             "source": "budgetNomenclature_skosNotation",
+             "resource": "budgetNomenclatureFile" 
+           }
+          },
+          "primaryKey": "budgetNomenclature_id",
+          "dimensionType": "classification"     
+        },
+      "catpol": {
+        "attributes": {
+           "catpol_id": {
+             "source": "catpol_id",
+             "resource": "observationsFile" 
+           },
+           "catpol_skosPrefLabel": {
+             "source": "catpol_skosPrefLabel",
+             "resource": "catpolFile",
+            "labelfor": "catpol_id" 
+           },    
+           "catpol_skosNotation": {
+             "source": "catpol_skosNotation",
+             "resource": "catpolFile" 
+           }
+          },
+          "primaryKey": "catpol_id",
+          "dimensionType": "classification"     
+        }
+      }
+}
