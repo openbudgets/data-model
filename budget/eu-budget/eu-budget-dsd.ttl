@@ -73,7 +73,20 @@ eu-attribute:reserve a rdf:Property, qb:AttributeProperty ;
   rdfs:range xsd:decimal ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
 
-# ----- Non-DCV classes and properties -----
+eu:programClassification a rdf:Property, qb:CodedProperty; obeu:OptionalProperty ;
+  rdfs:label "Program classification"@en ;
+  rdfs:domain qb:Observation ;
+  rdfs:range skos:Concept ;
+  qb:codeList <http://data.openbudgets.eu/resource/dataset/budget-of-the-european-union-2014/code-list/program> ;
+  qb:concept obeu:ProgrammeClassification ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/budget-of-the-european-union> .
+
+eu:agencyClassification a rdf:Property, obeu:OptionalProperty ;
+  rdfs:label "Agency classification"@en ;
+  rdfs:domain qb:Observation ;
+  rdfs:range org:Organization ;
+  qb:concept obeu:AdministrativeClassification ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/budget-of-the-european-union> .
 
 eu:BudgetNomenclature a rdfs:Class ;
   rdfs:label "Budget nomenclature"@en ;
@@ -85,18 +98,6 @@ eu:CATPOL a rdfs:Class ;
   rdfs:label "CATPOL"@en ;
   rdfs:comment "Concept from the Multiannual Financial Framework's Political Category headings"@en ;
   rdfs:subClassOf skos:Concept ;
-  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/budget-of-the-european-union> .
-
-eu:programClassification a rdf:Property ;
-  rdfs:label "Program classification"@en ;
-  rdfs:domain qb:Observation ;
-  rdfs:range skos:Concept ;
-  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/budget-of-the-european-union> .
-
-eu:agencyClassification a rdf:Property ;
-  rdfs:label "Agency classification"@en ;
-  rdfs:domain qb:Observation ;
-  rdfs:range org:Organization ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/budget-of-the-european-union> .
 
 # ----- Code lists -----
