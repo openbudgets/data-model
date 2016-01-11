@@ -80,7 +80,7 @@ eu-attribute:reserve a rdf:Property, qb:AttributeProperty ;
   rdfs:range xsd:decimal ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
 
-eu:agencyClassification a rdf:Property, obeu:OptionalProperty ;
+eu:agencyClassification a rdf:Property ;
   rdfs:label "Agency classification"@en ;
   rdfs:domain qb:Observation ;
   rdfs:range org:Organization ;
