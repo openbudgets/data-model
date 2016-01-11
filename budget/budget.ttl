@@ -6,6 +6,6 @@
 
 obeu:OptionalProperty a rdfs:Class ;
   rdfs:label "Optional property"@en ;
-  rdfs:comment "A property that may not be present for some observation."@en ;
+  rdfs:comment "A property that may not be present for some observations."@en ;
   rdfs:subClassOf qb:ComponentProperty ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
