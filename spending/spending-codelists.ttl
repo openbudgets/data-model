@@ -10,7 +10,7 @@
 obeu:OperationCharacter a rdfs:Class ;
   rdfs:label "Operation character"@en ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
-  
+
 obeu-codelist:operation-character a skos:ConceptScheme ;
   rdfs:label "Code list that distinguishes among characters of fiscal operation."@en ;
   skos:hasTopConcept obeu-operation:expenditure, obeu-operation:revenue . 
