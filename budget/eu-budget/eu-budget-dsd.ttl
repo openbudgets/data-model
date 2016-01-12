@@ -71,6 +71,14 @@ eu-dimension:operationCharacter a rdf:Property, qb:CodedProperty, qb:DimensionPr
 eu-dimension:compulsoryExpenditure a rdf:Property, qb:DimensionProperty ;
   rdfs:label "Compulsory expenditure"@en ;
   rdfs:comment "Indicates whether the appropriation in question is a compulsory or non-compulsory expenditure. Compulsory expenditures, such as pensions, must be spent."@en ;
+  rdfs:domain qb:Observation ;
+  rdfs:range xsd:boolean ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
+
+eu-dimension:isDelegation a rdf:Property, qb:DimensionProperty ;
+  rdfs:label "Is delegation"@en ;
+  rdfs:comment "Indicates whether an expenditure is related to a delegation."@en ;
+  rdfs:domain qb:Observation ;
   rdfs:range xsd:boolean ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
 
