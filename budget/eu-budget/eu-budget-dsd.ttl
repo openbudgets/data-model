@@ -36,10 +36,10 @@
                [ qb:dimension eu-dimension:catpol ],
                [ qb:dimension eu-dimension:compulsoryExpenditure ],
                [ qb:attribute obeu-attribute:currency ;
-                 qb:componentRequired "true"^^xsd:boolean ;
+                 qb:componentRequired true ;
                  qb:componentAttachment qb:DataSet ],
                [ qb:attribute eu-attribute:reserve ;
-                 qb:componentRequired "false"^^xsd:boolean ],
+                 qb:componentRequired false ],
                [ qb:measure obeu-measure:amount ] .
 
 # ----- Component properties -----
