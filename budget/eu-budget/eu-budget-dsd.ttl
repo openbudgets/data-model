@@ -2,9 +2,10 @@
 
 @prefix eu:               <http://data.openbudgets.eu/ontology/budget-of-the-european-union/> .
 @prefix eu-attribute:     <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014/attribute/> .
-@prefix eu-dimension:     <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014/dimension/> .
 @prefix eu-codelist:      <http://data.openbudgets.eu/resource/eu-budget-2014/codelist/> .
+@prefix eu-dimension:     <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014/dimension/> .
 @prefix eu-operation:     <http://data.openbudgets.eu/resource/eu-budget-2014/codelist/operation-character/> .
+@prefix eu-optional:      <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014/optional-property/> .
 
 # ----- OpenBudgets.eu namespaces -----
 
@@ -34,8 +35,6 @@
                [ qb:dimension obeu-dimension:fiscalYear ],
                [ qb:dimension eu-dimension:budgetNomenclature ],
                [ qb:dimension eu-dimension:catpol ],
-               [ qb:dimension eu-dimension:compulsoryExpenditure ],
-               [ qb:dimension eu-dimension:isDelegation ],
                [ qb:attribute obeu-attribute:currency ;
                  qb:componentRequired true ;
                  qb:componentAttachment qb:DataSet ],
@@ -69,14 +68,14 @@ eu-dimension:operationCharacter a rdf:Property, qb:CodedProperty, qb:DimensionPr
   rdfs:range obeu:OperationCharacter ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
 
-eu-dimension:compulsoryExpenditure a rdf:Property, qb:DimensionProperty ;
+eu-optional:compulsoryExpenditure a rdf:Property, obeu:OptionalProperty ;
   rdfs:label "Compulsory expenditure"@en ;
   rdfs:comment "Indicates whether the appropriation in question is a compulsory or non-compulsory expenditure. Compulsory expenditures, such as pensions, must be spent."@en ;
   rdfs:domain qb:Observation ;
   rdfs:range xsd:boolean ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
 
-eu-dimension:isDelegation a rdf:Property, qb:DimensionProperty ;
+eu-optional:isDelegation a rdf:Property, obeu:OptionalProperty ;
   rdfs:label "Is delegation"@en ;
   rdfs:comment "Indicates whether an expenditure is related to a delegation."@en ;
   rdfs:domain qb:Observation ;
