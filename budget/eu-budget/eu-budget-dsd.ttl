@@ -35,6 +35,7 @@
                [ qb:dimension eu-dimension:budgetNomenclature ],
                [ qb:dimension eu-dimension:catpol ],
                [ qb:dimension eu-dimension:compulsoryExpenditure ],
+               [ qb:dimension eu-dimension:isDelegation ],
                [ qb:attribute obeu-attribute:currency ;
                  qb:componentRequired true ;
                  qb:componentAttachment qb:DataSet ],
