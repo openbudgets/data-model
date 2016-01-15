@@ -35,6 +35,9 @@
                [ qb:dimension obeu-dimension:fiscalYear ],
                [ qb:dimension eu-dimension:budgetNomenclature ],
                [ qb:dimension eu-dimension:catpol ],
+               [ qb:componentProperty eu-optional:compulsoryExpenditure ],
+               [ qb:componentProperty eu-optional:isDelegation ],
+               [ qb:componentProperty eu-optional:isReserve ],
                [ qb:attribute obeu-attribute:currency ;
                  qb:componentRequired true ;
                  qb:componentAttachment qb:DataSet ],
@@ -91,6 +94,13 @@ eu-optional:compulsoryExpenditure a rdf:Property, obeu:OptionalProperty ;
 eu-optional:isDelegation a rdf:Property, obeu:OptionalProperty ;
   rdfs:label "Is delegation"@en ;
   rdfs:comment "Indicates whether an expenditure is related to a delegation."@en ;
+  rdfs:domain qb:Observation ;
+  rdfs:range xsd:boolean ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
+
+eu-optional:isReserve a rdf:Property, obeu:OptionalProperty ;
+  rdfs:label "Is reserve"@en ;
+  rdfs:comment "Reserves set aside for the budget line. They are not allocated to any precise purpose, i.e., there is no basic act for the action when the budget is established or there are doubts about the adequacy of the appropriation; they may be used only after approved transfer."@en ;
   rdfs:domain qb:Observation ;
   rdfs:range xsd:boolean ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
