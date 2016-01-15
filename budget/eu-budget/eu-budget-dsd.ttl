@@ -46,7 +46,7 @@
 <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014-reserves> a qb:DataStructureDefinition ;
   rdfs:label "Data structure definition for reserves in the budget of the European Union from the year 2014"@en ;
   qb:component [ qb:dimension eu-dimension:reservedFor ],
-               [ qb:dimension eu-dimension:budgetNomenclature ],
+               [ qb:componentProperty eu-optional:budgetNomenclature ],
                [ qb:attribute obeu-attribute:currency ;
                  qb:componentRequired true ;
                  qb:componentAttachment qb:DataSet ],
@@ -82,6 +82,13 @@ eu-dimension:reservedFor a rdf:Property, qb:DimensionProperty ;
   rdfs:label "Reserved for"@en ;
   rdfs:comment "Budget line for which the reserve is allocated."@en ;
   rdfs:range qb:Observation ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
+
+eu-optional:budgetNomenclature a rdf:Property, qb:CodedProperty, obeu:OptionalProperty ;
+  rdfs:label "Activity-Based Budgeting nomenclature 2014"@en ;
+  rdfs:comment "Concepts in the EU’s Activity-Based Budgeting nomenclature are hierarchically organized into sections, chapters, articles, items, and sub-items. Each concept may have a supplementary editorial and legal notes."@en ;
+  qb:codeList eu-codelist:budget-nomenclature-2014 ;
+  rdfs:range eu:BudgetNomenclature ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
 
 eu-optional:compulsoryExpenditure a rdf:Property, obeu:OptionalProperty ;
