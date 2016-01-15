@@ -27,7 +27,7 @@
 # ----- DSD -----
 
 <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> a qb:DataStructureDefinition ;
-  rdfs:label "Data structure definition for the budget of the European Union of the year 2014"@en ;
+  rdfs:label "Data structure definition for the budget of the European Union from the year 2014"@en ;
   qb:component [ qb:dimension obeu-dimension:budgetaryUnit ;
                  qb:componentAttachment qb:DataSet ],
                [ qb:dimension obeu-dimension:budgetPhase ],
@@ -38,8 +38,15 @@
                [ qb:attribute obeu-attribute:currency ;
                  qb:componentRequired true ;
                  qb:componentAttachment qb:DataSet ],
-               [ qb:attribute eu-attribute:reserve ;
-                 qb:componentRequired false ],
+               [ qb:measure obeu-measure:amount ] .
+
+<http://data.openbudgets.eu/ontology/dsd/eu-budget-2014-reserves> a qb:DataStructureDefinition ;
+  rdfs:label "Data structure definition for reserves in the budget of the European Union from the year 2014"@en ;
+  qb:component [ qb:dimension eu-dimension:reservedFor ],
+               [ qb:dimension eu-dimension:budgetNomenclature ],
+               [ qb:attribute obeu-attribute:currency ;
+                 qb:componentRequired true ;
+                 qb:componentAttachment qb:DataSet ],
                [ qb:measure obeu-measure:amount ] .
 
 # ----- Component properties -----
@@ -68,6 +75,12 @@ eu-dimension:operationCharacter a rdf:Property, qb:CodedProperty, qb:DimensionPr
   rdfs:range obeu:OperationCharacter ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
 
+eu-dimension:reservedFor a rdf:Property, qb:DimensionProperty ;
+  rdfs:label "Reserved for"@en ;
+  rdfs:comment "Budget line for which the reserve is allocated."@en ;
+  rdfs:range qb:Observation ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
+
 eu-optional:compulsoryExpenditure a rdf:Property, obeu:OptionalProperty ;
   rdfs:label "Compulsory expenditure"@en ;
   rdfs:comment "Indicates whether the appropriation in question is a compulsory or non-compulsory expenditure. Compulsory expenditures, such as pensions, must be spent."@en ;
@@ -80,12 +93,6 @@ eu-optional:isDelegation a rdf:Property, obeu:OptionalProperty ;
   rdfs:comment "Indicates whether an expenditure is related to a delegation."@en ;
   rdfs:domain qb:Observation ;
   rdfs:range xsd:boolean ;
-  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
-
-eu-attribute:reserve a rdf:Property, qb:AttributeProperty ;
-  rdfs:label "Reserve"@en ;
-  rdfs:comment "Reserves set aside for the budget line. They are not allocated to any precise purpose, i.e., there is no basic act for the action when the budget is established or there are doubts about the adequacy of the appropriation; they may be used only after approved transfer. Currency of the reserve is the same as of the budget line's amount"@en ;
-  rdfs:range xsd:decimal ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
 
 eu:agencyClassification a rdf:Property ;
