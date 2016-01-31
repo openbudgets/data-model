@@ -34,7 +34,7 @@
                [ qb:dimension eu-dimension:operationCharacter ],
                [ qb:dimension obeu-dimension:fiscalYear ],
                [ qb:dimension eu-dimension:budgetNomenclature ],
-               [ qb:dimension eu-dimension:catpol ],
+               [ qb:componentProperty eu-optional:catpol ],
                [ qb:componentProperty eu-optional:compulsoryExpenditure ],
                [ qb:componentProperty eu-optional:isDelegation ],
                [ qb:componentProperty eu-optional:isReserve ],
@@ -68,14 +68,6 @@ eu-dimension:budgetPhase a rdf:Property, qb:CodedProperty, qb:DimensionProperty 
   qb:codeList <http://publications.europa.eu/resource/authority/eu-budget-amount-status> ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
 
-eu-dimension:catpol a rdf:Property, qb:CodedProperty, qb:DimensionProperty ;
-  rdfs:label "MFF/CATPOL heading"@en ;
-  rdfs:comment "Multiannual Financial Framework Political Category classification of a budget line."@en ;
-  rdfs:subPropertyOf obeu-dimension:classification ;
-  qb:codeList eu-codelist:catpol ;
-  rdfs:range eu:CATPOL ;
-  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
-
 eu-dimension:operationCharacter a rdf:Property, qb:CodedProperty, qb:DimensionProperty ;
   rdfs:label "Operation character"@en ;
   rdfs:comment "EU budget's specific operation characters"@en ;
@@ -95,6 +87,13 @@ eu-optional:budgetNomenclature a rdf:Property, qb:CodedProperty, obeu:OptionalPr
   rdfs:comment "Concepts in the EU’s Activity-Based Budgeting nomenclature are hierarchically organized into sections, chapters, articles, items, and sub-items. Each concept may have a supplementary editorial and legal notes."@en ;
   qb:codeList eu-codelist:budget-nomenclature-2014 ;
   rdfs:range eu:BudgetNomenclature ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
+
+eu-optional:catpol a rdf:Property, qb:CodedProperty, obeu:OptionalProperty ;
+  rdfs:label "MFF/CATPOL heading"@en ;
+  rdfs:comment "Multiannual Financial Framework Political Category classification of a budget line."@en ;
+  qb:codeList eu-codelist:catpol ;
+  rdfs:range eu:CATPOL ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
 
 eu-optional:compulsoryExpenditure a rdf:Property, obeu:OptionalProperty ;
