@@ -129,7 +129,7 @@ eu:programClassification a rdf:Property ;
   rdfs:label "Program classification"@en ;
   rdfs:domain qb:Observation ;
   rdfs:range skos:Concept ;
-  qb:codeList <http://data.openbudgets.eu/resource/dataset/budget-of-the-european-union-2014/code-list/program> ;
+  qb:codeList <http://publications.europa.eu/ontology/authority/eu-programme> ;
   qb:concept obeu:ProgrammeClassification ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/budget-of-the-european-union> .
 
