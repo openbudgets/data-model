@@ -30,7 +30,7 @@
   rdfs:label "Data structure definition for the budget of the European Union from the year 2014"@en ;
   qb:component [ qb:dimension obeu-dimension:budgetaryUnit ;
                  qb:componentAttachment qb:DataSet ],
-               [ qb:dimension obeu-dimension:budgetPhase ],
+               [ qb:dimension eu-dimension:budgetPhase ],
                [ qb:dimension eu-dimension:operationCharacter ],
                [ qb:dimension obeu-dimension:fiscalYear ],
                [ qb:dimension eu-dimension:budgetNomenclature ],
@@ -60,6 +60,12 @@ eu-dimension:budgetNomenclature a rdf:Property, qb:CodedProperty, qb:DimensionPr
   rdfs:subPropertyOf obeu-dimension:classification ;
   qb:codeList eu-codelist:budget-nomenclature-2014 ;
   rdfs:range eu:BudgetNomenclature ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
+
+eu-dimension:budgetPhase a rdf:Property, qb:CodedProperty, qb:DimensionProperty ;
+  rdfs:label "EU budget phase"@en ;
+  rdfs:subPropertyOf obeu-dimension:budgetPhase ;
+  qb:codeList <http://publications.europa.eu/resource/authority/eu-budget-amount-status> ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/dsd/eu-budget-2014> .
 
 eu-dimension:catpol a rdf:Property, qb:CodedProperty, qb:DimensionProperty ;
