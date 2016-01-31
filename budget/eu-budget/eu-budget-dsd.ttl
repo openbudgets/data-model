@@ -115,7 +115,7 @@ eu-optional:isReserve a rdf:Property, obeu:OptionalProperty ;
 eu:agencyClassification a rdf:Property ;
   rdfs:label "Agency classification"@en ;
   rdfs:domain qb:Observation ;
-  rdfs:range org:Organization ;
+  qb:codeList <http://publications.europa.eu/resource/authority/corporate-body> ;
   qb:concept obeu:AdministrativeClassification ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/budget-of-the-european-union> .
 
