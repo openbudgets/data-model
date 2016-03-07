@@ -1,0 +1,18 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX spin: <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?instance ;
+    spin:violationPath rdf:type ;
+    spin:violationValue ?property ; 
+    rdfs:label ?violationLabel .
+}
+WHERE {
+  GRAPH <http://data.openbudgets.eu/ontology> {
+    ?property a rdf:Property .
+  }
+  ?instance a ?property .
+  BIND (STRLANG(CONCAT("Property <", STR(?property), "> cannot be instantiated."), "en") AS ?violationLabel)
+}

@@ -1,0 +1,27 @@
+PREFIX qb:     <http://purl.org/linked-data/cube#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX spin:   <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationValue ?usedTBox ;
+    rdfs:label "Term defined in the core OpenBudgets.eu namespace."@en .
+}
+WHERE {
+  {
+    SELECT DISTINCT ?usedTBox
+    WHERE {
+      {
+        [] a ?usedTBox .
+      } UNION {
+        [] ?usedTBox [] .
+      }
+    }
+  }
+  FILTER STRSTARTS(STR(?usedTBox), "http://data.openbudgets.eu/ontology/")
+  FILTER NOT EXISTS {
+    GRAPH <http://data.openbudgets.eu/ontology> {
+      ?usedTBox ?p [] .
+    }
+  }
+}

@@ -1,0 +1,39 @@
+PREFIX qb:     <http://purl.org/linked-data/cube#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX spin:   <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationValue ?usedTBox ;
+    rdfs:label ?violationLabel .
+}
+WHERE {
+  {
+    SELECT DISTINCT ?usedTBox
+    WHERE {
+      {
+        [] a ?usedTBox .
+      } UNION {
+        [] ?usedTBox [] .
+      }
+      FILTER STRSTARTS(STR(?usedTBox), "http://purl.org/linked-data/cube#")
+      FILTER NOT EXISTS {
+        GRAPH <http://purl.org/linked-data/cube#> {
+          ?usedTBox ?p [] .
+        }
+      }
+    }
+  }
+  {
+    SELECT DISTINCT ?tbox
+    WHERE {
+      GRAPH <http://purl.org/linked-data/cube#> {
+        ?tbox ?p [] . 
+      }
+    }
+  }
+  FILTER (LCASE(STR(?usedTBox)) = LCASE(STR(?tbox)))
+  BIND (STRLANG(CONCAT(
+      "Wrong character case in <", STR(?usedTBox), ">. The correct case might be <", STR(?tbox), ">."
+    ), "en") AS ?violationLabel)
+}

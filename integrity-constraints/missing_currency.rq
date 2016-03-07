@@ -1,0 +1,24 @@
+PREFIX obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/>
+PREFIX qb:             <http://purl.org/linked-data/cube#>
+PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX spin:           <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?dsd ;
+    spin:violationPath qb:component ;
+    spin:violationValue obeu-attribute:currency ;
+    rdfs:label "Data structure definition is missing the currency attribute."@en .
+}
+WHERE {
+  VALUES ?attributeProperty {
+    qb:attribute
+    qb:componentProperty
+  }
+  ?dsd a qb:DataStructureDefinition .
+  FILTER NOT EXISTS {
+    ?dsd qb:component [
+      ?attributeProperty obeu-attribute:currency
+    ] .
+  }
+}
