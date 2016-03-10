@@ -41,30 +41,35 @@ obeu-dimension:fiscalYear a rdf:Property, qb:DimensionProperty, qb:CodedProperty
 obeu-dimension:classification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "classification"@en ;
   rdfs:comment "Category to which observation belongs."@en ;
-  rdfs:subPropertyOf dcterms:subject .
+  rdfs:subPropertyOf dcterms:subject ;
+  rdfs:range skos:Concept .
   
 obeu-dimension:functionalClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "functional classification"@en ;
   rdfs:comment "Classifies expenditures by general government sector and by the purpose of the expenditure."@en ;
   rdfs:subPropertyOf obeu-dimension:classification ;
+  rdfs:range skos:Concept ;
   qb:concept obeu:FunctionalClassification .
 
 obeu-dimension:programmeClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "programme classification"@en ;
   rdfs:comment "Grouping of expenditure by common objective for budgeting purposes."@en ;
   rdfs:subPropertyOf obeu-dimension:classification ;
+  rdfs:range skos:Concept ;
   qb:concept obeu:ProgrammeClassification .
 
 obeu-dimension:economicClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "economic classification"@en ;
   rdfs:comment "Identifies the type of expenditure incurred or source of revenues."@en ;
   rdfs:subPropertyOf obeu-dimension:classification ;
+  rdfs:range skos:Concept ;
   qb:concept obeu:EconomicClassification .
 
 obeu-dimension:administrativeClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "administrative classification"@en ;
   rdfs:comment "Identifies the entity responsible for managing the public funds concerned."@en ;
   rdfs:subPropertyOf obeu-dimension:classification ;
+  rdfs:range skos:Concept ;
   qb:concept obeu:AdministrativeClassification .
 
 obeu-dimension:operationCharacter a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
