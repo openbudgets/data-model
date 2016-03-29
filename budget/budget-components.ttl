@@ -9,6 +9,7 @@
 @prefix sdmx-concept:   <http://purl.org/linked-data/sdmx/2009/concept#> .
 @prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
 @prefix sdmx-measure:   <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix skos:           <http://www.w3.org/2004/02/skos/core#> .
 @prefix time:           <http://www.w3.org/2006/time#> .
 @prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
 
@@ -22,83 +23,96 @@ obeu-dimension:budgetaryUnit a rdf:Property, qb:DimensionProperty, qb:CodedPrope
   rdfs:label "budgetary unit"@en ;
   rdfs:comment "An economic entity that is capable, in its own right, of owning assets, incurring liabilities, and engaging in economic activities and in transactions with other entities."@en ;
   rdfs:range org:Organization ;
-  qb:concept sdmx-concept:statUnit .
+  qb:concept sdmx-concept:statUnit ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
   
 obeu-dimension:fiscalPeriod a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "fiscal period"@en ;
   rdfs:comment "The period of time reflected in financial statements."@en ;
   rdfs:subPropertyOf sdmx-dimension:refPeriod ;
   rdfs:range time:Interval ;
-  qb:concept sdmx-concept:refPeriod .
+  qb:concept sdmx-concept:refPeriod ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:fiscalYear a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "fiscal year"@en ;
   rdfs:comment "The year reflected in financial statements."@en ;
   rdfs:subPropertyOf obeu-dimension:fiscalPeriod ;
   rdfs:range interval:Year ;
-  qb:concept sdmx-concept:refPeriod .
+  qb:concept sdmx-concept:refPeriod ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:classification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "classification"@en ;
   rdfs:comment "Category to which observation belongs."@en ;
   rdfs:subPropertyOf dcterms:subject ;
-  rdfs:range skos:Concept .
+  rdfs:range skos:Concept ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
   
 obeu-dimension:functionalClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "functional classification"@en ;
   rdfs:comment "Classifies expenditures by general government sector and by the purpose of the expenditure."@en ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   rdfs:range skos:Concept ;
-  qb:concept obeu:FunctionalClassification .
+  qb:concept obeu:FunctionalClassification ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:programmeClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "programme classification"@en ;
   rdfs:comment "Grouping of expenditure by common objective for budgeting purposes."@en ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   rdfs:range skos:Concept ;
-  qb:concept obeu:ProgrammeClassification .
+  qb:concept obeu:ProgrammeClassification ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:economicClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "economic classification"@en ;
   rdfs:comment "Identifies the type of expenditure incurred or source of revenues."@en ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   rdfs:range skos:Concept ;
-  qb:concept obeu:EconomicClassification .
+  qb:concept obeu:EconomicClassification ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:administrativeClassification a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "administrative classification"@en ;
   rdfs:comment "Identifies the entity responsible for managing the public funds concerned."@en ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   rdfs:range skos:Concept ;
-  qb:concept obeu:AdministrativeClassification .
+  qb:concept obeu:AdministrativeClassification ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:operationCharacter a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "operation character"@en ;
   rdfs:comment "Distinguishes among expenditure and revenue."@en ;
   rdfs:range obeu:OperationCharacter ;
-  qb:codeList obeu-codelist:operation-character .
+  qb:codeList obeu-codelist:operation-character ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
   
 obeu-dimension:budgetPhase a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "budget phase"@en ;
   rdfs:comment "Major event or stage in the budget cycle."@en ;
   rdfs:range obeu:BudgetPhase ;
-  qb:codeList obeu-codelist:budget-phase .
+  qb:codeList obeu-codelist:budget-phase ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-measure:amount a rdf:Property, qb:MeasureProperty ;
   rdfs:label "amount"@en ;
   rdfs:comment "Monetary amount."@en ;
   rdfs:subPropertyOf sdmx-measure:obsValue ;
   rdfs:range xsd:decimal ;
-  qb:concept sdmx-concept:obsValue .
+  qb:concept sdmx-concept:obsValue ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
   
 obeu-attribute:currency a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
   rdfs:label "currency"@en ;
   rdfs:comment "The currency of the financial amount."@en ;
   rdfs:subPropertyOf sdmx-attribute:currency ;
   rdfs:range obeu:Currency ;
-  qb:concept sdmx-concept:currency .
+  qb:concept sdmx-concept:currency ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-attribute:taxesIncluded a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
   rdfs:label "taxes included"@en ;
   rdfs:comment "Indicates whether the reported amount includes taxes."@en ;
-  rdfs:range xsd:boolean .
+  rdfs:range xsd:boolean ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
