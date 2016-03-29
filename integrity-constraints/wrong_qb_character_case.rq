@@ -18,18 +18,14 @@ WHERE {
       }
       FILTER STRSTARTS(STR(?usedTBox), "http://purl.org/linked-data/cube#")
       FILTER NOT EXISTS {
-        GRAPH <http://purl.org/linked-data/cube#> {
-          ?usedTBox ?p [] .
-        }
+        ?usedTBox rdfs:isDefinedBy <http://purl.org/linked-data/cube> .
       }
     }
   }
   {
     SELECT DISTINCT ?tbox
     WHERE {
-      GRAPH <http://purl.org/linked-data/cube#> {
-        ?tbox ?p [] . 
-      }
+      ?usedTBox rdfs:isDefinedBy <http://purl.org/linked-data/cube> .
     }
   }
   FILTER (LCASE(STR(?usedTBox)) = LCASE(STR(?tbox)))

@@ -17,9 +17,9 @@ WHERE {
   ?codedProperty a ?codedPropertyClass ;
     qb:codeList ?redefinedCodeList .
 
-  GRAPH <http://data.openbudgets.eu/ontology> {
-    ?codedProperty qb:codeList ?originalCodeList .
-  }
+  ?codedProperty rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> ;
+    qb:codeList ?originalCodeList .
+
   FILTER (!sameTerm(?redefinedCodeList, ?originalCodeList))
   BIND (STRLANG(CONCAT("Code list of the core property <",
                        STR(?codedProperty),
