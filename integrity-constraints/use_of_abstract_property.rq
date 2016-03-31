@@ -1,0 +1,28 @@
+PREFIX obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/>
+PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX spin:           <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?dsd ;
+    spin:violationPath qb:component ;
+    spin:violationValue ?abstractProperty ; 
+    rdfs:label "DSD includes an abstract property that cannot be used directly."@en .
+}
+WHERE {
+  VALUES ?abstractProperty {
+    obeu-dimension:administrativeClassification
+    obeu-dimension:classification
+    obeu-dimension:economicClassification
+    obeu-dimension:functionalClassification
+    obeu-dimension:programmeClassification
+  }
+  VALUES ?dimensionProperty {
+    qb:dimension
+    qb:componentProperty
+  }
+  ?dsd a qb:DataStructureDefinition ;
+    qb:component [
+      ?dimensionProperty ?abstractProperty
+    ] .
+}
