@@ -10,8 +10,9 @@ CONSTRUCT {
     rdfs:label ?violationLabel .
 }
 WHERE {
-  ?property a rdf:Property ;
-    rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
+  GRAPH <http://data.openbudgets.eu/ontology> {
+    ?property a rdf:Property .
+  }
 
   ?instance a ?property .
   BIND (STRLANG(CONCAT("Property <", STR(?property), "> cannot be instantiated."), "en") AS ?violationLabel)

@@ -20,6 +20,8 @@ WHERE {
   }
   FILTER STRSTARTS(STR(?usedTBox), "http://data.openbudgets.eu/ontology/")
   FILTER NOT EXISTS {
-    ?usedTBox rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
+    GRAPH <http://data.openbudgets.eu/ontology> {
+      ?usedTBox rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
+    }
   }
 }
