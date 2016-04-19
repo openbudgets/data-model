@@ -23,7 +23,7 @@
 
 obeu-dimension:organization a rdf:Property, qb:DimensionProperty, qb:CodedProperty, owl:ObjectProperty ;
   rdfs:label "organization"@en ;
-  rdfs:comment "The entity which made the payment or collected revenue."@en ;
+  rdfs:comment "An economic entity that is capable, in its own right, of owning assets, incurring liabilities, and engaging in economic activities and in transactions with other entities."@en ;
   rdfs:range org:Organization ;
   qb:concept sdmx-concept:statUnit ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .

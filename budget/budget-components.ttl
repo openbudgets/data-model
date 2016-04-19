@@ -21,10 +21,12 @@
 
 obeu-dimension:budgetaryUnit a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "budgetary unit"@en ;
-  rdfs:comment "An economic entity that is capable, in its own right, of owning assets, incurring liabilities, and engaging in economic activities and in transactions with other entities."@en ;
+  rdfs:comment "Deprecated. Use obeu-dimension:organization."@en ;
   rdfs:range org:Organization ;
   qb:concept sdmx-concept:statUnit ;
-  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> ;
+  owl:deprecated true ;
+  rdfs:seeAlso obeu-dimension:organization .
   
 obeu-dimension:fiscalPeriod a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
   rdfs:label "fiscal period"@en ;
