@@ -12,12 +12,12 @@ CONSTRUCT {
 }
 WHERE {
   GRAPH <http://data.openbudgets.eu/resource/dataset/validated-dataset> {
-    VALUES ?attributeProperty {
-      qb:attribute
-      qb:componentProperty
-    }
     ?dsd a qb:DataStructureDefinition .
     FILTER NOT EXISTS {
+      VALUES ?attributeProperty {
+        qb:attribute
+        qb:componentProperty
+      }
       ?dsd qb:component [
         ?attributeProperty obeu-attribute:currency
       ] .
