@@ -11,14 +11,16 @@ CONSTRUCT {
     rdfs:label "Data structure definition is missing the currency attribute."@en .
 }
 WHERE {
-  VALUES ?attributeProperty {
-    qb:attribute
-    qb:componentProperty
-  }
-  ?dsd a qb:DataStructureDefinition .
-  FILTER NOT EXISTS {
-    ?dsd qb:component [
-      ?attributeProperty obeu-attribute:currency
-    ] .
+  GRAPH <http://data.openbudgets.eu/resource/dataset/validated-dataset> {
+    VALUES ?attributeProperty {
+      qb:attribute
+      qb:componentProperty
+    }
+    ?dsd a qb:DataStructureDefinition .
+    FILTER NOT EXISTS {
+      ?dsd qb:component [
+        ?attributeProperty obeu-attribute:currency
+      ] .
+    }
   }
 }

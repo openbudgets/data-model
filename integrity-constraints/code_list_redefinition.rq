@@ -10,12 +10,14 @@ CONSTRUCT {
     rdfs:label ?violationLabel .
 }
 WHERE {
-  VALUES ?codedPropertyClass {
-    qb:CodedProperty
-    qb:DimensionProperty
+  GRAPH <http://data.openbudgets.eu/resource/dataset/validated-dataset> {
+    VALUES ?codedPropertyClass {
+      qb:CodedProperty
+      qb:DimensionProperty
+    }
+    ?codedProperty a ?codedPropertyClass ;
+      qb:codeList ?redefinedCodeList .
   }
-  ?codedProperty a ?codedPropertyClass ;
-    qb:codeList ?redefinedCodeList .
 
   GRAPH <http://data.openbudgets.eu/ontology> {
     ?codedProperty qb:codeList ?originalCodeList .

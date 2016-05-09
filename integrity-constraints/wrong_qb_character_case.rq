@@ -11,10 +11,12 @@ WHERE {
   {
     SELECT DISTINCT ?usedTBox
     WHERE {
-      {
-        [] a ?usedTBox .
-      } UNION {
-        [] ?usedTBox [] .
+      GRAPH <http://data.openbudgets.eu/resource/dataset/validated-dataset> {
+        {
+          [] a ?usedTBox .
+        } UNION {
+          [] ?usedTBox [] .
+        }
       }
       FILTER STRSTARTS(STR(?usedTBox), "http://purl.org/linked-data/cube#")
       FILTER NOT EXISTS {

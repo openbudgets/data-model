@@ -13,7 +13,9 @@ WHERE {
   GRAPH <http://data.openbudgets.eu/ontology> {
     ?property a rdf:Property .
   }
-
-  ?instance a ?property .
+  
+  GRAPH <http://data.openbudgets.eu/resource/dataset/validated-dataset> {
+    ?instance a ?property .
+  }
   BIND (STRLANG(CONCAT("Property <", STR(?property), "> cannot be instantiated."), "en") AS ?violationLabel)
 }

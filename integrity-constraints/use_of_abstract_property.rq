@@ -11,19 +11,21 @@ CONSTRUCT {
     rdfs:label "DSD includes an abstract property that cannot be used directly."@en .
 }
 WHERE {
-  VALUES ?abstractProperty {
-    obeu-dimension:administrativeClassification
-    obeu-dimension:classification
-    obeu-dimension:economicClassification
-    obeu-dimension:functionalClassification
-    obeu-dimension:programmeClassification
+  GRAPH <http://data.openbudgets.eu/resource/dataset/validated-dataset> {
+    VALUES ?abstractProperty {
+      obeu-dimension:administrativeClassification
+      obeu-dimension:classification
+      obeu-dimension:economicClassification
+      obeu-dimension:functionalClassification
+      obeu-dimension:programmeClassification
+    }
+    VALUES ?dimensionProperty {
+      qb:dimension
+      qb:componentProperty
+    }
+    ?dsd a qb:DataStructureDefinition ;
+      qb:component [
+        ?dimensionProperty ?abstractProperty
+      ] .
   }
-  VALUES ?dimensionProperty {
-    qb:dimension
-    qb:componentProperty
-  }
-  ?dsd a qb:DataStructureDefinition ;
-    qb:component [
-      ?dimensionProperty ?abstractProperty
-    ] .
 }
