@@ -1,4 +1,5 @@
 PREFIX obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/>
+PREFIX qb:             <http://purl.org/linked-data/cube#>
 PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX spin:           <http://spinrdf.org/spin#>
 
