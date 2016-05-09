@@ -18,7 +18,7 @@ WHERE {
       }
       FILTER STRSTARTS(STR(?usedTBox), "http://purl.org/linked-data/cube#")
       FILTER NOT EXISTS {
-        GRAPH <http://purl.org/linked-data/cube#> {
+        GRAPH <http://purl.org/linked-data/cube> {
           ?usedTBox ?p [] .
         }
       }
@@ -27,7 +27,7 @@ WHERE {
   {
     SELECT DISTINCT ?tbox
     WHERE {
-      GRAPH <http://purl.org/linked-data/cube#> {
+      GRAPH <http://purl.org/linked-data/cube> {
         ?tbox ?p [] . 
       }
     }
