@@ -1,0 +1,30 @@
+PREFIX obeu-attribute: <http://data.openbudgets.eu/ontology/dsd/attribute/>
+PREFIX obeu-dimension: <http://data.openbudgets.eu/ontology/dsd/dimension/>
+PREFIX obeu-measure:   <http://data.openbudgets.eu/ontology/dsd/measure/>
+PREFIX qb:             <http://purl.org/linked-data/cube#>
+PREFIX rdfs:           <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX spin:           <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?dsd ;
+    spin:violationPath qb:component ;
+    spin:violationValue ?componentProperty ; 
+    rdfs:label "Missing required component property."@en .
+}
+WHERE {
+  GRAPH <http://data.openbudgets.eu/resource/dataset/validated-dataset> {
+    ?dsd a qb:DataStructureDefinition .
+    VALUES ?componentProperty {
+      obeu-attribute:currency 
+      obeu-dimension:fiscalPeriod
+      obeu-dimension:operationCharacter
+      obeu-dimension:organization
+      obeu-measure:amount
+    }
+    FILTER NOT EXISTS {
+      ?dsd qb:component/qb:componentProperty/rdfs:subPropertyOf* ?componentProperty .
+    }
+  }
+}
+
