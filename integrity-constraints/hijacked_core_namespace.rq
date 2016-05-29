@@ -17,13 +17,17 @@ WHERE {
         } UNION {
           [] ?usedTBox [] .
         }
+        FILTER STRSTARTS(STR(?usedTBox), "http://data.openbudgets.eu/ontology/")
       }
     }
   }
-  FILTER STRSTARTS(STR(?usedTBox), "http://data.openbudgets.eu/ontology/")
+  GRAPH <http://data.openbudgets.eu/resource/dataset/validated-dataset> {
+    ?usedTBox ?p ?o .
+    FILTER (!isBlank(?o))
+  }
   FILTER NOT EXISTS {
     GRAPH <http://data.openbudgets.eu/ontology> {
-      ?usedTBox rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
+      ?usedTBox ?p ?o . 
     }
   }
 }
