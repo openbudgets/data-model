@@ -116,6 +116,13 @@ obeu-dimension:operationCharacter a rdf:Property, qb:DimensionProperty, qb:Coded
   qb:codeList obeu-codelist:operation-character ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
+obeu-dimension:paymentPhase a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+  rdfs:label "payment phase"@en ;
+  rdfs:comment "Indicates the phase of payment."@en ;
+  rdfs:range obeu:PaymentPhase ;
+  qb:codeList obeu-codelist:payment-phase ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
+
 obeu-optional:location a rdf:Property, obeu:OptionalProperty, owl:ObjectProperty ;
   rdfs:label "location"@en ;
   rdfs:comment "Physical location affected by a payment"@en ;
