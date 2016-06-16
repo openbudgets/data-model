@@ -38,17 +38,17 @@ obeu-codelist:payment-phase a skos:ConceptScheme ;
   rdfs:label "Code list of payment phases"@en ;
   skos:hasTopConcept obeu-paymentphase:allocated, obeu-paymentphase:paid, obeu-paymentphase:certified .
 
-obeu-paymentphase:allocated a skos:Concept ;
+obeu-paymentphase:allocated a skos:Concept, obeu:PaymentPhase ;
   skos:prefLabel "Allocated"@en ;
   skos:topConceptOf obeu-codelist:payment-phase ;
   skos:inScheme obeu-codelist:payment-phase .
 
-obeu-paymentphase:paid a skos:Concept ;
+obeu-paymentphase:paid a skos:Concept, obeu:PaymentPhase ;
   skos:prefLabel "Paid"@en ;
   skos:topConceptOf obeu-codelist:payment-phase ;
   skos:inScheme obeu-codelist:payment-phase .
 
-obeu-paymentphase:certified a skos:Concept ;
+obeu-paymentphase:certified a skos:Concept, obeu:PaymentPhase ;
   skos:prefLabel "Certified"@en ;
   skos:topConceptOf obeu-codelist:payment-phase ;
   skos:inScheme obeu-codelist:payment-phase .
