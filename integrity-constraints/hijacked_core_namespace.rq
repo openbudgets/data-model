@@ -17,7 +17,9 @@ WHERE {
         } UNION {
           [] ?usedTBox [] .
         }
-        FILTER STRSTARTS(STR(?usedTBox), "http://data.openbudgets.eu/ontology/")
+        FILTER (STRSTARTS(STR(?usedTBox), "http://data.openbudgets.eu/ontology/")
+                &&
+                !CONTAINS(SUBSTR(STR(?usedTBox), STRLEN("http://data.openbudgets.eu/ontology/") + 1), "/"))
       }
     }
   }
