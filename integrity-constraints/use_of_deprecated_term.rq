@@ -1,0 +1,22 @@
+PREFIX owl:    <http://www.w3.org/2002/07/owl#>
+PREFIX qb:     <http://purl.org/linked-data/cube#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX spin:   <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationValue ?deprecatedTerm ;
+    rdfs:label "The term used is deprecated."@en .
+}
+WHERE {
+  GRAPH <http://data.openbudgets.eu/ontology> {
+    ?deprecatedTerm owl:deprecated true .
+  }
+  GRAPH <http://data.openbudgets.eu/resource/dataset/validated-dataset> {
+    {
+      [] a ?deprecatedTerm .
+    } UNION {
+      [] ?deprectedTerm [] .
+    }
+  }
+}
