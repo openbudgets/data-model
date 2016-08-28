@@ -112,6 +112,7 @@ obeu-attribute:currency a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
   rdfs:subPropertyOf sdmx-attribute:currency ;
   rdfs:range obeu:Currency ;
   qb:concept sdmx-concept:currency ;
+  qb:codeList <http://publications.europa.eu/resource/authority/currency> ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-attribute:taxesIncluded a rdf:Property, qb:AttributeProperty, qb:CodedProperty ;
