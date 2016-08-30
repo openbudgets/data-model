@@ -1,0 +1,94 @@
+@prefix rdf:               <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:              <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:              <http://www.w3.org/2004/02/skos/core#> .
+
+@prefix obeu:              <http://data.openbudgets.eu/ontology/> .
+@prefix obeu-budgetphase:  <http://data.openbudgets.eu/resource/codelist/budget-phase/> .
+@prefix obeu-codelist:     <http://data.openbudgets.eu/resource/codelist/> .
+@prefix obeu-operation:    <http://data.openbudgets.eu/resource/codelist/operation-character/> .
+@prefix obeu-paymentphase: <http://data.openbudgets.eu/resource/codelist/payment-phase/> .
+
+#####################
+### Budget phases ###
+#####################
+
+obeu:BudgetPhase a rdfs:Class ;
+  rdfs:label "Budget phase"@en ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
+
+obeu-codelist:budget-phase a skos:ConceptScheme ;
+  rdfs:label "Code list that distinguishes among phases of the budget."@en ;
+  skos:hasTopConcept obeu-budgetphase:approved, obeu-budgetphase:draft, obeu-budgetphase:executed, obeu-budgetphase:revised .
+
+obeu-budgetphase:approved a obeu:BudgetPhase, skos:Concept ;
+  skos:prefLabel "Approved"@en ;
+  skos:topConceptOf obeu-codelist:budget-phase ;
+  skos:inScheme obeu-codelist:budget-phase .
+
+obeu-budgetphase:draft a obeu:BudgetPhase, skos:Concept ;
+  skos:prefLabel "Draft"@en ;
+  skos:topConceptOf obeu-codelist:budget-phase ;
+  skos:inScheme obeu-codelist:budget-phase .
+
+obeu-budgetphase:executed a obeu:BudgetPhase, skos:Concept ;
+  skos:prefLabel "Executed"@en ;
+  skos:topConceptOf obeu-codelist:budget-phase ;
+  skos:inScheme obeu-codelist:budget-phase .
+
+obeu-budgetphase:revised a obeu:BudgetPhase, skos:Concept ;
+  skos:prefLabel "Revised"@en ;
+  skos:topConceptOf obeu-codelist:budget-phase ;
+  skos:inScheme obeu-codelist:budget-phase .
+
+############################
+### Operation characters ###
+############################
+
+obeu:OperationCharacter a rdfs:Class ;
+  rdfs:label "Operation character"@en ;
+  rdfs:subClassOf skos:Concept ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
+
+obeu-codelist:operation-character a skos:ConceptScheme ;
+  rdfs:label "Code list that distinguishes among characters of fiscal operation."@en ;
+  skos:hasTopConcept obeu-operation:expenditure, obeu-operation:revenue .
+
+obeu-operation:expenditure a obeu:OperationCharacter, skos:Concept ;
+  skos:prefLabel "Expenditure"@en ;
+  skos:definition "Decrease in net worth resulting from a transaction and the net investment in nonfinancial assets"@en ;
+  skos:topConceptOf obeu-codelist:operation-character ;
+  skos:inScheme obeu-codelist:operation-character .
+
+obeu-operation:revenue a obeu:OperationCharacter, skos:Concept ;
+  skos:prefLabel "Revenue"@en ;
+  skos:definition "An increase in net worth resulting from a transaction"@en ;
+  skos:topConceptOf obeu-codelist:operation-character ;
+  skos:inScheme obeu-codelist:operation-character .
+
+######################
+### Payment phases ###
+######################
+
+obeu:PaymentPhase a rdfs:Class ;
+  rdfs:label "Payment phase"@en ;
+  rdfs:subClassOf skos:Concept ;
+  rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
+
+obeu-codelist:payment-phase a skos:ConceptScheme ;
+  rdfs:label "Code list of payment phases"@en ;
+  skos:hasTopConcept obeu-paymentphase:allocated, obeu-paymentphase:certified, obeu-paymentphase:paid .
+
+obeu-paymentphase:allocated a obeu:PaymentPhase, skos:Concept ;
+  skos:prefLabel "Allocated"@en ;
+  skos:topConceptOf obeu-codelist:payment-phase ;
+  skos:inScheme obeu-codelist:payment-phase .
+
+obeu-paymentphase:certified a obeu:PaymentPhase, skos:Concept ;
+  skos:prefLabel "Certified"@en ;
+  skos:topConceptOf obeu-codelist:payment-phase ;
+  skos:inScheme obeu-codelist:payment-phase .
+
+obeu-paymentphase:paid a obeu:PaymentPhase, skos:Concept ;
+  skos:prefLabel "Paid"@en ;
+  skos:topConceptOf obeu-codelist:payment-phase ;
+  skos:inScheme obeu-codelist:payment-phase .
