@@ -55,7 +55,7 @@ obeu-codelist:operation-character a skos:ConceptScheme ;
 
 obeu-operation:expenditure a obeu:OperationCharacter, skos:Concept ;
   skos:prefLabel "Expenditure"@en ;
-  skos:definition "Decrease in net worth resulting from a transaction and the net investment in nonfinancial assets"@en ;
+  skos:definition "Decrease in net worth resulting from a transaction"@en ; 
   skos:topConceptOf obeu-codelist:operation-character ;
   skos:inScheme obeu-codelist:operation-character .
 
