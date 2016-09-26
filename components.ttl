@@ -29,7 +29,7 @@
 
 obeu-attribute:currency a qb:AttributeProperty, qb:CodedProperty, rdf:Property ;
   rdfs:label "currency"@en, "devise"@fr, "měna"@cs ;
-  rdfs:comment "The currency of the financial amount."@en,
+  rdfs:comment "Currency of a financial amount."@en,
                "La devise du montant financier."@fr,
                "Měna peněžní částky."@cs ;
   qb:concept sdmx-concept:currency ;
@@ -253,7 +253,7 @@ obeu-optional:contract a obeu:OptionalProperty, rdf:Property, owl:ObjectProperty
 
 obeu-optional:location a obeu:OptionalProperty, rdf:Property, owl:ObjectProperty ;
   rdfs:label "location"@en, "locatlisation"@fr, "lokalita"@cs ;
-  rdfs:comment "Physical location affected by a payment"@en,
+  rdfs:comment "Physical location affected by a payment."@en,
                "Localisation physique liée au paiement."@fr,
                "Fyzická lokalita ovlivněná platbou."@cs ;
   qb:concept sdmx-concept:refArea ;
