@@ -157,9 +157,9 @@ obeu-dimension:fiscalYear a qb:CodedProperty, qb:DimensionProperty, rdf:Property
 
 obeu-dimension:functionalClassification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
   rdfs:label "functional classification"@en, "classification fonctionnelle"@fr, "funkční klasifikace"@cs ;
-  rdfs:comment "Classifies expenditures by general government sector and by the purpose of the expenditure."@en,
+  rdfs:comment "Classifies expenditure or revenue by general government sector and by its purpose."@en,
                "Classe les dépenses par secteur ou mission couverte par la dépense."@fr,
-               "Klasifikuje výdaje podle subsektoru institucionálního sektoru vládních institucí a podle účelu výdaje."@cs ;
+               "Klasifikuje výdaje nebo příjmy podle subsektoru institucionálního sektoru vládních institucí a podle účelu."@cs ;
   qb:concept obeu:FunctionalClassification ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf obeu-dimension:classification ;
@@ -203,9 +203,9 @@ obeu-dimension:paymentPhase a qb:CodedProperty, qb:DimensionProperty, rdf:Proper
 
 obeu-dimension:programmeClassification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
   rdfs:label "programme classification"@en, "programme de classification"@fr, "programová klasifikace"@cs ;
-  rdfs:comment "Grouping of expenditure by common objective."@en,
+  rdfs:comment "Grouping of expenditure or revenue by common objective."@en,
                "Regroupe les dépenses par mission."@fr,
-               "Seskupování výdajů se společným cílem."@cs ;
+               "Seskupování výdajů nebo příjmů se společným cílem."@cs ;
   qb:concept obeu:ProgrammeClassification ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf obeu-dimension:classification ;
