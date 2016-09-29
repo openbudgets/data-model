@@ -59,7 +59,9 @@ obeu-dimension:accountingRecord a qb:CodedProperty, qb:DimensionProperty, rdf:Pr
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:administrativeClassification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "administrative classification"@en, "classification administrative"@fr, "administrativní klasifikace"@cs ;
+  rdfs:label "administrative classification (abstract)"@en,
+             "classification administrative (abstrait)"@fr,
+             "administrativní klasifikace (abstraktní)"@cs ;
   rdfs:comment "Identifies the entity responsible for managing the public funds concerned."@en,
                "Identifie l'entité responsable pour la gestion des fonds publics concernés."@fr,
                "Identifikuje subjekty zodpovědné za správu příslušných veřejných prostředků."@cs ;
@@ -97,7 +99,9 @@ obeu-dimension:budgetaryUnit a qb:CodedProperty, qb:DimensionProperty, rdf:Prope
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:classification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "classification"@en, "classification"@fr, "klasifikace"@cs ;
+  rdfs:label "classification (abstract)"@en,
+             "classification (abstrait)"@fr,
+             "klasifikace (abstraktní)"@cs ;
   rdfs:comment "Category to which observation belongs."@en,
                "Catégorie à laquelle l'observation appartient."@fr,
                "Kategorie, do níž pozorování patří."@cs ;
@@ -126,7 +130,9 @@ obeu-dimension:date a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:economicClassification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "economic classification"@en, "classification économique"@fr, "ekonomická klasifikace"@cs ;
+  rdfs:label "economic classification (abstract)"@en,
+             "classification économique (abstrait)"@fr,
+             "ekonomická klasifikace (abstraktní)"@cs ;
   rdfs:comment "Identifies the type of expenditure incurred or source of revenues."@en,
                "Identifie le type de dépense ou la source des revenus."@fr,
                "Identifikuje typ vynaloženého výdaje nebo zdroje příjmu."@cs ;
@@ -156,7 +162,9 @@ obeu-dimension:fiscalYear a qb:CodedProperty, qb:DimensionProperty, rdf:Property
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:functionalClassification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "functional classification"@en, "classification fonctionnelle"@fr, "funkční klasifikace"@cs ;
+  rdfs:label "functional classification (abstract)"@en,
+             "classification fonctionnelle (abstrait)"@fr,
+             "funkční klasifikace (abstraktní)"@cs ;
   rdfs:comment "Classifies expenditure or revenue by general government sector and by its purpose."@en,
                "Classe les dépenses par secteur ou mission couverte par la dépense."@fr,
                "Klasifikuje výdaje nebo příjmy podle subsektoru institucionálního sektoru vládních institucí a podle účelu."@cs ;
@@ -202,7 +210,9 @@ obeu-dimension:paymentPhase a qb:CodedProperty, qb:DimensionProperty, rdf:Proper
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:programmeClassification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "programme classification"@en, "programme de classification"@fr, "programová klasifikace"@cs ;
+  rdfs:label "programme classification (abstract)"@en,
+             "programme de classification (abstrait)"@fr,
+             "programová klasifikace (abstraktní)"@cs ;
   rdfs:comment "Grouping of expenditure or revenue by common objective."@en,
                "Regroupe les dépenses par mission."@fr,
                "Seskupování výdajů nebo příjmů se společným cílem."@cs ;
