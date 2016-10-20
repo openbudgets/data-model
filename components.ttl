@@ -62,7 +62,7 @@ obeu-dimension:administrativeClassification a qb:CodedProperty, qb:DimensionProp
   rdfs:label "administrative classification (abstract)"@en,
              "classification administrative (abstrait)"@fr,
              "administrativní klasifikace (abstraktní)"@cs ;
-  rdfs:comment "Identifies the entity responsible for managing the public funds concerned."@en,
+  rdfs:comment "Identifies the entity responsible for managing the public funds concerned. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Identifie l'entité responsable pour la gestion des fonds publics concernés."@fr,
                "Identifikuje subjekty zodpovědné za správu příslušných veřejných prostředků."@cs ;
   qb:concept obeu:AdministrativeClassification ;
@@ -102,7 +102,7 @@ obeu-dimension:classification a qb:CodedProperty, qb:DimensionProperty, rdf:Prop
   rdfs:label "classification (abstract)"@en,
              "classification (abstrait)"@fr,
              "klasifikace (abstraktní)"@cs ;
-  rdfs:comment "Category to which observation belongs."@en,
+  rdfs:comment "Category to which observation belongs. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Catégorie à laquelle l'observation appartient."@fr,
                "Kategorie, do níž pozorování patří."@cs ;
   rdfs:range skos:Concept ;
@@ -133,7 +133,7 @@ obeu-dimension:economicClassification a qb:CodedProperty, qb:DimensionProperty, 
   rdfs:label "economic classification (abstract)"@en,
              "classification économique (abstrait)"@fr,
              "ekonomická klasifikace (abstraktní)"@cs ;
-  rdfs:comment "Identifies the type of expenditure incurred or source of revenues."@en,
+  rdfs:comment "Groups revenue according to its source and expenditure according to the type of the economic activity the government undertakes. For example, economic classification may include compensation of employees or subsidies for expenditure and tax revenue or property income for revenue. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Identifie le type de dépense ou la source des revenus."@fr,
                "Identifikuje typ vynaloženého výdaje nebo zdroje příjmu."@cs ;
   qb:concept obeu:EconomicClassification ;
@@ -165,7 +165,7 @@ obeu-dimension:functionalClassification a qb:CodedProperty, qb:DimensionProperty
   rdfs:label "functional classification (abstract)"@en,
              "classification fonctionnelle (abstrait)"@fr,
              "funkční klasifikace (abstraktní)"@cs ;
-  rdfs:comment "Classifies expenditure or revenue by general government sector and by its purpose."@en,
+  rdfs:comment "Classifies expenditure or revenue by general government sector and by its purpose. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Classe les dépenses par secteur ou mission couverte par la dépense."@fr,
                "Klasifikuje výdaje nebo příjmy podle subsektoru institucionálního sektoru vládních institucí a podle účelu."@cs ;
   qb:concept obeu:FunctionalClassification ;
@@ -213,7 +213,7 @@ obeu-dimension:programmeClassification a qb:CodedProperty, qb:DimensionProperty,
   rdfs:label "programme classification (abstract)"@en,
              "programme de classification (abstrait)"@fr,
              "programová klasifikace (abstraktní)"@cs ;
-  rdfs:comment "Grouping of expenditure or revenue by common objective."@en,
+  rdfs:comment "Grouping of expenditure or revenue by common objective. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Regroupe les dépenses par mission."@fr,
                "Seskupování výdajů nebo příjmů se společným cílem."@cs ;
   qb:concept obeu:ProgrammeClassification ;
