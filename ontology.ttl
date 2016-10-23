@@ -1,8 +1,18 @@
+@prefix dcterms:        <http://purl.org/dc/terms/> .
 @prefix obeu:           <http://data.openbudgets.eu/ontology/> .
 @prefix owl:            <http://www.w3.org/2002/07/owl#> .
 @prefix qb:             <http://purl.org/linked-data/cube#> .
 @prefix rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann:           <http://purl.org/vocab/vann/> .
+@prefix voaf:           <http://purl.org/vocommons/voaf#> .
+
+<http://data.openbudgets.eu/ontology> a voaf:Vocabulary ;
+  rdfs:label "OpenBudgets.eu data model"@en ;
+  rdfs:seeAlso <http://openbudgets.eu> ;
+  vann:preferredNamespaceUri "http://data.openbudgets.eu/ontology" ;
+  vann:preferredNamespacePrefix "obeu" ;
+  dcterms:license <https://creativecommons.org/licenses/by/4.0> .
 
 obeu:OptionalProperty a rdfs:Class ;
   rdfs:label "Optional property"@en ;
