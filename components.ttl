@@ -102,7 +102,7 @@ obeu-dimension:classification a qb:CodedProperty, qb:DimensionProperty, rdf:Prop
   rdfs:label "classification (abstract)"@en,
              "classification (abstrait)"@fr,
              "klasifikace (abstraktní)"@cs ;
-  rdfs:comment "Category to which observation belongs. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
+  rdfs:comment "Category to which the observation belongs. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Catégorie à laquelle l'observation appartient."@fr,
                "Kategorie, do níž pozorování patří."@cs ;
   rdfs:range skos:Concept ;
