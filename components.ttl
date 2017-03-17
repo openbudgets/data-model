@@ -28,10 +28,11 @@
 ##################
 
 obeu-attribute:currency a qb:AttributeProperty, qb:CodedProperty, rdf:Property ;
-  rdfs:label "currency"@en, "devise"@fr, "měna"@cs ;
+  rdfs:label "currency"@en, "devise"@fr, "měna"@cs, "νόμισμα"@el ;
   rdfs:comment "Currency of a financial amount."@en,
                "La devise du montant financier."@fr,
-               "Měna peněžní částky."@cs ;
+               "Měna peněžní částky."@cs,
+               "Νόμισμα ενός χρηματικού ποσού."@el ;
   qb:concept sdmx-concept:currency ;
   rdfs:range obeu:Currency ;
   qb:codeList <http://publications.europa.eu/resource/authority/currency> ;
@@ -39,10 +40,11 @@ obeu-attribute:currency a qb:AttributeProperty, qb:CodedProperty, rdf:Property ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-attribute:taxesIncluded a qb:AttributeProperty, qb:CodedProperty, rdf:Property ;
-  rdfs:label "taxes included"@en, "taxes comprises"@fr, "včetně daní"@cs ;
+  rdfs:label "taxes included"@en, "taxes comprises"@fr, "včetně daní"@cs, "συμπεριλαμβάνονται φόροι"@el ;
   rdfs:comment "Indicates whether the reported amount includes taxes."@en,
                "Indique si un montant inclut les taxes."@fr,
-               "Označuje, zda vykázaná částka zahrnuje daně."@cs ;
+               "Označuje, zda vykázaná částka zahrnuje daně."@cs,
+               "Υποδεικνύει εάν το αναφερόμενο ποσό περιλαμβάνει φόρους."@el ;
   rdfs:range xsd:boolean ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
@@ -51,30 +53,34 @@ obeu-attribute:taxesIncluded a qb:AttributeProperty, qb:CodedProperty, rdf:Prope
 ##################
 
 obeu-dimension:accountingRecord a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "accounting record"@en, "pièce comptable"@fr, "účetní záznam"@cs ;
+  rdfs:label "accounting record"@en, "pièce comptable"@fr, "účetní záznam"@cs, "λογιστική εγγραφή"@el ;
   rdfs:comment "Link to an accounting record (e.g., invoice, credit note) associated with expenditure or revenue."@en,
                "Lien vers une pièce comptable (par exemple une facture) associée à une dépense ou une ressource."@fr,
-               "Vazba na účetní záznam (např. faktura, dobropis) související s výdajem nebo příjmem."@cs ;
+               "Vazba na účetní záznam (např. faktura, dobropis) související s výdajem nebo příjmem."@cs,
+               "Σύνδεσμος με λογιστική εγγραφή (π.χ. τιμολόγιο, πιστωτικό σημείωμα) συσχετισμένος με τις δαπάνες ή τα έσοδα."@el ;
   rdfs:range foaf:Document ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:administrativeClassification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
   rdfs:label "administrative classification (abstract)"@en,
              "classification administrative (abstrait)"@fr,
-             "administrativní klasifikace (abstraktní)"@cs ;
+             "administrativní klasifikace (abstraktní)"@cs,
+             "διοικητική ταξινόμηση (αφηρημένη)"@el ;
   rdfs:comment "Identifies the entity responsible for managing the public funds concerned. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Identifie l'entité responsable pour la gestion des fonds publics concernés."@fr,
-               "Identifikuje subjekty zodpovědné za správu příslušných veřejných prostředků."@cs ;
+               "Identifikuje subjekty zodpovědné za správu příslušných veřejných prostředků."@cs,
+               "Προσδιορίζει το φορέα που είναι υπεύθυνος για τη διαχείριση των αντίστοιχων δημόσιων κονδυλίων. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύων ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
   qb:concept obeu:AdministrativeClassification ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:budgetLine a qb:CodedProperty, qb:DimensionProperty, rdf:Property, owl:ObjectProperty ;
-  rdfs:label "budget line"@en, "ligne budgétaire"@fr, "rozpočtová položka"@cs ;
+  rdfs:label "budget line"@en, "ligne budgétaire"@fr, "rozpočtová položka"@cs, "γραμμή του προϋπολογισμού"@el ;
   rdfs:comment "Budget line from which the payment draws its funds."@en,
                "La ligne budgétaire correspondant au paiement."@fr,
-               "Položka, ze které je uskutečněna platba."@cs ;
+               "Položka, ze které je uskutečněna platba."@cs,
+               "Γραμμή του προϋπολογισμού από την οποία η πληρωμή αντλεί κεφάλαια."@el ;
   rdfs:range qb:Observation ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
