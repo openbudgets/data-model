@@ -144,30 +144,34 @@ obeu-dimension:date a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
 obeu-dimension:economicClassification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
   rdfs:label "economic classification (abstract)"@en,
              "classification économique (abstrait)"@fr,
-             "ekonomická klasifikace (abstraktní)"@cs ;
+             "ekonomická klasifikace (abstraktní)"@cs,
+             "οικονομική ταξινόμηση (αφηρημένη)"el ;
   rdfs:comment "Groups revenue according to its source and expenditure according to the type of the economic activity the government undertakes. For example, economic classification may include compensation of employees or subsidies for expenditure and tax revenue or property income for revenue. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Identifie le type de dépense ou la source des revenus."@fr,
-               "Identifikuje typ vynaloženého výdaje nebo zdroje příjmu."@cs ;
+               "Identifikuje typ vynaloženého výdaje nebo zdroje příjmu."@cs,
+               "Ομάδες εσόδων σύμφωνα με την πηγή και τις δαπάνες του ανάλογα με το είδος της οικονομικής δραστηριότητας. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύων ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
   qb:concept obeu:EconomicClassification ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:fiscalPeriod a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "fiscal period"@en, "période fiscale"@fr, "účetní/fiskální období"@cs ;
+  rdfs:label "fiscal period"@en, "période fiscale"@fr, "účetní/fiskální období"@cs, "φορολογική περίοδος"@el ;
   rdfs:comment "The period of time reflected in financial statements."@en,
                "La période considérée dans les documents budgétaires."@fr,
-               "Referenční období zohledněné ve finančních výkazech."@cs ;
+               "Referenční období zohledněné ve finančních výkazech."@cs,
+               "Το χρονικό διάστημα που αντικατοπτρίζεται στις οικονομικές καταστάσεις."@el ;
   qb:concept sdmx-concept:refPeriod ;
   rdfs:range time:Interval ;
   rdfs:subPropertyOf sdmx-dimension:refPeriod ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:fiscalYear a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "fiscal year"@en, "exercice comptable"@fr, "fiskální rok"@cs ;
+  rdfs:label "fiscal year"@en, "exercice comptable"@fr, "fiskální rok"@cs, "οικονομικό έτος"@el ;
   rdfs:comment "The year reflected in financial statements."@en,
                "L'année des documents budgétaires considérés."@fr,
-               "Referenční rok zohledněný ve finančních výkazech."@cs ;
+               "Referenční rok zohledněný ve finančních výkazech."@cs,
+               "Ο χρόνος που αντικατοπτρίζεται στις οικονομικές καταστάσεις."@el ;
   qb:concept sdmx-concept:refPeriod ;
   rdfs:range interval:Year ;
   rdfs:subPropertyOf obeu-dimension:fiscalPeriod ;
@@ -176,29 +180,33 @@ obeu-dimension:fiscalYear a qb:CodedProperty, qb:DimensionProperty, rdf:Property
 obeu-dimension:functionalClassification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
   rdfs:label "functional classification (abstract)"@en,
              "classification fonctionnelle (abstrait)"@fr,
-             "funkční klasifikace (abstraktní)"@cs ;
+             "funkční klasifikace (abstraktní)"@cs,
+             "λειτουργική ταξινόμηση (αφηρημένη)"@el ;
   rdfs:comment "Classifies expenditure or revenue by general government sector and by its purpose. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Classe les dépenses par secteur ou mission couverte par la dépense."@fr,
-               "Klasifikuje výdaje nebo příjmy podle subsektoru institucionálního sektoru vládních institucí a podle účelu."@cs ;
+               "Klasifikuje výdaje nebo příjmy podle subsektoru institucionálního sektoru vládních institucí a podle účelu."@cs,
+               "Κατατάσσει τις δαπάνες ή έσοδα ανά τομέα της γενικής κυβέρνησης και σκοπό. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύων ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
   qb:concept obeu:FunctionalClassification ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:operationCharacter a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "operation character"@en, "type d'opération"@fr, "typ operace"@cs ;
+  rdfs:label "operation character"@en, "type d'opération"@fr, "typ operace"@cs, "χαρακτήρας λειτουργίας@el ;
   rdfs:comment "Distinguishes among expenditure and revenue."@en,
                "Distingue les dépenses des revenus."@fr,
-               "Rozlišení mezi výdajem a příjmem."@cs ;
+               "Rozlišení mezi výdajem a příjmem."@cs,
+               "Διάκριση μεταξύ δαπανών και εσόδων."el ;
   rdfs:range obeu:OperationCharacter ;
   qb:codeList obeu-codelist:operation-character ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:organization a qb:CodedProperty, qb:DimensionProperty, rdf:Property, owl:ObjectProperty ;
-  rdfs:label "organization"@en, "organisation"@fr, "organizace"@cs ;
+  rdfs:label "organization"@en, "organisation"@fr, "organizace"@cs, "οργανισμός"@el ;
   rdfs:comment "An economic entity that is capable, in its own right, of owning assets, incurring liabilities, and engaging in economic activities and in transactions with other entities."@en,
                "Une entité économique capable, de plein droit, d'avoir un actif et un passif et de contracter des activités économiques avec d'autres entités."@fr,
-               "Ekonomická jednotka, která je schopna vlastním jménem vlastnit aktiva, uzavírat závazky a vstupovat do ekonomických aktivit a transakcí s jinými subjekty."@cs ;
+               "Ekonomická jednotka, která je schopna vlastním jménem vlastnit aktiva, uzavírat závazky a vstupovat do ekonomických aktivit a transakcí s jinými subjekty."@cs,
+               "Μια οικονομική οντότητα που είναι ικανή, από μόνη της, να έχει ιδιοκτησία περιουσιακών στοιχείων, να αναλαμβάνει υποχρεώσεις και συμμετοχή σε οικονομικές δραστηριότητες και να κάνει συναλλαγές με άλλες οντότητες."@el ;
   qb:concept sdmx-concept:statUnit ;
   rdfs:range org:Organization ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
