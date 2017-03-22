@@ -85,19 +85,21 @@ obeu-dimension:budgetLine a qb:CodedProperty, qb:DimensionProperty, rdf:Property
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:budgetPhase a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "budget phase"@en, "phase budgétaire"@fr, "fáze rozpočtového procesu"@cs ;
+  rdfs:label "budget phase"@en, "phase budgétaire"@fr, "fáze rozpočtového procesu"@cs, "φάση του προϋπολογισμού"@el ;
   rdfs:comment "Major event or stage in the budget cycle."@en,
                "Evènement majeur ou étape du cycle budgétaire."@fr,
-               "Hlavní fáze či etapa rozpočtového cyklu."@cs ;
+               "Hlavní fáze či etapa rozpočtového cyklu."@cs,
+               "Σημαντικό γεγονός ή στάδιο του κύκλου του προϋπολογισμού."@el ;
   rdfs:range obeu:BudgetPhase ;
   qb:codeList obeu-codelist:budget-phase ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:budgetaryUnit a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "budgetary unit"@en, "unités budgétaires"@fr, "rozpočtová jednotka"@cs ;
+  rdfs:label "budgetary unit"@en, "unités budgétaires"@fr, "rozpočtová jednotka"@cs, "μονάδα προϋπολογισμού"@el ;
   rdfs:comment "Deprecated. Use obeu-dimension:organization."@en,
                "Déprécié. Utilisez obeu-dimension:organization."@fr,
-               "Zastaralé. Použijte dimenzi obeu-dimension:organization."@cs ;
+               "Zastaralé. Použijte dimenzi obeu-dimension:organization."@cs,
+               "Καταργήθηκε. Χρήση της obeu-dimension:organization."@el ;
   qb:concept sdmx-concept:statUnit ;
   rdfs:range org:Organization ;
   owl:deprecated true ;
@@ -107,29 +109,33 @@ obeu-dimension:budgetaryUnit a qb:CodedProperty, qb:DimensionProperty, rdf:Prope
 obeu-dimension:classification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
   rdfs:label "classification (abstract)"@en,
              "classification (abstrait)"@fr,
-             "klasifikace (abstraktní)"@cs ;
+             "klasifikace (abstraktní)"@cs,
+             "ταξινόμηση (αφηρημένη)"@el ;
   rdfs:comment "Category to which the observation belongs. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Catégorie à laquelle l'observation appartient."@fr,
-               "Kategorie, do níž pozorování patří."@cs ;
+               "Kategorie, do níž pozorování patří."@cs,
+               "Κατηγορία στην οποία ανήκει η παρατήρηση. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύων ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el  ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf dcterms:subject ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:currency a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "currency"@en, "devise"@fr, "měna"@cs ;
+  rdfs:label "currency"@en, "devise"@fr, "měna"@cs, "νόμισμα"@el;
   rdfs:comment "Currency of a financial amount."@en,
                "Devise du montant financier."@fr,
-               "Měna peněžní částky."@cs ;
+               "Měna peněžní částky."@cs,
+               "Νόμισμα ενός χρηματικού ποσού"@el ;
   qb:concept sdmx-concept:currency ;
   rdfs:range obeu:Currency ;
   qb:codeList <http://publications.europa.eu/resource/authority/currency> ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:date a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "date"@en, "date"@fr, "datum"@cs ;
+  rdfs:label "date"@en, "date"@fr, "datum"@cs, "ημερομηνία" ;
   rdfs:comment "Date when expense was paid or revenue received."@en,
                "Date à laquelle le paiment a été effectué ou le revenu perçu."@fr,
-               "Datum zaplacení nebo přijetí platby."@cs ;
+               "Datum zaplacení nebo přijetí platby."@cs,
+               "Ημερομηνία κατή την οποία πληρώθηκα έξοδα ή ελήφθησαν έσοδα"@el ;
   qb:concept sdmx-concept:refPeriod ;
   rdfs:range time:Interval ;
   rdfs:subPropertyOf obeu-dimension:fiscalPeriod ;
