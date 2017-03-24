@@ -13,44 +13,49 @@
 #####################
 
 obeu:BudgetPhase a rdfs:Class ;
-  rdfs:label "Budget phase"@en, "Fáze rozpočtového procesu"@cs ;
+  rdfs:label "Budget phase"@en, "Fáze rozpočtového procesu"@cs, "Στάδιο του προϋπολογισμού"@el ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-codelist:budget-phase a skos:ConceptScheme ;
   rdfs:label "Code list that distinguishes among phases of the budget."@en,
              "Liste des codes qui séparent les phases du budget."@fr,
-             "Číselník rozlišující fáze rozpočtového procesu"@cs ;
+             "Číselník rozlišující fáze rozpočtového procesu"@cs,
+             "Λίστα κωδικών για τη διάκριση μεταξύ των φάσεων του προϋπολογισμού."@el ;
   skos:hasTopConcept obeu-budgetphase:approved, obeu-budgetphase:draft, obeu-budgetphase:executed, obeu-budgetphase:revised .
 
 obeu-budgetphase:approved a obeu:BudgetPhase, skos:Concept ;
-  skos:prefLabel "Approved"@en, "Approuvé"@fr, "Schválený"@cs ;
+  skos:prefLabel "Approved"@en, "Approuvé"@fr, "Schválený"@cs, "Εγκρίθηκε"@el ;
   skos:definition "The approved budget represents a budget at the moment since which it is binding for the parties concerned."@en,
                   "Le budget approuvé représente le budget au momen où il devient contraignant pour les parties concernées."@fr,
-                  "Schválený rozpočet představuje rozpočet v okamžiku, od kterého je závazný pro subjekty, kterých se týká."@cs ;
+                  "Schválený rozpočet představuje rozpočet v okamžiku, od kterého je závazný pro subjekty, kterých se týká."@cs,
+                  "Ο εγκεκριμένος προϋπολογισμός αποτελεί τον προϋπολογισμό ο οποίος είναι δεσμευτικός για τα ενδιαφερόμενα μέρη."@el ;
   skos:topConceptOf obeu-codelist:budget-phase ;
   skos:inScheme obeu-codelist:budget-phase .
 
 obeu-budgetphase:draft a obeu:BudgetPhase, skos:Concept ;
-  skos:prefLabel "Draft"@en, "Préparatoire"@fr, "Návrh"@cs ;
+  skos:prefLabel "Draft"@en, "Préparatoire"@fr, "Návrh"@cs, "Προσχέδιο"@el ;
   skos:definition "Budget during its processing until the budget is approved."@en,
                   "Le budget dans sa période préparatoire, avant son approbation."@fr,
-                  "Návrhem rozpočtu se rozumí rozpočet v době svého zpracování do okamžiku, kdy je rozpočet schválen."@cs ;
+                  "Návrhem rozpočtu se rozumí rozpočet v době svého zpracování do okamžiku, kdy je rozpočet schválen."@cs,
+                  "Ο προϋπολογισμός κατά την επεξεργασία έως ότου εγκριθεί ο τελικός." ;
   skos:topConceptOf obeu-codelist:budget-phase ;
   skos:inScheme obeu-codelist:budget-phase .
 
 obeu-budgetphase:executed a obeu:BudgetPhase, skos:Concept ;
-  skos:prefLabel "Executed"@en, "Réalisé"@fr, "Realizovaný"@cs ;
+  skos:prefLabel "Executed"@en, "Réalisé"@fr, "Realizovaný"@cs, "Εκτελέστηκε"@el ;
   skos:definition "Execution of the approved budget means an ensuring of smooth and efficient drawing of the budget."@en,
                   "La réalisation du budget approuvé permet de le dépenser sans accroc et efficacement."@fr,
-                  "Realizace schváleného rozpočtu představuje zabezpečení plynulého a hospodárného čerpání výdajů rozpočtu."@cs ;
+                  "Realizace schváleného rozpočtu představuje zabezpečení plynulého a hospodárného čerpání výdajů rozpočtu."@cs,
+                  "Η εκτέλεση του εγκεκριμένου προϋπολογισμού σημαίνει τη διασφάλιση της ομαλής και αποτελεσματικής σχεδίασης του προϋπολογισμού."@el ;
   skos:topConceptOf obeu-codelist:budget-phase ;
   skos:inScheme obeu-codelist:budget-phase .
 
 obeu-budgetphase:revised a obeu:BudgetPhase, skos:Concept ;
-  skos:prefLabel "Revised"@en, "Révisé"@fr, "Upravený"@cs ;
+  skos:prefLabel "Revised"@en, "Révisé"@fr, "Upravený"@cs, "Αναθεωρημένος@el ;
   skos:definition "Revision of the approved budget is a change of the budget based on the approved budgetary measure."@en,
                   "La révision d'un budget approuvé est une modification du budget fondée sur une mesure budgétaire."@fr,
-                  "Úprava schváleného rozpočtu představuje změnu na základě schváleného rozpočtového opatření."@cs ;
+                  "Úprava schváleného rozpočtu představuje změnu na základě schváleného rozpočtového opatření."@cs,
+                  "Αναθεώρηση του εγκεκριμένου προϋπολογισμού είναι μια αλλαγή του προϋπολογισμού με βάση το εγκεκριμένο δημοσιονομικό μέτρο."@el ;
   skos:topConceptOf obeu-codelist:budget-phase ;
   skos:inScheme obeu-codelist:budget-phase .
 
