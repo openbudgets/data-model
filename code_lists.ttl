@@ -64,29 +64,32 @@ obeu-budgetphase:revised a obeu:BudgetPhase, skos:Concept ;
 ############################
 
 obeu:OperationCharacter a rdfs:Class ;
-  rdfs:label "Operation character"@en, "Type d'opérations"@fr, "Typ operace"@cs ;
+  rdfs:label "Operation character"@en, "Type d'opérations"@fr, "Typ operace"@cs, "Τύπος λειτουργίας"@el ;
   rdfs:subClassOf skos:Concept ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-codelist:operation-character a skos:ConceptScheme ;
   rdfs:label "Code list that distinguishes among characters of fiscal operation."@en,
              "Liste des code des différentes opérations fiscales."@fr,
-             "Číselník rozlišující typy fiskálních operací"@cs ;
+             "Číselník rozlišující typy fiskálních operací"@cs,
+             "Λίστα κωδικών που διακρίνει τους τύπους της δημοσιονομικής λειτουργίας"@el ;
   skos:hasTopConcept obeu-operation:expenditure, obeu-operation:revenue .
 
 obeu-operation:expenditure a obeu:OperationCharacter, skos:Concept ;
-  skos:prefLabel "Expenditure"@en, "Charges"@fr, "Výdaje"@cs ;
+  skos:prefLabel "Expenditure"@en, "Charges"@fr, "Výdaje"@cs, "Δαπάνη"@el ;
   skos:definition "Decrease in net worth resulting from a transaction"@en,
                   "Une transaction résultant en une diminution de l'actif."@fr,
-                  "Pokles čistého jmění vlivem transakce"@cs ;
+                  "Pokles čistého jmění vlivem transakce"@cs,
+                  "Μείωση του καθαρού κεφαλαίου που προέρχεται από συναλλαγές"@el ;
   skos:topConceptOf obeu-codelist:operation-character ;
   skos:inScheme obeu-codelist:operation-character .
 
 obeu-operation:revenue a obeu:OperationCharacter, skos:Concept ;
-  skos:prefLabel "Revenue"@en, "Ressources"@fr, "Příjmy"@cs ;
+  skos:prefLabel "Revenue"@en, "Ressources"@fr, "Příjmy"@cs, "Έσοδα"@el ;
   skos:definition "An increase in net worth resulting from a transaction"@en,
                   "Une transaction résultant en une augmentation de l'actif."@fr,
-                  "Zvýšení čistého jmění vlivem transakce"@cs ;
+                  "Zvýšení čistého jmění vlivem transakce"@cs,
+                  "Αύξηση του καθαρού κεφαλαίου που προέρχεται από συναλλαγές@el ;
   skos:topConceptOf obeu-codelist:operation-character ;
   skos:inScheme obeu-codelist:operation-character .
 
@@ -95,34 +98,37 @@ obeu-operation:revenue a obeu:OperationCharacter, skos:Concept ;
 ######################
 
 obeu:PaymentPhase a rdfs:Class ;
-  rdfs:label "Payment phase"@en, "Phases de paiement"@fr, "Platební fáze"@cs ;
+  rdfs:label "Payment phase"@en, "Phases de paiement"@fr, "Platební fáze"@cs, "Στάδιο πληρωμής"@el ;
   rdfs:subClassOf skos:Concept ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-codelist:payment-phase a skos:ConceptScheme ;
-  rdfs:label "Code list of payment phases"@en, "Liste des phases de paiment"@fr, "Číselník platebních fází"@cs ;
+  rdfs:label "Code list of payment phases"@en, "Liste des phases de paiment"@fr, "Číselník platebních fází"@cs, "Λίστα κωδικών του σταδίου πληρωμής"@el ;
   skos:hasTopConcept obeu-paymentphase:allocated, obeu-paymentphase:certified, obeu-paymentphase:paid .
 
 obeu-paymentphase:allocated a obeu:PaymentPhase, skos:Concept ;
-  skos:prefLabel "Allocated"@en, "Alloué"@fr, "Alokováno"@cs ;
+  skos:prefLabel "Allocated"@en, "Alloué"@fr, "Alokováno"@cs, "Κατανεμημένο"@el ;
   skos:definition "Financial amount intended for an specified objective or an Operational Programme."@en,
                   "Somme prévue pour un objectif spécifique ou un programme opérationnel."@fr,
-                  "Finanční prostředky určené pro daný cíl či operační program."@cs ;
+                  "Finanční prostředky určené pro daný cíl či operační program."@cs,
+                  "Χρηματικό ποσό που προορίζεται για μια καθορισμένη διαδικασία ή ενός επιχειρησιακού προγράμματος"@el ;
   skos:topConceptOf obeu-codelist:payment-phase ;
   skos:inScheme obeu-codelist:payment-phase .
 
 obeu-paymentphase:certified a obeu:PaymentPhase, skos:Concept ;
-  skos:prefLabel "Certified"@en, "Certifié"@fr, "Certifikováno"@cs ;
+  skos:prefLabel "Certified"@en, "Certifié"@fr, "Certifikováno"@cs, "Πιστοποιημένο"@el ;
   skos:definition "Certification of expenditure means the confirmation of the correctness of data submitted by managing authorities to the paying authority and the confirmation of the effectiveness of management and control systems at the level of managing authorities and intermediate bodies (or final beneficiaries)."@en,
                   "La certification des dépenses est un moyen de confirmer la justesse des données fournies par les autorités opérationnelles à l'autorité de paiment et de confirmer l'efficacité des systèmes de contrôle au niveau des autorités opérationnelles et des corps intermédiaires (ou bénéficiaires finaux)."@fr,
-                  "Certifikací uskutečněných výdajů se rozumí potvrzení správnosti údajů předložených řídicími orgány platebnímu orgánu a potvrzení efektivnosti systémů řízení a kontroly na úrovni řídicích orgánů a zprostředkujících subjektů (popř. konečných příjemců)."@cs ;
+                  "Certifikací uskutečněných výdajů se rozumí potvrzení správnosti údajů předložených řídicími orgány platebnímu orgánu a potvrzení efektivnosti systémů řízení a kontroly na úrovni řídicích orgánů a zprostředkujících subjektů (popř. konečných příjemců)."@cs,
+                  "Η πιστοποίηση των δαπανών είναι η επιβεβαίωση της ορθότητας των στοιχείων που υποβάλλονται από τις διαχειριστικές αρχές στην αρχή πληρωμής και η επιβεβαίωση της αποτελεσματικότητας των συστημάτων διαχείρισης και ελέγχου στο επίπεδο των διαχειριστικών αρχών και ενδιάμεσων φορέων (ή τελικών δικαιούχων)."@el ;
   skos:topConceptOf obeu-codelist:payment-phase ;
   skos:inScheme obeu-codelist:payment-phase .
 
 obeu-paymentphase:paid a obeu:PaymentPhase, skos:Concept ;
-  skos:prefLabel "Paid"@en, "Payé"@fr, "Proplaceno"@cs ;
+  skos:prefLabel "Paid"@en, "Payé"@fr, "Proplaceno"@cs, "Εξωφλήθη"@el ;
   skos:definition "Financial amount paid to the final beneficiaries after the certification of expenditure"@en,
                   "Montants payés au bénéficiaires finaux après la certification des dépenses."@fr,
-                  "Finanční prostředky proplacené konečnému příjemci v návaznosti na certifikaci uskutečněných výdajů"@cs ;
+                  "Finanční prostředky proplacené konečnému příjemci v návaznosti na certifikaci uskutečněných výdajů"@cs,
+                  "Το χρηματικό ποσό που έχει καταβληθεί στους τελικούς δικαιούχους, μετά την πιστοποίηση των δαπανών"@el ;
   skos:topConceptOf obeu-codelist:payment-phase ;
   skos:inScheme obeu-codelist:payment-phase .
