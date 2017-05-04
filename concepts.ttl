@@ -3,17 +3,17 @@
 @prefix skos:             <http://www.w3.org/2004/02/skos/core#> .
 
 obeu:FunctionalClassification a skos:Concept ;
-  skos:prefLabel "Functional classification"@en ;
+  skos:prefLabel "Functional classification"@en, "Λειτουργική ταξινόμηση"@el ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu:ProgrammeClassification a skos:Concept ;
-  skos:prefLabel "Programme classification"@en ;
+  skos:prefLabel "Programme classification"@en, "Ταξινόμηση προγράμματος"@el ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu:EconomicClassification a skos:Concept ;
-  skos:prefLabel "Economic classification"@en ;
+  skos:prefLabel "Economic classification"@en, "Οικονομική ταξινόμηση"@el ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu:AdministrativeClassification a skos:Concept ;
-  skos:prefLabel "Administrative classification"@en ;
+  skos:prefLabel "Administrative classification"@en, "Διοικητική ταξινόμηση"@el ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .

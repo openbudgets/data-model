@@ -28,10 +28,11 @@
 ##################
 
 obeu-attribute:currency a qb:AttributeProperty, qb:CodedProperty, rdf:Property ;
-  rdfs:label "currency"@en, "devise"@fr, "měna"@cs ;
+  rdfs:label "currency"@en, "devise"@fr, "měna"@cs, "νόμισμα"@el ;
   rdfs:comment "Currency of a financial amount."@en,
                "La devise du montant financier."@fr,
-               "Měna peněžní částky."@cs ;
+               "Měna peněžní částky."@cs,
+               "Νόμισμα ενός χρηματικού ποσού."@el ;
   qb:concept sdmx-concept:currency ;
   rdfs:range obeu:Currency ;
   qb:codeList <http://publications.europa.eu/resource/authority/currency> ;
@@ -39,10 +40,11 @@ obeu-attribute:currency a qb:AttributeProperty, qb:CodedProperty, rdf:Property ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-attribute:taxesIncluded a qb:AttributeProperty, qb:CodedProperty, rdf:Property ;
-  rdfs:label "taxes included"@en, "taxes comprises"@fr, "včetně daní"@cs ;
+  rdfs:label "taxes included"@en, "taxes comprises"@fr, "včetně daní"@cs, "συμπεριλαμβάνονται φόροι"@el ;
   rdfs:comment "Indicates whether the reported amount includes taxes."@en,
                "Indique si un montant inclut les taxes."@fr,
-               "Označuje, zda vykázaná částka zahrnuje daně."@cs ;
+               "Označuje, zda vykázaná částka zahrnuje daně."@cs,
+               "Υποδεικνύει εάν το αναφερόμενο ποσό περιλαμβάνει φόρους."@el ;
   rdfs:range xsd:boolean ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
@@ -51,47 +53,53 @@ obeu-attribute:taxesIncluded a qb:AttributeProperty, qb:CodedProperty, rdf:Prope
 ##################
 
 obeu-dimension:accountingRecord a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "accounting record"@en, "pièce comptable"@fr, "účetní záznam"@cs ;
+  rdfs:label "accounting record"@en, "pièce comptable"@fr, "účetní záznam"@cs, "λογιστική εγγραφή"@el ;
   rdfs:comment "Link to an accounting record (e.g., invoice, credit note) associated with expenditure or revenue."@en,
                "Lien vers une pièce comptable (par exemple une facture) associée à une dépense ou une ressource."@fr,
-               "Vazba na účetní záznam (např. faktura, dobropis) související s výdajem nebo příjmem."@cs ;
+               "Vazba na účetní záznam (např. faktura, dobropis) související s výdajem nebo příjmem."@cs,
+               "Σύνδεσμος με λογιστική εγγραφή (π.χ. τιμολόγιο, πιστωτικό σημείωμα) συσχετισμένη με τις δαπάνες ή τα έσοδα."@el ;
   rdfs:range foaf:Document ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:administrativeClassification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
   rdfs:label "administrative classification (abstract)"@en,
              "classification administrative (abstrait)"@fr,
-             "administrativní klasifikace (abstraktní)"@cs ;
+             "administrativní klasifikace (abstraktní)"@cs,
+             "διοικητική ταξινόμηση (αφηρημένη)"@el ;
   rdfs:comment "Identifies the entity responsible for managing the public funds concerned. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Identifie l'entité responsable pour la gestion des fonds publics concernés."@fr,
-               "Identifikuje subjekty zodpovědné za správu příslušných veřejných prostředků."@cs ;
+               "Identifikuje subjekty zodpovědné za správu příslušných veřejných prostředků."@cs,
+               "Προσδιορίζει το φορέα που είναι υπεύθυνος για τη διαχείριση των αντίστοιχων δημόσιων κονδυλίων. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύουσα ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
   qb:concept obeu:AdministrativeClassification ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:budgetLine a qb:CodedProperty, qb:DimensionProperty, rdf:Property, owl:ObjectProperty ;
-  rdfs:label "budget line"@en, "ligne budgétaire"@fr, "rozpočtová položka"@cs ;
+  rdfs:label "budget line"@en, "ligne budgétaire"@fr, "rozpočtová položka"@cs, "γραμμή του προϋπολογισμού"@el ;
   rdfs:comment "Budget line from which the payment draws its funds."@en,
                "La ligne budgétaire correspondant au paiement."@fr,
-               "Položka, ze které je uskutečněna platba."@cs ;
+               "Položka, ze které je uskutečněna platba."@cs,
+               "Γραμμή του προϋπολογισμού από την οποία η πληρωμή αντλεί κεφάλαια."@el ;
   rdfs:range qb:Observation ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:budgetPhase a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "budget phase"@en, "phase budgétaire"@fr, "fáze rozpočtového procesu"@cs ;
+  rdfs:label "budget phase"@en, "phase budgétaire"@fr, "fáze rozpočtového procesu"@cs, "φάση του προϋπολογισμού"@el ;
   rdfs:comment "Major event or stage in the budget cycle."@en,
                "Evènement majeur ou étape du cycle budgétaire."@fr,
-               "Hlavní fáze či etapa rozpočtového cyklu."@cs ;
+               "Hlavní fáze či etapa rozpočtového cyklu."@cs,
+               "Σημαντικό γεγονός ή στάδιο του κύκλου του προϋπολογισμού."@el ;
   rdfs:range obeu:BudgetPhase ;
   qb:codeList obeu-codelist:budget-phase ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:budgetaryUnit a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "budgetary unit"@en, "unités budgétaires"@fr, "rozpočtová jednotka"@cs ;
+  rdfs:label "budgetary unit"@en, "unités budgétaires"@fr, "rozpočtová jednotka"@cs, "μονάδα προϋπολογισμού"@el ;
   rdfs:comment "Deprecated. Use obeu-dimension:organization."@en,
                "Déprécié. Utilisez obeu-dimension:organization."@fr,
-               "Zastaralé. Použijte dimenzi obeu-dimension:organization."@cs ;
+               "Zastaralé. Použijte dimenzi obeu-dimension:organization."@cs,
+               "Καταργήθηκε. Χρήση της obeu-dimension:organization."@el ;
   qb:concept sdmx-concept:statUnit ;
   rdfs:range org:Organization ;
   owl:deprecated true ;
@@ -101,29 +109,33 @@ obeu-dimension:budgetaryUnit a qb:CodedProperty, qb:DimensionProperty, rdf:Prope
 obeu-dimension:classification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
   rdfs:label "classification (abstract)"@en,
              "classification (abstrait)"@fr,
-             "klasifikace (abstraktní)"@cs ;
+             "klasifikace (abstraktní)"@cs,
+             "ταξινόμηση (αφηρημένη)"@el ;
   rdfs:comment "Category to which the observation belongs. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Catégorie à laquelle l'observation appartient."@fr,
-               "Kategorie, do níž pozorování patří."@cs ;
+               "Kategorie, do níž pozorování patří."@cs,
+               "Κατηγορία στην οποία ανήκει η παρατήρηση. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύουσα ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el  ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf dcterms:subject ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:currency a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "currency"@en, "devise"@fr, "měna"@cs ;
+  rdfs:label "currency"@en, "devise"@fr, "měna"@cs, "νόμισμα"@el;
   rdfs:comment "Currency of a financial amount."@en,
                "Devise du montant financier."@fr,
-               "Měna peněžní částky."@cs ;
+               "Měna peněžní částky."@cs,
+               "Νόμισμα ενός χρηματικού ποσού"@el ;
   qb:concept sdmx-concept:currency ;
   rdfs:range obeu:Currency ;
   qb:codeList <http://publications.europa.eu/resource/authority/currency> ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:date a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "date"@en, "date"@fr, "datum"@cs ;
+  rdfs:label "date"@en, "date"@fr, "datum"@cs, "ημερομηνία" ;
   rdfs:comment "Date when expense was paid or revenue received."@en,
                "Date à laquelle le paiment a été effectué ou le revenu perçu."@fr,
-               "Datum zaplacení nebo přijetí platby."@cs ;
+               "Datum zaplacení nebo přijetí platby."@cs,
+               "Ημερομηνία κατή την οποία πληρώθηκαν έξοδα ή ελήφθησαν έσοδα"@el ;
   qb:concept sdmx-concept:refPeriod ;
   rdfs:range time:Interval ;
   rdfs:subPropertyOf obeu-dimension:fiscalPeriod ;
@@ -132,30 +144,34 @@ obeu-dimension:date a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
 obeu-dimension:economicClassification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
   rdfs:label "economic classification (abstract)"@en,
              "classification économique (abstrait)"@fr,
-             "ekonomická klasifikace (abstraktní)"@cs ;
+             "ekonomická klasifikace (abstraktní)"@cs,
+             "οικονομική ταξινόμηση (αφηρημένη)"@el ;
   rdfs:comment "Groups revenue according to its source and expenditure according to the type of the economic activity the government undertakes. For example, economic classification may include compensation of employees or subsidies for expenditure and tax revenue or property income for revenue. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Identifie le type de dépense ou la source des revenus."@fr,
-               "Identifikuje typ vynaloženého výdaje nebo zdroje příjmu."@cs ;
+               "Identifikuje typ vynaloženého výdaje nebo zdroje příjmu."@cs,
+               "Ομάδες εσόδων σύμφωνα με την πηγή και τις δαπάνες του ανάλογα με το είδος της οικονομικής δραστηριότητας. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύουσα ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
   qb:concept obeu:EconomicClassification ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:fiscalPeriod a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "fiscal period"@en, "période fiscale"@fr, "účetní/fiskální období"@cs ;
+  rdfs:label "fiscal period"@en, "période fiscale"@fr, "účetní/fiskální období"@cs, "φορολογική περίοδος"@el ;
   rdfs:comment "The period of time reflected in financial statements."@en,
                "La période considérée dans les documents budgétaires."@fr,
-               "Referenční období zohledněné ve finančních výkazech."@cs ;
+               "Referenční období zohledněné ve finančních výkazech."@cs,
+               "Το χρονικό διάστημα που αντικατοπτρίζεται στις οικονομικές καταστάσεις."@el ;
   qb:concept sdmx-concept:refPeriod ;
   rdfs:range time:Interval ;
   rdfs:subPropertyOf sdmx-dimension:refPeriod ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:fiscalYear a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "fiscal year"@en, "exercice comptable"@fr, "fiskální rok"@cs ;
+  rdfs:label "fiscal year"@en, "exercice comptable"@fr, "fiskální rok"@cs, "οικονομικό έτος"@el ;
   rdfs:comment "The year reflected in financial statements."@en,
                "L'année des documents budgétaires considérés."@fr,
-               "Referenční rok zohledněný ve finančních výkazech."@cs ;
+               "Referenční rok zohledněný ve finančních výkazech."@cs,
+               "Ο χρόνος που αντικατοπτρίζεται στις οικονομικές καταστάσεις."@el ;
   qb:concept sdmx-concept:refPeriod ;
   rdfs:range interval:Year ;
   rdfs:subPropertyOf obeu-dimension:fiscalPeriod ;
@@ -164,47 +180,53 @@ obeu-dimension:fiscalYear a qb:CodedProperty, qb:DimensionProperty, rdf:Property
 obeu-dimension:functionalClassification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
   rdfs:label "functional classification (abstract)"@en,
              "classification fonctionnelle (abstrait)"@fr,
-             "funkční klasifikace (abstraktní)"@cs ;
+             "funkční klasifikace (abstraktní)"@cs,
+             "λειτουργική ταξινόμηση (αφηρημένη)"@el ;
   rdfs:comment "Classifies expenditure or revenue by general government sector and by its purpose. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Classe les dépenses par secteur ou mission couverte par la dépense."@fr,
-               "Klasifikuje výdaje nebo příjmy podle subsektoru institucionálního sektoru vládních institucí a podle účelu."@cs ;
+               "Klasifikuje výdaje nebo příjmy podle subsektoru institucionálního sektoru vládních institucí a podle účelu."@cs,
+               "Κατατάσσει τις δαπάνες ή τα έσοδα ανά τομέα της γενικής κυβέρνησης και σκοπό. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύουσα ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
   qb:concept obeu:FunctionalClassification ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:operationCharacter a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "operation character"@en, "type d'opération"@fr, "typ operace"@cs ;
+  rdfs:label "operation character"@en, "type d'opération"@fr, "typ operace"@cs, "χαρακτήρας λειτουργίας"@el ;
   rdfs:comment "Distinguishes among expenditure and revenue."@en,
                "Distingue les dépenses des revenus."@fr,
-               "Rozlišení mezi výdajem a příjmem."@cs ;
+               "Rozlišení mezi výdajem a příjmem."@cs,
+               "Διάκριση μεταξύ δαπανών και εσόδων."@el ;
   rdfs:range obeu:OperationCharacter ;
   qb:codeList obeu-codelist:operation-character ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:organization a qb:CodedProperty, qb:DimensionProperty, rdf:Property, owl:ObjectProperty ;
-  rdfs:label "organization"@en, "organisation"@fr, "organizace"@cs ;
+  rdfs:label "organization"@en, "organisation"@fr, "organizace"@cs, "οργανισμός"@el ;
   rdfs:comment "An economic entity that is capable, in its own right, of owning assets, incurring liabilities, and engaging in economic activities and in transactions with other entities."@en,
                "Une entité économique capable, de plein droit, d'avoir un actif et un passif et de contracter des activités économiques avec d'autres entités."@fr,
-               "Ekonomická jednotka, která je schopna vlastním jménem vlastnit aktiva, uzavírat závazky a vstupovat do ekonomických aktivit a transakcí s jinými subjekty."@cs ;
+               "Ekonomická jednotka, která je schopna vlastním jménem vlastnit aktiva, uzavírat závazky a vstupovat do ekonomických aktivit a transakcí s jinými subjekty."@cs,
+               "Μια οικονομική οντότητα που είναι ικανή, από μόνη της, να έχει ιδιοκτησία περιουσιακών στοιχείων, να αναλαμβάνει υποχρεώσεις και συμμετοχή σε οικονομικές δραστηριότητες και να κάνει συναλλαγές με άλλες οντότητες."@el ;
   qb:concept sdmx-concept:statUnit ;
   rdfs:range org:Organization ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:partner a qb:CodedProperty, qb:DimensionProperty, rdf:Property, owl:ObjectProperty ;
-  rdfs:label "partner"@en, "partenaire"@fr, "partner"@cs ;
+  rdfs:label "partner"@en, "partenaire"@fr, "partner"@cs, "συνέταιρος"@el ;
   rdfs:comment "The entity to which the payment was made or from which the revenue was collected."@en,
                "L'entité à qui le paiement a été fait ou de qui provient le revenu collecté."@fr,
-               "Subjekt, jemuž byla poukázána platba, nebo od něhož byla platba přijata."@cs ;
+               "Subjekt, jemuž byla poukázána platba, nebo od něhož byla platba přijata."@cs,
+               "Η εταιρεία στην οποία έγινε η πληρωμή ή από την οποία συλλέχθηκαν τα έσοδα."@el ;
   qb:concept sdmx-concept:statUnit ;
   rdfs:range org:Organization ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:paymentPhase a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "payment phase"@en, "phase du paiement"@fr, "platební fáze"@cs ;
+  rdfs:label "payment phase"@en, "phase du paiement"@fr, "platební fáze"@cs, "στάδιο πληρωμής"@el ;
   rdfs:comment "Indicates the phase of payment."@en,
                "Indique la phase du paiement."@fr,
-               "Označuje fázi platby."@cs ;
+               "Označuje fázi platby."@cs,
+               "Υποδεικνύει το στάδιο της πληρωμής."@el ;
   qb:codeList obeu-codelist:payment-phase ;
   rdfs:range obeu:PaymentPhase ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
@@ -212,28 +234,32 @@ obeu-dimension:paymentPhase a qb:CodedProperty, qb:DimensionProperty, rdf:Proper
 obeu-dimension:programmeClassification a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
   rdfs:label "programme classification (abstract)"@en,
              "programme de classification (abstrait)"@fr,
-             "programová klasifikace (abstraktní)"@cs ;
+             "programová klasifikace (abstraktní)"@cs,
+             "Ταξινόμηση προγράμματος"@el ;
   rdfs:comment "Grouping of expenditure or revenue by common objective. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Regroupe les dépenses par mission."@fr,
-               "Seskupování výdajů nebo příjmů se společným cílem."@cs ;
+               "Seskupování výdajů nebo příjmů se společným cílem."@cs,
+               "Ομαδοποίηση των δαπανών ή των εσόδων με κοινό στόχο. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύουσα ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
   qb:concept obeu:ProgrammeClassification ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf obeu-dimension:classification ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:project a qb:CodedProperty, qb:DimensionProperty, rdf:Property, owl:ObjectProperty ;
-  rdfs:label "project"@en, "projet"@fr, "projekt"@cs ;
+  rdfs:label "project"@en, "projet"@fr, "projekt"@cs, "έργο"@el ;
   rdfs:comment "Project associated with a payment."@en,
                "Projet associé au paiment."@fr,
-               "Projekt související s platbou."@cs ;
+               "Projekt související s platbou."@cs,
+               "Το έργο που σχετίζεται με την πληρωμή."@el ;
   rdfs:range foaf:Project ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:taxesIncluded a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "taxes included"@en, "taxes comprises"@fr, "včetně daní"@cs ;
+  rdfs:label "taxes included"@en, "taxes comprises"@fr, "včetně daní"@cs, "συµπεριλαµβανοµένων των φόρων"@el ;
   rdfs:comment "Indicates whether the reported amount includes taxes."@en,
                "Indique si les taxes sont inclues dans le montant."@fr,
-               "Označuje, zda vykázaná částka zahrnuje daně."@cs ;
+               "Označuje, zda vykázaná částka zahrnuje daně."@cs,
+               "Υποδεικνύει εάν το παρεχόμενο ποσό περιλαμβάνει φόρους."@el ;
   rdfs:range xsd:boolean ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
@@ -242,8 +268,8 @@ obeu-dimension:taxesIncluded a qb:CodedProperty, qb:DimensionProperty, rdf:Prope
 ################
 
 obeu-measure:amount a qb:MeasureProperty, rdf:Property ;
-  rdfs:label "amount"@en, "montant"@fr, "částka"@cs ;
-  rdfs:comment "Monetary amount."@en, "Montant financier."@fr, "Peněžní částka."@cs ;
+  rdfs:label "amount"@en, "montant"@fr, "částka"@cs, "ποσό"@el ;
+  rdfs:comment "Monetary amount."@en, "Montant financier."@fr, "Peněžní částka."@cs, "Χρηματικό ποσό"@el ;
   qb:concept sdmx-concept:obsValue ;
   rdfs:range xsd:decimal ;
   rdfs:subPropertyOf sdmx-measure:obsValue ;
@@ -254,18 +280,20 @@ obeu-measure:amount a qb:MeasureProperty, rdf:Property ;
 ###########################
 
 obeu-optional:contract a obeu:OptionalProperty, rdf:Property, owl:ObjectProperty ;
-  rdfs:label "contract"@en, "contrat"@fr, "zakázka"@cs ;
+  rdfs:label "contract"@en, "contrat"@fr, "zakázka"@cs, "συμβόλαιο"@el ;
   rdfs:comment "Public contract for which the payment is made."@en,
                "Contrat de droit public pour lequel le paiement est effectué."@fr,
-               "Veřejná zakázka/smlouva, na kterou je platba provedena."@cs ;
+               "Veřejná zakázka/smlouva, na kterou je platba provedena."@cs,
+               "Δημόσιο συμβόλαιο για το οποίο γίνεται η πληρωμή."@el ;
   rdfs:range pc:Contract ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-optional:location a obeu:OptionalProperty, rdf:Property, owl:ObjectProperty ;
-  rdfs:label "location"@en, "locatlisation"@fr, "lokalita"@cs ;
+  rdfs:label "location"@en, "locatlisation"@fr, "lokalita"@cs, "τοποθεσία"@el ;
   rdfs:comment "Physical location affected by a payment."@en,
                "Localisation physique liée au paiement."@fr,
-               "Fyzická lokalita ovlivněná platbou."@cs ;
+               "Fyzická lokalita ovlivněná platbou."@cs,
+               "Η φυσική τοποθεσία που επηρεάζεται από την πληρωμή."@el ;
   qb:concept sdmx-concept:refArea ;
   rdfs:range schema:Place ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .

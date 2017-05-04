@@ -6,8 +6,9 @@
 @prefix rdfs:          <http://www.w3.org/2000/01/rdf-schema#> .
 
 obeu-metadata:methodologyUsed a rdf:Property ;
-  rdfs:label "Methodology used"@en ;
-  rdfs:comment "A link to the document describing the methodology that was used for creating the data structure definition."@en ;
+  rdfs:label "Methodology used"@en, "Mεθοδολογία που χρησιμοποιήθηκε"@el ;
+  rdfs:comment "A link to the document describing the methodology that was used for creating the data structure definition."@en,
+              "Σύνδεσμος με το έγγραφο που περιγράφει τη μεθοδολογία που χρησιμοποιήθηκε για τη δημιουργία του ορισμού της δομής των δεδομένων."@el ;
   rdfs:domain qb:DataStructureDefinition ;
   rdfs:range foaf:Document ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology/metadata> .

@@ -8,14 +8,15 @@
 @prefix voaf:           <http://purl.org/vocommons/voaf#> .
 
 <http://data.openbudgets.eu/ontology> a voaf:Vocabulary ;
-  rdfs:label "OpenBudgets.eu data model"@en ;
+  rdfs:label "OpenBudgets.eu data model"@en, "Μοντέλο δεδομένων του OpenBudgets.eu"@el ;
   rdfs:seeAlso <http://openbudgets.eu> ;
   vann:preferredNamespaceUri "http://data.openbudgets.eu/ontology" ;
   vann:preferredNamespacePrefix "obeu" ;
   dcterms:license <https://creativecommons.org/licenses/by/4.0> .
 
 obeu:OptionalProperty a rdfs:Class ;
-  rdfs:label "Optional property"@en ;
-  rdfs:comment "A property that may not be present for some observations."@en ;
+  rdfs:label "Optional property"@en, "Προαιρετική ιδιότητα"@el ;
+  rdfs:comment "A property that may not be present for some observations."@en,
+               "Ιδιότητα που μπορεί να μην εμφανίζεται σε ορισμένες παρατηρήσεις."@el ;
   rdfs:subClassOf qb:ComponentProperty ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
