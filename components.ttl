@@ -145,7 +145,7 @@ obeu-dimension:economicClassification a qb:CodedProperty, qb:DimensionProperty, 
   rdfs:label "economic classification (abstract)"@en,
              "classification économique (abstrait)"@fr,
              "ekonomická klasifikace (abstraktní)"@cs,
-             "οικονομική ταξινόμηση (αφηρημένη)"el ;
+             "οικονομική ταξινόμηση (αφηρημένη)"@el ;
   rdfs:comment "Groups revenue according to its source and expenditure according to the type of the economic activity the government undertakes. For example, economic classification may include compensation of employees or subsidies for expenditure and tax revenue or property income for revenue. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Identifie le type de dépense ou la source des revenus."@fr,
                "Identifikuje typ vynaloženého výdaje nebo zdroje příjmu."@cs,
@@ -192,11 +192,11 @@ obeu-dimension:functionalClassification a qb:CodedProperty, qb:DimensionProperty
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-dimension:operationCharacter a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
-  rdfs:label "operation character"@en, "type d'opération"@fr, "typ operace"@cs, "χαρακτήρας λειτουργίας@el ;
+  rdfs:label "operation character"@en, "type d'opération"@fr, "typ operace"@cs, "χαρακτήρας λειτουργίας"@el ;
   rdfs:comment "Distinguishes among expenditure and revenue."@en,
                "Distingue les dépenses des revenus."@fr,
                "Rozlišení mezi výdajem a příjmem."@cs,
-               "Διάκριση μεταξύ δαπανών και εσόδων."el ;
+               "Διάκριση μεταξύ δαπανών και εσόδων."@el ;
   rdfs:range obeu:OperationCharacter ;
   qb:codeList obeu-codelist:operation-character ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .

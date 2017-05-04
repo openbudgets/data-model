@@ -51,7 +51,7 @@ obeu-budgetphase:executed a obeu:BudgetPhase, skos:Concept ;
   skos:inScheme obeu-codelist:budget-phase .
 
 obeu-budgetphase:revised a obeu:BudgetPhase, skos:Concept ;
-  skos:prefLabel "Revised"@en, "Révisé"@fr, "Upravený"@cs, "Αναθεωρημένος@el ;
+  skos:prefLabel "Revised"@en, "Révisé"@fr, "Upravený"@cs, "Αναθεωρημένος"@el ;
   skos:definition "Revision of the approved budget is a change of the budget based on the approved budgetary measure."@en,
                   "La révision d'un budget approuvé est une modification du budget fondée sur une mesure budgétaire."@fr,
                   "Úprava schváleného rozpočtu představuje změnu na základě schváleného rozpočtového opatření."@cs,
@@ -89,7 +89,7 @@ obeu-operation:revenue a obeu:OperationCharacter, skos:Concept ;
   skos:definition "An increase in net worth resulting from a transaction"@en,
                   "Une transaction résultant en une augmentation de l'actif."@fr,
                   "Zvýšení čistého jmění vlivem transakce"@cs,
-                  "Αύξηση του καθαρού κεφαλαίου που προέρχεται από συναλλαγές@el ;
+                  "Αύξηση του καθαρού κεφαλαίου που προέρχεται από συναλλαγές"@el ;
   skos:topConceptOf obeu-codelist:operation-character ;
   skos:inScheme obeu-codelist:operation-character .
 
