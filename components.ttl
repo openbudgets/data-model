@@ -57,7 +57,7 @@ obeu-dimension:accountingRecord a qb:CodedProperty, qb:DimensionProperty, rdf:Pr
   rdfs:comment "Link to an accounting record (e.g., invoice, credit note) associated with expenditure or revenue."@en,
                "Lien vers une pièce comptable (par exemple une facture) associée à une dépense ou une ressource."@fr,
                "Vazba na účetní záznam (např. faktura, dobropis) související s výdajem nebo příjmem."@cs,
-               "Σύνδεσμος με λογιστική εγγραφή (π.χ. τιμολόγιο, πιστωτικό σημείωμα) συσχετισμένος με τις δαπάνες ή τα έσοδα."@el ;
+               "Σύνδεσμος με λογιστική εγγραφή (π.χ. τιμολόγιο, πιστωτικό σημείωμα) συσχετισμένη με τις δαπάνες ή τα έσοδα."@el ;
   rdfs:range foaf:Document ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
@@ -69,7 +69,7 @@ obeu-dimension:administrativeClassification a qb:CodedProperty, qb:DimensionProp
   rdfs:comment "Identifies the entity responsible for managing the public funds concerned. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Identifie l'entité responsable pour la gestion des fonds publics concernés."@fr,
                "Identifikuje subjekty zodpovědné za správu příslušných veřejných prostředků."@cs,
-               "Προσδιορίζει το φορέα που είναι υπεύθυνος για τη διαχείριση των αντίστοιχων δημόσιων κονδυλίων. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύων ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
+               "Προσδιορίζει το φορέα που είναι υπεύθυνος για τη διαχείριση των αντίστοιχων δημόσιων κονδυλίων. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύουσα ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
   qb:concept obeu:AdministrativeClassification ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf obeu-dimension:classification ;
@@ -114,7 +114,7 @@ obeu-dimension:classification a qb:CodedProperty, qb:DimensionProperty, rdf:Prop
   rdfs:comment "Category to which the observation belongs. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Catégorie à laquelle l'observation appartient."@fr,
                "Kategorie, do níž pozorování patří."@cs,
-               "Κατηγορία στην οποία ανήκει η παρατήρηση. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύων ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el  ;
+               "Κατηγορία στην οποία ανήκει η παρατήρηση. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύουσα ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el  ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf dcterms:subject ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
@@ -135,7 +135,7 @@ obeu-dimension:date a qb:CodedProperty, qb:DimensionProperty, rdf:Property ;
   rdfs:comment "Date when expense was paid or revenue received."@en,
                "Date à laquelle le paiment a été effectué ou le revenu perçu."@fr,
                "Datum zaplacení nebo přijetí platby."@cs,
-               "Ημερομηνία κατή την οποία πληρώθηκα έξοδα ή ελήφθησαν έσοδα"@el ;
+               "Ημερομηνία κατή την οποία πληρώθηκαν έξοδα ή ελήφθησαν έσοδα"@el ;
   qb:concept sdmx-concept:refPeriod ;
   rdfs:range time:Interval ;
   rdfs:subPropertyOf obeu-dimension:fiscalPeriod ;
@@ -149,7 +149,7 @@ obeu-dimension:economicClassification a qb:CodedProperty, qb:DimensionProperty, 
   rdfs:comment "Groups revenue according to its source and expenditure according to the type of the economic activity the government undertakes. For example, economic classification may include compensation of employees or subsidies for expenditure and tax revenue or property income for revenue. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Identifie le type de dépense ou la source des revenus."@fr,
                "Identifikuje typ vynaloženého výdaje nebo zdroje příjmu."@cs,
-               "Ομάδες εσόδων σύμφωνα με την πηγή και τις δαπάνες του ανάλογα με το είδος της οικονομικής δραστηριότητας. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύων ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
+               "Ομάδες εσόδων σύμφωνα με την πηγή και τις δαπάνες του ανάλογα με το είδος της οικονομικής δραστηριότητας. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύουσα ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
   qb:concept obeu:EconomicClassification ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf obeu-dimension:classification ;
@@ -185,7 +185,7 @@ obeu-dimension:functionalClassification a qb:CodedProperty, qb:DimensionProperty
   rdfs:comment "Classifies expenditure or revenue by general government sector and by its purpose. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Classe les dépenses par secteur ou mission couverte par la dépense."@fr,
                "Klasifikuje výdaje nebo příjmy podle subsektoru institucionálního sektoru vládních institucí a podle účelu."@cs,
-               "Κατατάσσει τις δαπάνες ή έσοδα ανά τομέα της γενικής κυβέρνησης και σκοπό. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύων ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
+               "Κατατάσσει τις δαπάνες ή τα έσοδα ανά τομέα της γενικής κυβέρνησης και σκοπό. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύουσα ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
   qb:concept obeu:FunctionalClassification ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf obeu-dimension:classification ;
@@ -235,11 +235,11 @@ obeu-dimension:programmeClassification a qb:CodedProperty, qb:DimensionProperty,
   rdfs:label "programme classification (abstract)"@en,
              "programme de classification (abstrait)"@fr,
              "programová klasifikace (abstraktní)"@cs,
-             ""Ταξινόμηση προγράμματος"@el ;
+             "Ταξινόμηση προγράμματος"@el ;
   rdfs:comment "Grouping of expenditure or revenue by common objective. This is an abstract property that should not be used directly. Instead, a subproperty with a concrete code list should be created."@en,
                "Regroupe les dépenses par mission."@fr,
                "Seskupování výdajů nebo příjmů se společným cílem."@cs,
-               "Ομαδοποίηση των δαπανών ή των εσόδων με κοινό στόχο. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύων ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
+               "Ομαδοποίηση των δαπανών ή των εσόδων με κοινό στόχο. Αυτή είναι μία αφηρημένη ιδιότητα που δεν θα πρέπει να χρησιμοποιηθεί άμεσα. Αντ 'αυτού, θα πρέπει να δημιουργηθεί μια δευτερεύουσα ιδιότητα με ένα συγκεκριμένο κατάλογο κωδικών."@el ;
   qb:concept obeu:ProgrammeClassification ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf obeu-dimension:classification ;
@@ -250,7 +250,7 @@ obeu-dimension:project a qb:CodedProperty, qb:DimensionProperty, rdf:Property, o
   rdfs:comment "Project associated with a payment."@en,
                "Projet associé au paiment."@fr,
                "Projekt související s platbou."@cs,
-               "Το έργο που σχετίζεται με πληρωμή."@el ;
+               "Το έργο που σχετίζεται με την πληρωμή."@el ;
   rdfs:range foaf:Project ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 

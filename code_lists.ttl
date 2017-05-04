@@ -13,7 +13,7 @@
 #####################
 
 obeu:BudgetPhase a rdfs:Class ;
-  rdfs:label "Budget phase"@en, "Fáze rozpočtového procesu"@cs, "Στάδιο του προϋπολογισμού"@el ;
+  rdfs:label "Budget phase"@en, "Fáze rozpočtového procesu"@cs, "Φάση του προϋπολογισμού"@el ;
   rdfs:isDefinedBy <http://data.openbudgets.eu/ontology> .
 
 obeu-codelist:budget-phase a skos:ConceptScheme ;
@@ -24,7 +24,7 @@ obeu-codelist:budget-phase a skos:ConceptScheme ;
   skos:hasTopConcept obeu-budgetphase:approved, obeu-budgetphase:draft, obeu-budgetphase:executed, obeu-budgetphase:revised .
 
 obeu-budgetphase:approved a obeu:BudgetPhase, skos:Concept ;
-  skos:prefLabel "Approved"@en, "Approuvé"@fr, "Schválený"@cs, "Εγκρίθηκε"@el ;
+  skos:prefLabel "Approved"@en, "Approuvé"@fr, "Schválený"@cs, "Εγκεκριμένος"@el ;
   skos:definition "The approved budget represents a budget at the moment since which it is binding for the parties concerned."@en,
                   "Le budget approuvé représente le budget au momen où il devient contraignant pour les parties concernées."@fr,
                   "Schválený rozpočet představuje rozpočet v okamžiku, od kterého je závazný pro subjekty, kterých se týká."@cs,
@@ -33,7 +33,7 @@ obeu-budgetphase:approved a obeu:BudgetPhase, skos:Concept ;
   skos:inScheme obeu-codelist:budget-phase .
 
 obeu-budgetphase:draft a obeu:BudgetPhase, skos:Concept ;
-  skos:prefLabel "Draft"@en, "Préparatoire"@fr, "Návrh"@cs, "Προσχέδιο"@el ;
+  skos:prefLabel "Draft"@en, "Préparatoire"@fr, "Návrh"@cs, "Προτεινόμενος"@el ;
   skos:definition "Budget during its processing until the budget is approved."@en,
                   "Le budget dans sa période préparatoire, avant son approbation."@fr,
                   "Návrhem rozpočtu se rozumí rozpočet v době svého zpracování do okamžiku, kdy je rozpočet schválen."@cs,
@@ -42,7 +42,7 @@ obeu-budgetphase:draft a obeu:BudgetPhase, skos:Concept ;
   skos:inScheme obeu-codelist:budget-phase .
 
 obeu-budgetphase:executed a obeu:BudgetPhase, skos:Concept ;
-  skos:prefLabel "Executed"@en, "Réalisé"@fr, "Realizovaný"@cs, "Εκτελέστηκε"@el ;
+  skos:prefLabel "Executed"@en, "Réalisé"@fr, "Realizovaný"@cs, "Εκτελεσθέν"@el ;
   skos:definition "Execution of the approved budget means an ensuring of smooth and efficient drawing of the budget."@en,
                   "La réalisation du budget approuvé permet de le dépenser sans accroc et efficacement."@fr,
                   "Realizace schváleného rozpočtu představuje zabezpečení plynulého a hospodárného čerpání výdajů rozpočtu."@cs,
@@ -125,7 +125,7 @@ obeu-paymentphase:certified a obeu:PaymentPhase, skos:Concept ;
   skos:inScheme obeu-codelist:payment-phase .
 
 obeu-paymentphase:paid a obeu:PaymentPhase, skos:Concept ;
-  skos:prefLabel "Paid"@en, "Payé"@fr, "Proplaceno"@cs, "Εξωφλήθη"@el ;
+  skos:prefLabel "Paid"@en, "Payé"@fr, "Proplaceno"@cs, "Εξωφληθέν"@el ;
   skos:definition "Financial amount paid to the final beneficiaries after the certification of expenditure"@en,
                   "Montants payés au bénéficiaires finaux après la certification des dépenses."@fr,
                   "Finanční prostředky proplacené konečnému příjemci v návaznosti na certifikaci uskutečněných výdajů"@cs,
