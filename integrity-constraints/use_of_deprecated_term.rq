@@ -16,7 +16,7 @@ WHERE {
     {
       [] a ?deprecatedTerm .
     } UNION {
-      [] ?deprectedTerm [] .
+      [] ?deprecatedTerm [] .
     }
   }
 }
